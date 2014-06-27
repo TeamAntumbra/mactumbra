@@ -1,0 +1,509 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01486F1D195CDE2A00F38387 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01486F1C195CDE2A00F38387 /* Cocoa.framework */; };
+		01486F27195CDE2A00F38387 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01486F25195CDE2A00F38387 /* InfoPlist.strings */; };
+		01486F29195CDE2A00F38387 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F28195CDE2A00F38387 /* main.m */; };
+		01486F2D195CDE2A00F38387 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 01486F2B195CDE2A00F38387 /* Credits.rtf */; };
+		01486F30195CDE2A00F38387 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F2F195CDE2A00F38387 /* AppDelegate.m */; };
+		01486F33195CDE2A00F38387 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01486F31195CDE2A00F38387 /* MainMenu.xib */; };
+		01486F35195CDE2A00F38387 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01486F34195CDE2A00F38387 /* Images.xcassets */; };
+		01486F3C195CDE2A00F38387 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01486F3B195CDE2A00F38387 /* XCTest.framework */; };
+		01486F3D195CDE2A00F38387 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01486F1C195CDE2A00F38387 /* Cocoa.framework */; };
+		01486F45195CDE2B00F38387 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01486F43195CDE2B00F38387 /* InfoPlist.strings */; };
+		01486F47195CDE2B00F38387 /* AntumbraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F46195CDE2B00F38387 /* AntumbraTests.m */; };
+		01486F59195CDE4700F38387 /* frame.c in Sources */ = {isa = PBXBuildFile; fileRef = 01486F50195CDE4700F38387 /* frame.c */; };
+		01486F5A195CDE4700F38387 /* hsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 01486F52195CDE4700F38387 /* hsv.c */; };
+		01486F5B195CDE4700F38387 /* packet.c in Sources */ = {isa = PBXBuildFile; fileRef = 01486F54195CDE4700F38387 /* packet.c */; };
+		01486F5C195CDE4700F38387 /* serial.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F57195CDE4700F38387 /* serial.m */; };
+		01486F5D195CDE4700F38387 /* trianglespectra.png in Resources */ = {isa = PBXBuildFile; fileRef = 01486F58195CDE4700F38387 /* trianglespectra.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		01486F3E195CDE2B00F38387 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01486F11195CDE2A00F38387 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01486F18195CDE2A00F38387;
+			remoteInfo = Antumbra;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01486F19195CDE2A00F38387 /* Antumbra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Antumbra.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		01486F1C195CDE2A00F38387 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		01486F1F195CDE2A00F38387 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		01486F20195CDE2A00F38387 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		01486F21195CDE2A00F38387 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		01486F24195CDE2A00F38387 /* Antumbra-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Antumbra-Info.plist"; sourceTree = "<group>"; };
+		01486F26195CDE2A00F38387 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		01486F28195CDE2A00F38387 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		01486F2A195CDE2A00F38387 /* Antumbra-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Antumbra-Prefix.pch"; sourceTree = "<group>"; };
+		01486F2C195CDE2A00F38387 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		01486F2E195CDE2A00F38387 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		01486F2F195CDE2A00F38387 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		01486F32195CDE2A00F38387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		01486F34195CDE2A00F38387 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		01486F3A195CDE2A00F38387 /* AntumbraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AntumbraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		01486F3B195CDE2A00F38387 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		01486F42195CDE2B00F38387 /* AntumbraTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AntumbraTests-Info.plist"; sourceTree = "<group>"; };
+		01486F44195CDE2B00F38387 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		01486F46195CDE2B00F38387 /* AntumbraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AntumbraTests.m; sourceTree = "<group>"; };
+		01486F50195CDE4700F38387 /* frame.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = frame.c; sourceTree = "<group>"; };
+		01486F51195CDE4700F38387 /* frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = frame.h; sourceTree = "<group>"; };
+		01486F52195CDE4700F38387 /* hsv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hsv.c; sourceTree = "<group>"; };
+		01486F53195CDE4700F38387 /* hsv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hsv.h; sourceTree = "<group>"; };
+		01486F54195CDE4700F38387 /* packet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = packet.c; sourceTree = "<group>"; };
+		01486F55195CDE4700F38387 /* packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = packet.h; sourceTree = "<group>"; };
+		01486F56195CDE4700F38387 /* serial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serial.h; sourceTree = "<group>"; };
+		01486F57195CDE4700F38387 /* serial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = serial.m; sourceTree = "<group>"; };
+		01486F58195CDE4700F38387 /* trianglespectra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglespectra.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		01486F16195CDE2A00F38387 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01486F1D195CDE2A00F38387 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01486F37195CDE2A00F38387 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01486F3D195CDE2A00F38387 /* Cocoa.framework in Frameworks */,
+				01486F3C195CDE2A00F38387 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01486F10195CDE2A00F38387 = {
+			isa = PBXGroup;
+			children = (
+				01486F22195CDE2A00F38387 /* Antumbra */,
+				01486F40195CDE2B00F38387 /* AntumbraTests */,
+				01486F1B195CDE2A00F38387 /* Frameworks */,
+				01486F1A195CDE2A00F38387 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		01486F1A195CDE2A00F38387 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				01486F19195CDE2A00F38387 /* Antumbra.app */,
+				01486F3A195CDE2A00F38387 /* AntumbraTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		01486F1B195CDE2A00F38387 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				01486F1C195CDE2A00F38387 /* Cocoa.framework */,
+				01486F3B195CDE2A00F38387 /* XCTest.framework */,
+				01486F1E195CDE2A00F38387 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		01486F1E195CDE2A00F38387 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				01486F1F195CDE2A00F38387 /* AppKit.framework */,
+				01486F20195CDE2A00F38387 /* CoreData.framework */,
+				01486F21195CDE2A00F38387 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		01486F22195CDE2A00F38387 /* Antumbra */ = {
+			isa = PBXGroup;
+			children = (
+				01486F2E195CDE2A00F38387 /* AppDelegate.h */,
+				01486F2F195CDE2A00F38387 /* AppDelegate.m */,
+				01486F31195CDE2A00F38387 /* MainMenu.xib */,
+				01486F50195CDE4700F38387 /* frame.c */,
+				01486F51195CDE4700F38387 /* frame.h */,
+				01486F52195CDE4700F38387 /* hsv.c */,
+				01486F53195CDE4700F38387 /* hsv.h */,
+				01486F54195CDE4700F38387 /* packet.c */,
+				01486F55195CDE4700F38387 /* packet.h */,
+				01486F56195CDE4700F38387 /* serial.h */,
+				01486F57195CDE4700F38387 /* serial.m */,
+				01486F58195CDE4700F38387 /* trianglespectra.png */,
+				01486F34195CDE2A00F38387 /* Images.xcassets */,
+				01486F23195CDE2A00F38387 /* Supporting Files */,
+			);
+			path = Antumbra;
+			sourceTree = "<group>";
+		};
+		01486F23195CDE2A00F38387 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				01486F24195CDE2A00F38387 /* Antumbra-Info.plist */,
+				01486F25195CDE2A00F38387 /* InfoPlist.strings */,
+				01486F28195CDE2A00F38387 /* main.m */,
+				01486F2A195CDE2A00F38387 /* Antumbra-Prefix.pch */,
+				01486F2B195CDE2A00F38387 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		01486F40195CDE2B00F38387 /* AntumbraTests */ = {
+			isa = PBXGroup;
+			children = (
+				01486F46195CDE2B00F38387 /* AntumbraTests.m */,
+				01486F41195CDE2B00F38387 /* Supporting Files */,
+			);
+			path = AntumbraTests;
+			sourceTree = "<group>";
+		};
+		01486F41195CDE2B00F38387 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				01486F42195CDE2B00F38387 /* AntumbraTests-Info.plist */,
+				01486F43195CDE2B00F38387 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		01486F18195CDE2A00F38387 /* Antumbra */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01486F4A195CDE2B00F38387 /* Build configuration list for PBXNativeTarget "Antumbra" */;
+			buildPhases = (
+				01486F15195CDE2A00F38387 /* Sources */,
+				01486F16195CDE2A00F38387 /* Frameworks */,
+				01486F17195CDE2A00F38387 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Antumbra;
+			productName = Antumbra;
+			productReference = 01486F19195CDE2A00F38387 /* Antumbra.app */;
+			productType = "com.apple.product-type.application";
+		};
+		01486F39195CDE2A00F38387 /* AntumbraTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01486F4D195CDE2B00F38387 /* Build configuration list for PBXNativeTarget "AntumbraTests" */;
+			buildPhases = (
+				01486F36195CDE2A00F38387 /* Sources */,
+				01486F37195CDE2A00F38387 /* Frameworks */,
+				01486F38195CDE2A00F38387 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01486F3F195CDE2B00F38387 /* PBXTargetDependency */,
+			);
+			name = AntumbraTests;
+			productName = AntumbraTests;
+			productReference = 01486F3A195CDE2A00F38387 /* AntumbraTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		01486F11195CDE2A00F38387 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Nicholas Peretti";
+				TargetAttributes = {
+					01486F39195CDE2A00F38387 = {
+						TestTargetID = 01486F18195CDE2A00F38387;
+					};
+				};
+			};
+			buildConfigurationList = 01486F14195CDE2A00F38387 /* Build configuration list for PBXProject "Antumbra" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 01486F10195CDE2A00F38387;
+			productRefGroup = 01486F1A195CDE2A00F38387 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				01486F18195CDE2A00F38387 /* Antumbra */,
+				01486F39195CDE2A00F38387 /* AntumbraTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		01486F17195CDE2A00F38387 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01486F27195CDE2A00F38387 /* InfoPlist.strings in Resources */,
+				01486F35195CDE2A00F38387 /* Images.xcassets in Resources */,
+				01486F2D195CDE2A00F38387 /* Credits.rtf in Resources */,
+				01486F33195CDE2A00F38387 /* MainMenu.xib in Resources */,
+				01486F5D195CDE4700F38387 /* trianglespectra.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01486F38195CDE2A00F38387 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01486F45195CDE2B00F38387 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		01486F15195CDE2A00F38387 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01486F59195CDE4700F38387 /* frame.c in Sources */,
+				01486F30195CDE2A00F38387 /* AppDelegate.m in Sources */,
+				01486F29195CDE2A00F38387 /* main.m in Sources */,
+				01486F5A195CDE4700F38387 /* hsv.c in Sources */,
+				01486F5B195CDE4700F38387 /* packet.c in Sources */,
+				01486F5C195CDE4700F38387 /* serial.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01486F36195CDE2A00F38387 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01486F47195CDE2B00F38387 /* AntumbraTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		01486F3F195CDE2B00F38387 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 01486F18195CDE2A00F38387 /* Antumbra */;
+			targetProxy = 01486F3E195CDE2B00F38387 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		01486F25195CDE2A00F38387 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01486F26195CDE2A00F38387 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		01486F2B195CDE2A00F38387 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01486F2C195CDE2A00F38387 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		01486F31195CDE2A00F38387 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01486F32195CDE2A00F38387 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		01486F43195CDE2B00F38387 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01486F44195CDE2B00F38387 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		01486F48195CDE2B00F38387 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		01486F49195CDE2B00F38387 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		01486F4B195CDE2B00F38387 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Antumbra/Antumbra-Prefix.pch";
+				INFOPLIST_FILE = "Antumbra/Antumbra-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		01486F4C195CDE2B00F38387 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Antumbra/Antumbra-Prefix.pch";
+				INFOPLIST_FILE = "Antumbra/Antumbra-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		01486F4E195CDE2B00F38387 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Antumbra.app/Contents/MacOS/Antumbra";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Antumbra/Antumbra-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "AntumbraTests/AntumbraTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		01486F4F195CDE2B00F38387 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Antumbra.app/Contents/MacOS/Antumbra";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Antumbra/Antumbra-Prefix.pch";
+				INFOPLIST_FILE = "AntumbraTests/AntumbraTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		01486F14195CDE2A00F38387 /* Build configuration list for PBXProject "Antumbra" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01486F48195CDE2B00F38387 /* Debug */,
+				01486F49195CDE2B00F38387 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01486F4A195CDE2B00F38387 /* Build configuration list for PBXNativeTarget "Antumbra" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01486F4B195CDE2B00F38387 /* Debug */,
+				01486F4C195CDE2B00F38387 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		01486F4D195CDE2B00F38387 /* Build configuration list for PBXNativeTarget "AntumbraTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01486F4E195CDE2B00F38387 /* Debug */,
+				01486F4F195CDE2B00F38387 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 01486F11195CDE2A00F38387 /* Project object */;
+}
