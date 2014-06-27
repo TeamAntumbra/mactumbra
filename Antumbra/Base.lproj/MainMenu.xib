@@ -776,6 +776,9 @@
                 <menuItem title="Seizure" id="alJ-H9-HBg">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
+                <menuItem title="Fades" id="gvV-B5-DRZ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
             </items>
         </menu>
     </objects>

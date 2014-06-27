@@ -122,9 +122,118 @@
     if ([item.title isEqualTo:@"Seizure"]){
         sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(randomColorTick) userInfo:nil repeats:YES];
     }
+    if ([item.title isEqualTo:@"Fades"]){
+        red=0;
+        green=0;
+        blue=0;
+        sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(fadeTick) userInfo:nil repeats:YES];
+    }
     
     
 }
+-(void)fadeTick{
+    switch (tick%14) {
+        case 0:
+            red+=5;
+            if (red>=255) {
+                tick++;
+            }
+            break;
+        case 1:
+            red-=5;
+            if (red<=0) {
+                tick++;
+            }
+            break;
+        case 2:
+            green+=5;
+            if (green>=255) {
+                tick++;
+            }
+            break;
+        case 3:
+            green-=5;
+            if (green<=0) {
+                tick++;
+            }
+            break;
+        case 4:
+            blue+=5;
+            if (blue>=255) {
+                tick++;
+            }
+            break;
+        case 5:
+            blue-=5;
+            if (blue<=0) {
+                tick++;
+            }
+            break;
+        case 6:
+            red+=5;
+            blue+=5;
+            if (red>=255) {
+                tick++;
+            }
+            
+            break;
+        case 7:
+            red-=5;
+            blue-=5;
+            if (red<=0) {
+                tick++;
+            }
+            break;
+        case 8:
+            blue+=5;
+            green+=5;
+            if (green>=255) {
+                tick++;
+            }
+            break;
+        case 9:
+            blue-=5;
+            green-=5;
+            if (green<=0) {
+                tick++;
+            }
+            break;
+        case 10:
+            red+=5;
+            green+=5;
+            if (red>=255) {
+                tick++;
+            }
+            break;
+        case 11:
+            red-=5;
+            green-=5;
+            if (red<=0) {
+                tick++;
+            }
+            break;
+        case 12:
+            red+=5;
+            blue+=5;
+            if (red<=255) {
+                tick++;
+            }
+            break;
+        case 13:
+            red-=5;
+            blue-=5;
+            if (red==0) {
+                tick++;
+            }
+            break;
+        default:
+            break;
+    }
+    [self updateBoard];
+    
+}
+
+
 -(void)randomColorTick{
     red = arc4random()%256;
     blue = arc4random()%256;
