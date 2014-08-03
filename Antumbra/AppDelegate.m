@@ -17,6 +17,10 @@
     
     int tick;
     
+    int fadeChange;
+    int fadeChangeChange;
+    int fadeTick;
+    
     BOOL on;
     
     NSColorPanel *panel;
@@ -29,7 +33,6 @@
 
 @synthesize statusBar = _statusBar;
 @synthesize titleLabel;
-@synthesize strobeSlider;
 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -44,7 +47,7 @@
     [panel setTarget:self];
     [panel setAction:@selector(changeColor:)];
     [panel setContinuous:YES];
-    
+    fadeChange= 5;
     
     ser_init();
     
@@ -106,128 +109,163 @@
         ser_set_mode(7);
     }
     if ([item.title isEqualTo:@"Mirror Screen"]){
-        /*
-        NSLog(@"saw");
-        system("screencapture -c -x");
-        NSImage *mage=[[NSImage alloc]initWithPasteboard:[NSPasteboard generalPasteboard]];
         
-        NSImageView *mageView = [[NSImageView alloc]initWithFrame:NSRectFromCGRect(CGRectMake(0, 0, mage.size.width, mage.size.height))];
-        [mageView setImage:mage];
-       
-        [self.window.contentView addSubview:mageView];
+         sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(screenCaptureTick) userInfo:nil repeats:YES];
         
-        NSLog(@"%f   %f",mage.size.width, mage.size.height);
-        */
     }
     if ([item.title isEqualTo:@"Seizure"]){
         sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(randomColorTick) userInfo:nil repeats:YES];
     }
     if ([item.title isEqualTo:@"Fades"]){
-        red=0;
-        green=0;
-        blue=0;
+        red=15;
+        green=15;
+        blue=15;
+        fadeChangeChange=-1;
+        fadeChange=15;
         sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(fadeTick) userInfo:nil repeats:YES];
     }
     
     
 }
+-(void)screenCaptureTick{
+    
+    NSLog(@"saw");
+    system("screencapture -c -x");
+    NSImage *mage=[[NSImage alloc]initWithPasteboard:[NSPasteboard generalPasteboard]];
+    NSRect rec = NSMakeRect(0, 0, mage.size.width, mage.size.height);
+    CGImageRef ref = [mage CGImageForProposedRect:&rec context:nil hints:nil];
+    NSBitmapImageRep *map = [[NSBitmapImageRep alloc]initWithCGImage:ref];
+    
+    
+    
+    NSImageView *mageView = [[NSImageView alloc]initWithFrame:NSRectFromCGRect(CGRectMake(0, 0, mage.size.width, mage.size.height))];
+    [mageView setImage:mage];
+    
+    [self.window.contentView addSubview:mageView];
+    
+    
+    NSLog(@"%f   %f",mage.size.width, mage.size.height);
+    
+}
+
+
+
 -(void)fadeTick{
+    fadeChange=5;
     switch (tick%14) {
         case 0:
-            red+=5;
+            red+=fadeChange;
             if (red>=255) {
                 tick++;
+                fadeTick=0;
             }
             break;
         case 1:
-            red-=5;
+            red-=fadeChange;
             if (red<=0) {
                 tick++;
+                fadeTick=0;
             }
             break;
         case 2:
-            green+=5;
+            green+=fadeChange;
             if (green>=255) {
                 tick++;
+                fadeTick=0;
             }
             break;
         case 3:
-            green-=5;
+            green-=fadeChange;
             if (green<=0) {
                 tick++;
+                fadeTick=0;
             }
             break;
         case 4:
-            blue+=5;
+            blue+=fadeChange;
             if (blue>=255) {
                 tick++;
+                fadeTick=0;
             }
             break;
         case 5:
-            blue-=5;
+            blue-=fadeChange;
             if (blue<=0) {
                 tick++;
+                fadeTick=0;
             }
             break;
         case 6:
-            red+=5;
-            blue+=5;
+            red+=fadeChange;
+            blue+=fadeChange;
             if (red>=255) {
                 tick++;
+                fadeTick=0;
             }
             
             break;
         case 7:
-            red-=5;
-            blue-=5;
+            red-=fadeChange;
+            blue-=fadeChange;
             if (red<=0) {
                 tick++;
+                fadeTick=0;
             }
             break;
         case 8:
-            blue+=5;
-            green+=5;
+            blue+=fadeChange;
+            green+=fadeChange;
             if (green>=255) {
                 tick++;
+                fadeTick=0;
             }
             break;
         case 9:
-            blue-=5;
-            green-=5;
+            blue-=fadeChange;
+            green-=fadeChange;
             if (green<=0) {
                 tick++;
+                fadeTick=0;
             }
             break;
         case 10:
-            red+=5;
-            green+=5;
+            red+=fadeChange;
+            green+=fadeChange;
             if (red>=255) {
                 tick++;
+                fadeTick=0;
             }
             break;
         case 11:
-            red-=5;
-            green-=5;
+            red-=fadeChange;
+            green-=fadeChange;
             if (red<=0) {
                 tick++;
+                fadeTick=0;
             }
             break;
         case 12:
-            red+=5;
-            blue+=5;
-            if (red<=255) {
+            red+=fadeChange;
+            blue+=fadeChange;
+            if (red>=255) {
                 tick++;
+                fadeTick=0;
             }
             break;
         case 13:
-            red-=5;
-            blue-=5;
-            if (red==0) {
+            red-=fadeChange;
+            blue-=fadeChange;
+            if (red<=0) {
                 tick++;
+                fadeTick=0;
             }
             break;
         default:
             break;
+    }
+    fadeTick++;
+    if (fadeTick%20==0) {
+        fadeChangeChange*=-1;
     }
     [self updateBoard];
     
@@ -276,10 +314,12 @@
 -(void)updateBoard{
     if (on) {
         //write RGB
+        
         ser_set_color(red, green, blue);
         
     } else {
         //write all zeros
+        //COMMENT THO
         ser_set_color(0, 0, 0);
         
     }
