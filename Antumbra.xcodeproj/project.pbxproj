@@ -23,6 +23,8 @@
 		01486F5B195CDE4700F38387 /* packet.c in Sources */ = {isa = PBXBuildFile; fileRef = 01486F54195CDE4700F38387 /* packet.c */; };
 		01486F5C195CDE4700F38387 /* serial.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F57195CDE4700F38387 /* serial.m */; };
 		01486F5D195CDE4700F38387 /* trianglespectra.png in Resources */ = {isa = PBXBuildFile; fileRef = 01486F58195CDE4700F38387 /* trianglespectra.png */; };
+		016103D4198F394D00BD6281 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 016103D3198F394D00BD6281 /* QuartzCore.framework */; };
+		016103D6198F6C3000BD6281 /* libusb-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 016103D5198F6C3000BD6281 /* libusb-1.0.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,9 @@
 		01486F56195CDE4700F38387 /* serial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serial.h; sourceTree = "<group>"; };
 		01486F57195CDE4700F38387 /* serial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = serial.m; sourceTree = "<group>"; };
 		01486F58195CDE4700F38387 /* trianglespectra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglespectra.png; sourceTree = "<group>"; };
+		016103D3198F394D00BD6281 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		016103D5198F6C3000BD6281 /* libusb-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libusb-1.0.0.dylib"; sourceTree = "<group>"; };
+		016103D7198F6C5100BD6281 /* libusb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libusb.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +76,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				016103D6198F6C3000BD6281 /* libusb-1.0.0.dylib in Frameworks */,
+				016103D4198F394D00BD6281 /* QuartzCore.framework in Frameworks */,
 				01486F1D195CDE2A00F38387 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,6 +116,8 @@
 		01486F1B195CDE2A00F38387 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				016103D5198F6C3000BD6281 /* libusb-1.0.0.dylib */,
+				016103D3198F394D00BD6281 /* QuartzCore.framework */,
 				01486F1C195CDE2A00F38387 /* Cocoa.framework */,
 				01486F3B195CDE2A00F38387 /* XCTest.framework */,
 				01486F1E195CDE2A00F38387 /* Other Frameworks */,
@@ -132,6 +141,7 @@
 				01486F2E195CDE2A00F38387 /* AppDelegate.h */,
 				01486F2F195CDE2A00F38387 /* AppDelegate.m */,
 				01486F31195CDE2A00F38387 /* MainMenu.xib */,
+				016103D7198F6C5100BD6281 /* libusb.h */,
 				01486F50195CDE4700F38387 /* frame.c */,
 				01486F51195CDE4700F38387 /* frame.h */,
 				01486F52195CDE4700F38387 /* hsv.c */,
@@ -417,6 +427,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Antumbra/Antumbra-Prefix.pch";
 				INFOPLIST_FILE = "Antumbra/Antumbra-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -430,6 +444,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Antumbra/Antumbra-Prefix.pch";
 				INFOPLIST_FILE = "Antumbra/Antumbra-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -494,6 +512,7 @@
 				01486F4C195CDE2B00F38387 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		01486F4D195CDE2B00F38387 /* Build configuration list for PBXNativeTarget "AntumbraTests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +521,7 @@
 				01486F4F195CDE2B00F38387 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
