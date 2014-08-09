@@ -71,7 +71,6 @@
     int count  = AnDevice_GetCount(ctx);
     NSLog(@"%i",count);
     for (int i = 0; i < AnDevice_GetCount(ctx); ++i) {
-        
         const char *ser;
         AnDevice *dev = AnDevice_Get(ctx, i);
         AnDevice_Info(dev, NULL, NULL, &ser);
