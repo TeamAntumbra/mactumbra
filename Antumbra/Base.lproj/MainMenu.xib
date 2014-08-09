@@ -14,6 +14,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="statusMenu" destination="W1d-2T-TGD" id="bbg-WQ-7Hm"/>
+                <outlet property="strobeSlider" destination="Vee-Gs-5vF" id="j8J-W2-Ajs"/>
                 <outlet property="titleLabel" destination="O3f-Gv-6GG" id="fN6-b1-afl"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="XuN-A4-FN5"/>
             </connections>
@@ -672,7 +673,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="300" width="249" height="348"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" appearanceType="lightContent" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="249" height="348"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -729,6 +730,20 @@
                         <rect key="frame" x="-45" y="119" width="339" height="244"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="trianglespectra" id="jak-gu-GWH"/>
                     </imageView>
+                    <slider appearanceType="lightContent" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vee-Gs-5vF">
+                        <rect key="frame" x="18" y="117" width="213" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" state="on" alignment="left" maxValue="50" doubleValue="21.05263157894737" tickMarkPosition="above" numberOfTickMarks="20" sliderType="linear" id="4sx-VI-I0e"/>
+                    </slider>
+                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ty-aE-cyL">
+                        <rect key="frame" x="73" y="151" width="102" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Strobe Speed" id="cxx-OJ-hOL">
+                            <font key="font" size="13" name="Futura-Medium"/>
+                            <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
         </window>
@@ -762,9 +777,6 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem title="Fades" id="gvV-B5-DRZ">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Mirror Screen" id="8Yk-Pz-xAa">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>

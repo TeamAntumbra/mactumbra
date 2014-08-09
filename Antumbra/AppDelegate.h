@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSStatusItem *statusBar;
 - (IBAction)toggleOnOff:(id)sender;
 - (IBAction)openSettings:(id)sender;
+@property (weak) IBOutlet NSSlider *strobeSlider;
 
 @property (weak) IBOutlet NSTextField *titleLabel;
 

@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#include "serial.h"
-#include "hsv.h"
+#import "antumbra.h"
+
 
 
 @implementation AppDelegate {
@@ -18,9 +18,6 @@
     
     int tick;
     
-    int fadeChange;
-    int fadeChangeChange;
-    int fadeTick;
     
     BOOL on;
     
@@ -41,6 +38,7 @@
     self.statusBar = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     self.statusBar.title = @"A";
     [_window setTitle:@""];
+    [_window makeKeyAndOrderFront:NSApp];
     self.statusMenu.delegate = self;
     self.statusBar.menu = self.statusMenu;
     self.statusBar.highlightMode = YES;
@@ -48,10 +46,7 @@
     [panel setTarget:self];
     [panel setAction:@selector(changeColor:)];
     [panel setContinuous:YES];
-    fadeChange= 5;
-    /*
-    ser_init();
-    */
+    
     tick=0;
     on = YES;
     
@@ -66,6 +61,31 @@
     blue = 0;
     
     [self updateBoard];
+    
+    AnCtx *ctx;
+    if (AnCtx_Init(&ctx)) {
+        fputs("ctx init failed\n", stderr);
+    }
+    AnDevice_Populate(ctx);
+    
+    int count  = AnDevice_GetCount(ctx);
+    NSLog(@"%i",count);
+    for (int i = 0; i < AnDevice_GetCount(ctx); ++i) {
+        
+        const char *ser;
+        AnDevice *dev = AnDevice_Get(ctx, i);
+        AnDevice_Info(dev, NULL, NULL, &ser);
+        puts(ser);
+        if (AnDevice_Open(ctx, dev)) {
+            fputs("device open failed\n", stderr);
+            
+        }
+        AnDevice_Close(ctx, dev);
+        AnDevice_Free(dev);
+    }
+    
+    AnCtx_Deinit(ctx);
+    
     
 }
 
@@ -107,9 +127,11 @@
     }
     if ([item.title isEqualTo:@"Sound Reactive"]){
         //Send Sound mode
-        ser_set_mode(7);
+        
     }
     if ([item.title isEqualTo:@"Mirror Screen"]){
+        
+        
         
         [self screenCaptureTick];
         sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.0166 target:self selector:@selector(screenCaptureTick) userInfo:nil repeats:YES];
@@ -122,8 +144,7 @@
         red=15;
         green=15;
         blue=15;
-        fadeChangeChange=-1;
-        fadeChange=15;
+        
         sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(fadeTick) userInfo:nil repeats:YES];
     }
     
@@ -132,27 +153,29 @@
 -(void)screenCaptureTick{
     float width = [NSScreen mainScreen].frame.size.width;
     float height = [NSScreen mainScreen].frame.size.height;
+    
+    
     /*
-    float r,g,b = 0;
-    NSSize size = NSMakeSize(100, 100);
-    float widthDivisions = 4;
-    float heightDivisions = 4;
-    NSArray *lePoints = [self pointsFromWidth:width height:height widthDivs:widthDivisions heightDivs:heightDivisions];
-    float its = 0;
-    for (NSValue *val in lePoints) {
-        NSPoint p = val.pointValue;
-        NSColor *c = [self colorFromRect:CGRectMake(p.x-size.width/2.0, p.y-size.height/2.0, size.width, size.height)];
-        r+=c.redComponent;
-        g+=c.greenComponent;
-        b+=c.blueComponent;
-        its++;
-    }
-    red = (r/its)*255;
-    green = (g/its)*255;
-    blue = (b/its)*255;
+     float r,g,b = 0;
+     NSSize size = NSMakeSize(100, 100);
+     float widthDivisions = 4;
+     float heightDivisions = 4;
+     NSArray *lePoints = [self pointsFromWidth:width height:height widthDivs:widthDivisions heightDivs:heightDivisions];
+     float its = 0;
+     for (NSValue *val in lePoints) {
+     NSPoint p = val.pointValue;
+     NSColor *c = [self colorFromRect:CGRectMake(p.x-size.width/2.0, p.y-size.height/2.0, size.width, size.height)];
+     r+=c.redComponent;
+     g+=c.greenComponent;
+     b+=c.blueComponent;
+     its++;
+     }
+     red = (r/its)*255;
+     green = (g/its)*255;
+     blue = (b/its)*255;
      */
     
-    NSColor *c = [self colorFromRect:CGRectMake(0, height*0.1, width, height*0.5)];
+    NSColor *c = [self colorFromRect:CGRectMake(width*0.25, height*0.1, width*0.5, height*0.5)];
     red = c.redComponent*255;
     green = c.greenComponent*255;
     blue = c.blueComponent*255;
@@ -197,126 +220,9 @@
 }
 
 -(void)fadeTick{
-    fadeChange=5;
-    switch (tick%14) {
-        case 0:
-            red+=fadeChange;
-            if (red>=255) {
-                tick++;
-                fadeTick=0;
-            }
-            break;
-        case 1:
-            red-=fadeChange;
-            if (red<=0) {
-                tick++;
-                fadeTick=0;
-            }
-            break;
-        case 2:
-            green+=fadeChange;
-            if (green>=255) {
-                tick++;
-                fadeTick=0;
-            }
-            break;
-        case 3:
-            green-=fadeChange;
-            if (green<=0) {
-                tick++;
-                fadeTick=0;
-            }
-            break;
-        case 4:
-            blue+=fadeChange;
-            if (blue>=255) {
-                tick++;
-                fadeTick=0;
-            }
-            break;
-        case 5:
-            blue-=fadeChange;
-            if (blue<=0) {
-                tick++;
-                fadeTick=0;
-            }
-            break;
-        case 6:
-            red+=fadeChange;
-            blue+=fadeChange;
-            if (red>=255) {
-                tick++;
-                fadeTick=0;
-            }
-            
-            break;
-        case 7:
-            red-=fadeChange;
-            blue-=fadeChange;
-            if (red<=0) {
-                tick++;
-                fadeTick=0;
-            }
-            break;
-        case 8:
-            blue+=fadeChange;
-            green+=fadeChange;
-            if (green>=255) {
-                tick++;
-                fadeTick=0;
-            }
-            break;
-        case 9:
-            blue-=fadeChange;
-            green-=fadeChange;
-            if (green<=0) {
-                tick++;
-                fadeTick=0;
-            }
-            break;
-        case 10:
-            red+=fadeChange;
-            green+=fadeChange;
-            if (red>=255) {
-                tick++;
-                fadeTick=0;
-            }
-            break;
-        case 11:
-            red-=fadeChange;
-            green-=fadeChange;
-            if (red<=0) {
-                tick++;
-                fadeTick=0;
-            }
-            break;
-        case 12:
-            red+=fadeChange;
-            blue+=fadeChange;
-            if (red>=255) {
-                tick++;
-                fadeTick=0;
-            }
-            break;
-        case 13:
-            red-=fadeChange;
-            blue-=fadeChange;
-            if (red<=0) {
-                tick++;
-                fadeTick=0;
-            }
-            break;
-        default:
-            break;
-    }
-    fadeTick++;
-    if (fadeTick%20==0) {
-        fadeChangeChange*=-1;
-    }
-    [self updateBoard];
     
+    [self updateBoard];
 }
-
 
 -(void)randomColorTick{
     red = arc4random()%256;
@@ -364,14 +270,10 @@
         //write RGB
         //NSLog(@"%i %i %i",red,green,blue);
         self.window.backgroundColor = [NSColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
-        /*
-        ser_set_color(red, green, blue);
-        */
+        
+        
     } else {
-        //write all zeros
-        /*
-        ser_set_color(0, 0, 0);
-        */
+        
     }
     
 }

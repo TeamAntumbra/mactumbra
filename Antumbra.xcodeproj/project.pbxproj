@@ -23,8 +23,12 @@
 		01486F5B195CDE4700F38387 /* packet.c in Sources */ = {isa = PBXBuildFile; fileRef = 01486F54195CDE4700F38387 /* packet.c */; };
 		01486F5C195CDE4700F38387 /* serial.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F57195CDE4700F38387 /* serial.m */; };
 		01486F5D195CDE4700F38387 /* trianglespectra.png in Resources */ = {isa = PBXBuildFile; fileRef = 01486F58195CDE4700F38387 /* trianglespectra.png */; };
-		016103D4198F394D00BD6281 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 016103D3198F394D00BD6281 /* QuartzCore.framework */; };
-		016103D6198F6C3000BD6281 /* libusb-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 016103D5198F6C3000BD6281 /* libusb-1.0.0.dylib */; };
+		0174443B1995EB430040F287 /* ctx.c in Sources */ = {isa = PBXBuildFile; fileRef = 017444351995EB430040F287 /* ctx.c */; };
+		0174443C1995EB430040F287 /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 017444361995EB430040F287 /* device.c */; };
+		0174443D1995EB430040F287 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = 017444371995EB430040F287 /* error.c */; };
+		0174443E1995EB430040F287 /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = 017444381995EB430040F287 /* log.c */; };
+		0174443F1995EB430040F287 /* libusb-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 017444391995EB430040F287 /* libusb-1.0.0.dylib */; };
+		017444401995EB430040F287 /* libantumbra.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0174443A1995EB430040F287 /* libantumbra.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,9 +70,20 @@
 		01486F56195CDE4700F38387 /* serial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serial.h; sourceTree = "<group>"; };
 		01486F57195CDE4700F38387 /* serial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = serial.m; sourceTree = "<group>"; };
 		01486F58195CDE4700F38387 /* trianglespectra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglespectra.png; sourceTree = "<group>"; };
-		016103D3198F394D00BD6281 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		016103D5198F6C3000BD6281 /* libusb-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libusb-1.0.0.dylib"; sourceTree = "<group>"; };
-		016103D7198F6C5100BD6281 /* libusb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libusb.h; sourceTree = "<group>"; };
+		0174442F1995EB430040F287 /* antumbra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = antumbra.h; sourceTree = "<group>"; };
+		017444301995EB430040F287 /* ctx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ctx.h; sourceTree = "<group>"; };
+		017444311995EB430040F287 /* device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = device.h; sourceTree = "<group>"; };
+		017444321995EB430040F287 /* libusb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libusb.h; sourceTree = "<group>"; };
+		017444331995EB430040F287 /* error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = error.h; sourceTree = "<group>"; };
+		017444341995EB430040F287 /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
+		017444351995EB430040F287 /* ctx.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ctx.c; sourceTree = "<group>"; };
+		017444361995EB430040F287 /* device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = device.c; sourceTree = "<group>"; };
+		017444371995EB430040F287 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
+		017444381995EB430040F287 /* log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = log.c; sourceTree = "<group>"; };
+		017444391995EB430040F287 /* libusb-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libusb-1.0.0.dylib"; sourceTree = "<group>"; };
+		0174443A1995EB430040F287 /* libantumbra.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libantumbra.a; sourceTree = "<group>"; };
+		017444411995EBBD0040F287 /* ctx_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ctx_internal.h; sourceTree = "<group>"; };
+		017444421995EBD20040F287 /* device_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = device_internal.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,9 +91,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				016103D6198F6C3000BD6281 /* libusb-1.0.0.dylib in Frameworks */,
-				016103D4198F394D00BD6281 /* QuartzCore.framework in Frameworks */,
 				01486F1D195CDE2A00F38387 /* Cocoa.framework in Frameworks */,
+				017444401995EB430040F287 /* libantumbra.a in Frameworks */,
+				0174443F1995EB430040F287 /* libusb-1.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,8 +131,6 @@
 		01486F1B195CDE2A00F38387 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				016103D5198F6C3000BD6281 /* libusb-1.0.0.dylib */,
-				016103D3198F394D00BD6281 /* QuartzCore.framework */,
 				01486F1C195CDE2A00F38387 /* Cocoa.framework */,
 				01486F3B195CDE2A00F38387 /* XCTest.framework */,
 				01486F1E195CDE2A00F38387 /* Other Frameworks */,
@@ -138,10 +151,10 @@
 		01486F22195CDE2A00F38387 /* Antumbra */ = {
 			isa = PBXGroup;
 			children = (
+				0174442E1995EB350040F287 /* LibStuff */,
 				01486F2E195CDE2A00F38387 /* AppDelegate.h */,
 				01486F2F195CDE2A00F38387 /* AppDelegate.m */,
 				01486F31195CDE2A00F38387 /* MainMenu.xib */,
-				016103D7198F6C5100BD6281 /* libusb.h */,
 				01486F50195CDE4700F38387 /* frame.c */,
 				01486F51195CDE4700F38387 /* frame.h */,
 				01486F52195CDE4700F38387 /* hsv.c */,
@@ -185,6 +198,27 @@
 				01486F43195CDE2B00F38387 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0174442E1995EB350040F287 /* LibStuff */ = {
+			isa = PBXGroup;
+			children = (
+				017444421995EBD20040F287 /* device_internal.h */,
+				017444411995EBBD0040F287 /* ctx_internal.h */,
+				017444321995EB430040F287 /* libusb.h */,
+				0174442F1995EB430040F287 /* antumbra.h */,
+				017444301995EB430040F287 /* ctx.h */,
+				017444311995EB430040F287 /* device.h */,
+				017444331995EB430040F287 /* error.h */,
+				017444341995EB430040F287 /* log.h */,
+				017444351995EB430040F287 /* ctx.c */,
+				017444361995EB430040F287 /* device.c */,
+				017444371995EB430040F287 /* error.c */,
+				017444381995EB430040F287 /* log.c */,
+				017444391995EB430040F287 /* libusb-1.0.0.dylib */,
+				0174443A1995EB430040F287 /* libantumbra.a */,
+			);
+			name = LibStuff;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,10 +321,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				01486F59195CDE4700F38387 /* frame.c in Sources */,
+				0174443C1995EB430040F287 /* device.c in Sources */,
+				0174443E1995EB430040F287 /* log.c in Sources */,
 				01486F30195CDE2A00F38387 /* AppDelegate.m in Sources */,
+				0174443D1995EB430040F287 /* error.c in Sources */,
 				01486F29195CDE2A00F38387 /* main.m in Sources */,
 				01486F5A195CDE4700F38387 /* hsv.c in Sources */,
 				01486F5B195CDE4700F38387 /* packet.c in Sources */,
+				0174443B1995EB430040F287 /* ctx.c in Sources */,
 				01486F5C195CDE4700F38387 /* serial.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,12 +462,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Antumbra/Antumbra-Prefix.pch";
 				INFOPLIST_FILE = "Antumbra/Antumbra-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Antumbra",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -441,12 +484,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Antumbra/Antumbra-Prefix.pch";
 				INFOPLIST_FILE = "Antumbra/Antumbra-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Antumbra",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
