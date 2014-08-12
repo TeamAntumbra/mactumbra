@@ -673,7 +673,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="300" width="249" height="348"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" appearanceType="lightContent" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="249" height="348"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -776,7 +776,7 @@
                 <menuItem title="Seizure" id="alJ-H9-HBg">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Fades" id="gvV-B5-DRZ">
+                <menuItem title="Mirror Screen" id="gvV-B5-DRZ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>

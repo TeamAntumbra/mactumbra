@@ -8,13 +8,14 @@
 
 #import "AppDelegate.h"
 #import "antumbra.h"
+#import "hsv.h"
 
 
 
 @implementation AppDelegate {
-    int red;
-    int green;
-    int blue;
+    uint8_t red;
+    uint8_t green;
+    uint8_t blue;
     
     int tick;
     
@@ -25,6 +26,9 @@
     
     NSTimer *sweepTimer;
     
+    NSMutableArray *antumbras;
+    AnDevice *dev;
+    AnCtx *context;
     
     NSMutableArray *savedColorConfigurations;
 }
@@ -35,6 +39,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    antumbras = [[NSMutableArray alloc]init];
     self.statusBar = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     self.statusBar.title = @"A";
     [_window setTitle:@""];
@@ -60,31 +65,32 @@
     green = 0;
     blue = 0;
     
-    [self updateBoard];
+
     
-    AnCtx *ctx;
-    if (AnCtx_Init(&ctx)) {
+
+    if (AnCtx_Init(&context)) {
         fputs("ctx init failed\n", stderr);
     }
-    AnDevice_Populate(ctx);
+    AnDevice_Populate(context);
     
-    int count  = AnDevice_GetCount(ctx);
+    int count  = AnDevice_GetCount(context);
     NSLog(@"%i",count);
-    for (int i = 0; i < AnDevice_GetCount(ctx); ++i) {
+    for (int i = 0; i < AnDevice_GetCount(context); ++i) {
         const char *ser;
-        AnDevice *dev = AnDevice_Get(ctx, i);
+        dev = AnDevice_Get(context, i);
         AnDevice_Info(dev, NULL, NULL, &ser);
         puts(ser);
-        if (AnDevice_Open(ctx, dev)) {
+        if (AnDevice_Open(context, dev)) {
             fputs("device open failed\n", stderr);
             
         }
-        AnDevice_Close(ctx, dev);
-        AnDevice_Free(dev);
+        //AnDevice_Close(ctx, dev);
+        //AnDevice_Free(dev);
+        //[antumbras addObject:(__bridge id)(dev)];
     }
     
-    AnCtx_Deinit(ctx);
-    
+    //AnCtx_Deinit(ctx);
+        [self updateBoard];
     
 }
 
@@ -133,7 +139,7 @@
         
         
         [self screenCaptureTick];
-        sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.0166 target:self selector:@selector(screenCaptureTick) userInfo:nil repeats:YES];
+        sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.016 target:self selector:@selector(screenCaptureTick) userInfo:nil repeats:YES];
         
     }
     if ([item.title isEqualTo:@"Seizure"]){
@@ -174,7 +180,7 @@
      blue = (b/its)*255;
      */
     
-    NSColor *c = [self colorFromRect:CGRectMake(width*0.25, height*0.1, width*0.5, height*0.5)];
+    NSColor *c = [self colorFromRect:CGRectMake(width*0.0, height*0.0, width*1.0, height*1.0)];
     red = c.redComponent*255;
     green = c.greenComponent*255;
     blue = c.blueComponent*255;
@@ -267,10 +273,13 @@
 -(void)updateBoard{
     if (on) {
         //write RGB
-        //NSLog(@"%i %i %i",red,green,blue);
-        self.window.backgroundColor = [NSColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
-        
-        
+       // NSLog(@"%i %i %i",red,green,blue);
+        //self.window.backgroundColor = [NSColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
+        uint8_t packet[8];
+        packet[0] = (uint8_t)red;
+        packet[1] = (uint8_t)green;
+        packet[2] = (uint8_t)blue;
+        AnDevice_SendBulkPacket_S(context, dev, sizeof packet, packet);
     } else {
         
     }
