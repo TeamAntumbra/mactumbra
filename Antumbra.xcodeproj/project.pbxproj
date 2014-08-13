@@ -27,8 +27,8 @@
 		0174443C1995EB430040F287 /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 017444361995EB430040F287 /* device.c */; };
 		0174443D1995EB430040F287 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = 017444371995EB430040F287 /* error.c */; };
 		0174443E1995EB430040F287 /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = 017444381995EB430040F287 /* log.c */; };
-		0174443F1995EB430040F287 /* libusb-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 017444391995EB430040F287 /* libusb-1.0.0.dylib */; };
 		017444401995EB430040F287 /* libantumbra.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0174443A1995EB430040F287 /* libantumbra.a */; };
+		01B28CCD199C19EA00F2117D /* libusb-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B28CCC199C19EA00F2117D /* libusb-1.0.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,10 +80,10 @@
 		017444361995EB430040F287 /* device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = device.c; sourceTree = "<group>"; };
 		017444371995EB430040F287 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
 		017444381995EB430040F287 /* log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = log.c; sourceTree = "<group>"; };
-		017444391995EB430040F287 /* libusb-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libusb-1.0.0.dylib"; sourceTree = "<group>"; };
 		0174443A1995EB430040F287 /* libantumbra.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libantumbra.a; sourceTree = "<group>"; };
 		017444411995EBBD0040F287 /* ctx_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ctx_internal.h; sourceTree = "<group>"; };
 		017444421995EBD20040F287 /* device_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = device_internal.h; sourceTree = "<group>"; };
+		01B28CCC199C19EA00F2117D /* libusb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libusb-1.0.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +93,7 @@
 			files = (
 				01486F1D195CDE2A00F38387 /* Cocoa.framework in Frameworks */,
 				017444401995EB430040F287 /* libantumbra.a in Frameworks */,
-				0174443F1995EB430040F287 /* libusb-1.0.0.dylib in Frameworks */,
+				01B28CCD199C19EA00F2117D /* libusb-1.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +215,7 @@
 				017444361995EB430040F287 /* device.c */,
 				017444371995EB430040F287 /* error.c */,
 				017444381995EB430040F287 /* log.c */,
-				017444391995EB430040F287 /* libusb-1.0.0.dylib */,
+				01B28CCC199C19EA00F2117D /* libusb-1.0.a */,
 				0174443A1995EB430040F287 /* libantumbra.a */,
 			);
 			name = LibStuff;

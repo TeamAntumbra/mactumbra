@@ -30,8 +30,6 @@
 	<string>Copyright © 2014 Nicholas Peretti. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
-	<key>LSUIElement</key>
-	<true/>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>
