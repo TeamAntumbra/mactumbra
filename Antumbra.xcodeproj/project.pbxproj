@@ -20,6 +20,7 @@
 		01486F47195CDE2B00F38387 /* AntumbraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F46195CDE2B00F38387 /* AntumbraTests.m */; };
 		01486F5A195CDE4700F38387 /* hsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 01486F52195CDE4700F38387 /* hsv.c */; };
 		01486F5D195CDE4700F38387 /* trianglespectra.png in Resources */ = {isa = PBXBuildFile; fileRef = 01486F58195CDE4700F38387 /* trianglespectra.png */; };
+		01B28D29199C412400F2117D /* ScreenColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B28D28199C412400F2117D /* ScreenColor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		01486F52195CDE4700F38387 /* hsv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hsv.c; sourceTree = "<group>"; };
 		01486F53195CDE4700F38387 /* hsv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hsv.h; sourceTree = "<group>"; };
 		01486F58195CDE4700F38387 /* trianglespectra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglespectra.png; sourceTree = "<group>"; };
+		01B28D27199C412400F2117D /* ScreenColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenColor.h; sourceTree = "<group>"; };
+		01B28D28199C412400F2117D /* ScreenColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenColor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 			children = (
 				01486F2E195CDE2A00F38387 /* AppDelegate.h */,
 				01486F2F195CDE2A00F38387 /* AppDelegate.m */,
+				01B28D27199C412400F2117D /* ScreenColor.h */,
+				01B28D28199C412400F2117D /* ScreenColor.m */,
 				01486F31195CDE2A00F38387 /* MainMenu.xib */,
 				01486F52195CDE4700F38387 /* hsv.c */,
 				01486F53195CDE4700F38387 /* hsv.h */,
@@ -264,6 +269,7 @@
 				01486F30195CDE2A00F38387 /* AppDelegate.m in Sources */,
 				01486F29195CDE2A00F38387 /* main.m in Sources */,
 				01486F5A195CDE4700F38387 /* hsv.c in Sources */,
+				01B28D29199C412400F2117D /* ScreenColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

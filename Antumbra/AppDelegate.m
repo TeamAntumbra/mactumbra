@@ -7,9 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "antumbra.h"
 #import "hsv.h"
-
+#import "ScreenColor.h"
 
 
 @implementation AppDelegate {
@@ -105,6 +104,7 @@
         }
         [self updateBoard];
     }
+    
 }
 
 
@@ -116,6 +116,9 @@
 
 - (IBAction)openSettings:(id)sender {
     [_window makeKeyAndOrderFront:sender];
+}
+
+- (IBAction)setMirrorArea:(id)sender {
 }
 - (void)itemClicked:(NSMenuItem *)item{
     tick = 0;
@@ -150,50 +153,35 @@
     if ([item.title isEqualTo:@"Mirror Screen"]){
         
         
-        
         [self screenCaptureTick];
         sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.016 target:self selector:@selector(screenCaptureTick) userInfo:nil repeats:YES];
         
     }
-    if ([item.title isEqualTo:@"Seizure"]){
-        sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(randomColorTick) userInfo:nil repeats:YES];
-    }
-    if ([item.title isEqualTo:@"Fades"]){
-        red=15;
-        green=15;
-        blue=15;
-        
-        sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(fadeTick) userInfo:nil repeats:YES];
+    if ([item.title isEqualTo:@"Augment Screen"]){
+
+        sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.016 target:self selector:@selector(augmentScreenTick) userInfo:nil repeats:YES];
     }
     
     
 }
+-(void)augmentScreenTick{
+    float width = [NSScreen mainScreen].frame.size.width;
+    float height = [NSScreen mainScreen].frame.size.height;
+    
+    NSColor *c = [ScreenColor highlightColorFromRect:CGRectMake(width*0.0, height*0.0, width*1.0, height*1.0)];
+    red = c.redComponent*255;
+    green = c.greenComponent*255;
+    blue = c.blueComponent*255;
+    [self updateBoard];
+}
+
+
+
 -(void)screenCaptureTick{
     float width = [NSScreen mainScreen].frame.size.width;
     float height = [NSScreen mainScreen].frame.size.height;
     
-    
-    /*
-     float r,g,b = 0;
-     NSSize size = NSMakeSize(100, 100);
-     float widthDivisions = 4;
-     float heightDivisions = 4;
-     NSArray *lePoints = [self pointsFromWidth:width height:height widthDivs:widthDivisions heightDivs:heightDivisions];
-     float its = 0;
-     for (NSValue *val in lePoints) {
-     NSPoint p = val.pointValue;
-     NSColor *c = [self colorFromRect:CGRectMake(p.x-size.width/2.0, p.y-size.height/2.0, size.width, size.height)];
-     r+=c.redComponent;
-     g+=c.greenComponent;
-     b+=c.blueComponent;
-     its++;
-     }
-     red = (r/its)*255;
-     green = (g/its)*255;
-     blue = (b/its)*255;
-     */
-    
-    NSColor *c = [self colorFromRect:CGRectMake(width*0.0, height*0.0, width*1.0, height*1.0)];
+    NSColor *c = [ScreenColor colorFromRect:CGRectMake(width*0.0, height*0.0, width*1.0, height*1.0)];
     red = c.redComponent*255;
     green = c.greenComponent*255;
     blue = c.blueComponent*255;
@@ -201,53 +189,8 @@
     
 }
 
--(NSColor *)colorFromRect:(CGRect )recTanlge{
-    CGDirectDisplayID disp = (CGDirectDisplayID) [[[[NSScreen mainScreen]deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
-    CGImageRef first = CGDisplayCreateImageForRect(disp, recTanlge);
-    
-    NSImage *mage = [[NSImage alloc]initWithCGImage:first size:NSMakeSize(recTanlge.size.width, recTanlge.size.height)];
-    [mage setScalesWhenResized:YES];
-    
-    NSImage *smallImage = [[NSImage alloc] initWithSize: NSMakeSize(1, 1)] ;
-    [smallImage lockFocus];
-    [mage setSize: NSMakeSize(1, 1)];
-    [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationMedium];
-    [mage drawAtPoint:NSZeroPoint fromRect:CGRectMake(0, 0, 1, 1) operation:NSCompositeCopy fraction:1.0];
-    [smallImage unlockFocus];
-    
-    NSRect rec = NSMakeRect(0, 0, smallImage.size.width, smallImage.size.height);
-    CGImageRef ref = [smallImage CGImageForProposedRect:&rec context:nil hints:nil];
-    NSBitmapImageRep *map = [[NSBitmapImageRep alloc]initWithCGImage:ref];
-    NSColor *color = [map colorAtX:0 y:0];
-    CFRelease(first);
-    return color;
-    
-}
 
--(NSArray *)pointsFromWidth:(float)w height:(float)h widthDivs:(int)wDivs heightDivs:(int)hDivs{
-    float widthAdd = w/wDivs;
-    float hiteAdd = h/hDivs;
-    NSMutableArray *points = [[NSMutableArray alloc]init];
-    for (float y = hiteAdd; y<h; y+=hiteAdd) {
-        for (float x = widthAdd; x<w; x+=widthAdd) {
-            [points addObject:[NSValue valueWithPoint:NSMakePoint(x, y)]];
-        }
-    }
-    return [points copy];
-    
-}
 
--(void)fadeTick{
-    
-    [self updateBoard];
-}
-
--(void)randomColorTick{
-    red = arc4random()%256;
-    blue = arc4random()%256;
-    green = arc4random()%256;
-    [self updateBoard];
-}
 
 -(void)fastSweep{
     uint8_t reed;
@@ -286,13 +229,15 @@
 -(void)updateBoard{
     if (on) {
         //write RGB
-       // NSLog(@"%i %i %i",red,green,blue);
-        //self.window.backgroundColor = [NSColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
+        //NSLog(@"%i %i %i",red,green,blue);
+        self.window.backgroundColor = [NSColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
+       /*
         uint8_t packet[8];
         packet[0] = (uint8_t)red;
         packet[1] = (uint8_t)green;
         packet[2] = (uint8_t)blue;
         AnDevice_SendBulkPacket_S(context, dev, sizeof packet, packet);
+        */
     } else {
         
     }

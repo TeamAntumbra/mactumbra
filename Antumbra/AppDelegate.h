@@ -7,6 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "antumbra.h"
+
 
 
 @interface AppDelegate : NSObject <NSApplicationDelegate,NSMenuDelegate>
@@ -18,7 +20,8 @@
 @property (strong, nonatomic) NSStatusItem *statusBar;
 - (IBAction)toggleOnOff:(id)sender;
 - (IBAction)openSettings:(id)sender;
-@property (weak) IBOutlet NSSlider *strobeSlider;
+- (IBAction)setMirrorArea:(id)sender;
+
 
 @property (weak) IBOutlet NSTextField *titleLabel;
 

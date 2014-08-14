@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment defaultVersion="1070" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
@@ -14,7 +15,6 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="statusMenu" destination="W1d-2T-TGD" id="bbg-WQ-7Hm"/>
-                <outlet property="strobeSlider" destination="Vee-Gs-5vF" id="j8J-W2-Ajs"/>
                 <outlet property="titleLabel" destination="O3f-Gv-6GG" id="fN6-b1-afl"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="XuN-A4-FN5"/>
             </connections>
@@ -695,7 +695,7 @@
                         </textFieldCell>
                     </textField>
                     <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nXk-PW-oxj">
-                        <rect key="frame" x="87" y="80" width="74" height="17"/>
+                        <rect key="frame" x="87" y="91" width="74" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Developers" id="fW7-c6-LdQ">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -703,7 +703,7 @@
                         </textFieldCell>
                     </textField>
                     <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="no9-69-amq">
-                        <rect key="frame" x="45" y="63" width="158" height="17"/>
+                        <rect key="frame" x="45" y="52" width="158" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sam Harada (Embedded)" id="uvD-bG-v5L">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
@@ -711,7 +711,7 @@
                         </textFieldCell>
                     </textField>
                     <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Eu-Sd-ERb">
-                        <rect key="frame" x="65" y="45" width="118" height="17"/>
+                        <rect key="frame" x="65" y="34" width="118" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Nick Peretti (OS X)" id="GGs-4R-lSE">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
@@ -719,7 +719,7 @@
                         </textFieldCell>
                     </textField>
                     <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="06X-7p-P62">
-                        <rect key="frame" x="44" y="28" width="160" height="17"/>
+                        <rect key="frame" x="44" y="17" width="160" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Davis Foster (Electronics)" id="FiI-fN-AKh">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
@@ -730,20 +730,34 @@
                         <rect key="frame" x="-45" y="119" width="339" height="244"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="trianglespectra" id="jak-gu-GWH"/>
                     </imageView>
-                    <slider appearanceType="lightContent" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vee-Gs-5vF">
-                        <rect key="frame" x="18" y="117" width="213" height="26"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <sliderCell key="cell" state="on" alignment="left" maxValue="50" doubleValue="21.05263157894737" tickMarkPosition="above" numberOfTickMarks="20" sliderType="linear" id="4sx-VI-I0e"/>
-                    </slider>
                     <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ty-aE-cyL">
-                        <rect key="frame" x="73" y="151" width="102" height="21"/>
+                        <rect key="frame" x="73" y="164" width="102" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Strobe Speed" id="cxx-OJ-hOL">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="cxx-OJ-hOL">
                             <font key="font" size="13" name="Futura-Medium"/>
                             <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wtN-uZ-HyL">
+                        <rect key="frame" x="53" y="72" width="158" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Adam Walsh (Windows)" id="abR-XB-Q8E">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button appearanceType="lightContent" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i8U-Sl-R6C">
+                        <rect key="frame" x="29" y="157" width="190" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Set Mirror Area" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OBI-5X-9lI">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="setMirrorArea:" target="Voe-Tx-rLC" id="0ie-kz-nxY"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
         </window>
@@ -773,10 +787,10 @@
                 <menuItem title="Sound Reactive" id="Fsj-77-ifS">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Seizure" id="alJ-H9-HBg">
+                <menuItem title="Mirror Screen" id="alJ-H9-HBg">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Mirror Screen" id="gvV-B5-DRZ">
+                <menuItem title="Augment Screen" id="gvV-B5-DRZ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>
