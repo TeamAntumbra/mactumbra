@@ -18,17 +18,8 @@
 		01486F3D195CDE2A00F38387 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01486F1C195CDE2A00F38387 /* Cocoa.framework */; };
 		01486F45195CDE2B00F38387 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01486F43195CDE2B00F38387 /* InfoPlist.strings */; };
 		01486F47195CDE2B00F38387 /* AntumbraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F46195CDE2B00F38387 /* AntumbraTests.m */; };
-		01486F59195CDE4700F38387 /* frame.c in Sources */ = {isa = PBXBuildFile; fileRef = 01486F50195CDE4700F38387 /* frame.c */; };
 		01486F5A195CDE4700F38387 /* hsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 01486F52195CDE4700F38387 /* hsv.c */; };
-		01486F5B195CDE4700F38387 /* packet.c in Sources */ = {isa = PBXBuildFile; fileRef = 01486F54195CDE4700F38387 /* packet.c */; };
-		01486F5C195CDE4700F38387 /* serial.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F57195CDE4700F38387 /* serial.m */; };
 		01486F5D195CDE4700F38387 /* trianglespectra.png in Resources */ = {isa = PBXBuildFile; fileRef = 01486F58195CDE4700F38387 /* trianglespectra.png */; };
-		0174443B1995EB430040F287 /* ctx.c in Sources */ = {isa = PBXBuildFile; fileRef = 017444351995EB430040F287 /* ctx.c */; };
-		0174443C1995EB430040F287 /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = 017444361995EB430040F287 /* device.c */; };
-		0174443D1995EB430040F287 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = 017444371995EB430040F287 /* error.c */; };
-		0174443E1995EB430040F287 /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = 017444381995EB430040F287 /* log.c */; };
-		017444401995EB430040F287 /* libantumbra.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0174443A1995EB430040F287 /* libantumbra.a */; };
-		01B28CCD199C19EA00F2117D /* libusb-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B28CCC199C19EA00F2117D /* libusb-1.0.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,29 +52,9 @@
 		01486F42195CDE2B00F38387 /* AntumbraTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AntumbraTests-Info.plist"; sourceTree = "<group>"; };
 		01486F44195CDE2B00F38387 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		01486F46195CDE2B00F38387 /* AntumbraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AntumbraTests.m; sourceTree = "<group>"; };
-		01486F50195CDE4700F38387 /* frame.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = frame.c; sourceTree = "<group>"; };
-		01486F51195CDE4700F38387 /* frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = frame.h; sourceTree = "<group>"; };
 		01486F52195CDE4700F38387 /* hsv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hsv.c; sourceTree = "<group>"; };
 		01486F53195CDE4700F38387 /* hsv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hsv.h; sourceTree = "<group>"; };
-		01486F54195CDE4700F38387 /* packet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = packet.c; sourceTree = "<group>"; };
-		01486F55195CDE4700F38387 /* packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = packet.h; sourceTree = "<group>"; };
-		01486F56195CDE4700F38387 /* serial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serial.h; sourceTree = "<group>"; };
-		01486F57195CDE4700F38387 /* serial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = serial.m; sourceTree = "<group>"; };
 		01486F58195CDE4700F38387 /* trianglespectra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglespectra.png; sourceTree = "<group>"; };
-		0174442F1995EB430040F287 /* antumbra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = antumbra.h; sourceTree = "<group>"; };
-		017444301995EB430040F287 /* ctx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ctx.h; sourceTree = "<group>"; };
-		017444311995EB430040F287 /* device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = device.h; sourceTree = "<group>"; };
-		017444321995EB430040F287 /* libusb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libusb.h; sourceTree = "<group>"; };
-		017444331995EB430040F287 /* error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = error.h; sourceTree = "<group>"; };
-		017444341995EB430040F287 /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
-		017444351995EB430040F287 /* ctx.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ctx.c; sourceTree = "<group>"; };
-		017444361995EB430040F287 /* device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = device.c; sourceTree = "<group>"; };
-		017444371995EB430040F287 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
-		017444381995EB430040F287 /* log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = log.c; sourceTree = "<group>"; };
-		0174443A1995EB430040F287 /* libantumbra.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libantumbra.a; sourceTree = "<group>"; };
-		017444411995EBBD0040F287 /* ctx_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ctx_internal.h; sourceTree = "<group>"; };
-		017444421995EBD20040F287 /* device_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = device_internal.h; sourceTree = "<group>"; };
-		01B28CCC199C19EA00F2117D /* libusb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libusb-1.0.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +63,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				01486F1D195CDE2A00F38387 /* Cocoa.framework in Frameworks */,
-				017444401995EB430040F287 /* libantumbra.a in Frameworks */,
-				01B28CCD199C19EA00F2117D /* libusb-1.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,18 +120,11 @@
 		01486F22195CDE2A00F38387 /* Antumbra */ = {
 			isa = PBXGroup;
 			children = (
-				0174442E1995EB350040F287 /* LibStuff */,
 				01486F2E195CDE2A00F38387 /* AppDelegate.h */,
 				01486F2F195CDE2A00F38387 /* AppDelegate.m */,
 				01486F31195CDE2A00F38387 /* MainMenu.xib */,
-				01486F50195CDE4700F38387 /* frame.c */,
-				01486F51195CDE4700F38387 /* frame.h */,
 				01486F52195CDE4700F38387 /* hsv.c */,
 				01486F53195CDE4700F38387 /* hsv.h */,
-				01486F54195CDE4700F38387 /* packet.c */,
-				01486F55195CDE4700F38387 /* packet.h */,
-				01486F56195CDE4700F38387 /* serial.h */,
-				01486F57195CDE4700F38387 /* serial.m */,
 				01486F58195CDE4700F38387 /* trianglespectra.png */,
 				01486F34195CDE2A00F38387 /* Images.xcassets */,
 				01486F23195CDE2A00F38387 /* Supporting Files */,
@@ -198,27 +160,6 @@
 				01486F43195CDE2B00F38387 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		0174442E1995EB350040F287 /* LibStuff */ = {
-			isa = PBXGroup;
-			children = (
-				017444421995EBD20040F287 /* device_internal.h */,
-				017444411995EBBD0040F287 /* ctx_internal.h */,
-				017444321995EB430040F287 /* libusb.h */,
-				0174442F1995EB430040F287 /* antumbra.h */,
-				017444301995EB430040F287 /* ctx.h */,
-				017444311995EB430040F287 /* device.h */,
-				017444331995EB430040F287 /* error.h */,
-				017444341995EB430040F287 /* log.h */,
-				017444351995EB430040F287 /* ctx.c */,
-				017444361995EB430040F287 /* device.c */,
-				017444371995EB430040F287 /* error.c */,
-				017444381995EB430040F287 /* log.c */,
-				01B28CCC199C19EA00F2117D /* libusb-1.0.a */,
-				0174443A1995EB430040F287 /* libantumbra.a */,
-			);
-			name = LibStuff;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,16 +261,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01486F59195CDE4700F38387 /* frame.c in Sources */,
-				0174443C1995EB430040F287 /* device.c in Sources */,
-				0174443E1995EB430040F287 /* log.c in Sources */,
 				01486F30195CDE2A00F38387 /* AppDelegate.m in Sources */,
-				0174443D1995EB430040F287 /* error.c in Sources */,
 				01486F29195CDE2A00F38387 /* main.m in Sources */,
 				01486F5A195CDE4700F38387 /* hsv.c in Sources */,
-				01486F5B195CDE4700F38387 /* packet.c in Sources */,
-				0174443B1995EB430040F287 /* ctx.c in Sources */,
-				01486F5C195CDE4700F38387 /* serial.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +408,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Antumbra",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -496,6 +431,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Antumbra",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

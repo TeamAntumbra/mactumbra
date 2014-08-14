@@ -66,32 +66,45 @@
     blue = 0;
     
 
+    [self findAntumbra];
     
+    
+  
+    
+}
 
+-(void)findAntumbra{
+    
+    
     if (AnCtx_Init(&context)) {
         fputs("ctx init failed\n", stderr);
     }
     AnDevice_Populate(context);
     
     int count  = AnDevice_GetCount(context);
-    NSLog(@"%i",count);
-    for (int i = 0; i < AnDevice_GetCount(context); ++i) {
-        const char *ser;
-        dev = AnDevice_Get(context, i);
-        AnDevice_Info(dev, NULL, NULL, &ser);
-        puts(ser);
-        if (AnDevice_Open(context, dev)) {
-            fputs("device open failed\n", stderr);
-            
+    if (count == 0) {
+        NSAlert *lert = [[NSAlert alloc]init];
+        [lert setShowsSuppressionButton:YES];
+        [lert setMessageText:@"No antumbras found please plug in an antumra and then hit OK"];
+        [lert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+            [self findAntumbra];
+        }];
+    } else{
+        for (int i = 0; i < AnDevice_GetCount(context); ++i) {
+            const char *ser;
+            dev = AnDevice_Get(context, i);
+            AnDevice_Info(dev, NULL, NULL, &ser);
+            puts(ser);
+            if (AnDevice_Open(context, dev)) {
+                fputs("device open failed\n", stderr);
+                
+            }
+            //AnDevice_Close(ctx, dev);
+            //AnDevice_Free(dev);
+            //[antumbras addObject:(__bridge id)(dev)];
         }
-        //AnDevice_Close(ctx, dev);
-        //AnDevice_Free(dev);
-        //[antumbras addObject:(__bridge id)(dev)];
-    }
-    
-    //AnCtx_Deinit(ctx);
         [self updateBoard];
-    
+    }
 }
 
 
