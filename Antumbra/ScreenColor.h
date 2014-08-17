@@ -7,11 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GPUImage/GPUImage.h>
+
+
+extern NSString * const kScreenDidFinishProcessingNotification;
 
 @interface ScreenColor : NSObject
 
-+(NSColor *)colorFromRect:(NSRect)rect;
-+(NSColor *)highlightColorFromRect:(NSRect)rect;
+
++(void)colorFromRect:(NSRect)rect;
++(void)augmentColorFromRect:(NSRect)rect;
+
++(float)width;
++(float)height;
+
 
 
 @end

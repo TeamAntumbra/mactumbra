@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1070" identifier="macosx"/>
+        <deployment defaultVersion="1060" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
@@ -673,12 +673,12 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="300" width="249" height="348"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" appearanceType="lightContent" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="249" height="348"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O3f-Gv-6GG">
+                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="O3f-Gv-6GG">
                         <rect key="frame" x="29" y="301" width="190" height="37"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Antumbra" id="UGn-U9-TxD">
                             <font key="font" size="28" name="Futura-Medium"/>
@@ -686,7 +686,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JN2-sn-xdd">
+                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="JN2-sn-xdd">
                         <rect key="frame" x="86" y="288" width="76" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version 1.0" id="Y8O-0Q-IKD">
                             <font key="font" metaFont="system"/>
@@ -694,7 +694,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nXk-PW-oxj">
+                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="nXk-PW-oxj">
                         <rect key="frame" x="87" y="91" width="74" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Developers" id="fW7-c6-LdQ">
                             <font key="font" metaFont="system"/>
@@ -702,7 +702,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="no9-69-amq">
+                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="no9-69-amq">
                         <rect key="frame" x="45" y="52" width="158" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sam Harada (Embedded)" id="uvD-bG-v5L">
                             <font key="font" metaFont="system"/>
@@ -710,7 +710,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Eu-Sd-ERb">
+                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="7Eu-Sd-ERb">
                         <rect key="frame" x="65" y="34" width="118" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Nick Peretti (OS X)" id="GGs-4R-lSE">
                             <font key="font" metaFont="system"/>
@@ -718,7 +718,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="06X-7p-P62">
+                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="06X-7p-P62">
                         <rect key="frame" x="44" y="17" width="160" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Davis Foster (Electronics)" id="FiI-fN-AKh">
                             <font key="font" metaFont="system"/>
@@ -726,11 +726,11 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <imageView appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iez-IX-MBg">
+                    <imageView appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Iez-IX-MBg">
                         <rect key="frame" x="-45" y="119" width="339" height="244"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="trianglespectra" id="jak-gu-GWH"/>
                     </imageView>
-                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ty-aE-cyL">
+                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="0ty-aE-cyL">
                         <rect key="frame" x="73" y="164" width="102" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="cxx-OJ-hOL">
@@ -739,7 +739,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wtN-uZ-HyL">
+                    <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wtN-uZ-HyL">
                         <rect key="frame" x="53" y="72" width="158" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Adam Walsh (Windows)" id="abR-XB-Q8E">
                             <font key="font" metaFont="system"/>
@@ -747,7 +747,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button appearanceType="lightContent" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i8U-Sl-R6C">
+                    <button appearanceType="lightContent" verticalHuggingPriority="750" id="i8U-Sl-R6C">
                         <rect key="frame" x="29" y="157" width="190" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Set Mirror Area" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OBI-5X-9lI">

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011351B519A142870056A412 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011351B419A142870056A412 /* GPUImage.framework */; };
+		0130AA6C199D715500FFF9AC /* libusb-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0130AA6B199D715500FFF9AC /* libusb-1.0.a */; };
 		01486F1D195CDE2A00F38387 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01486F1C195CDE2A00F38387 /* Cocoa.framework */; };
 		01486F27195CDE2A00F38387 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01486F25195CDE2A00F38387 /* InfoPlist.strings */; };
 		01486F29195CDE2A00F38387 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F28195CDE2A00F38387 /* main.m */; };
@@ -21,6 +23,8 @@
 		01486F5A195CDE4700F38387 /* hsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 01486F52195CDE4700F38387 /* hsv.c */; };
 		01486F5D195CDE4700F38387 /* trianglespectra.png in Resources */ = {isa = PBXBuildFile; fileRef = 01486F58195CDE4700F38387 /* trianglespectra.png */; };
 		01B28D29199C412400F2117D /* ScreenColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B28D28199C412400F2117D /* ScreenColor.m */; };
+		01BE6D9C19A143B2008F72F7 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 011351B419A142870056A412 /* GPUImage.framework */; };
+		01E8CF54199D81260037056C /* libantumbra.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E8CF53199D81260037056C /* libantumbra.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +37,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		01BE6D9B19A143AD008F72F7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				01BE6D9C19A143B2008F72F7 /* GPUImage.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		011351B419A142870056A412 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
+		0130AA68199D712800FFF9AC /* antumbra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = antumbra.h; sourceTree = "<group>"; };
+		0130AA6B199D715500FFF9AC /* libusb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libusb-1.0.a"; sourceTree = "<group>"; };
 		01486F19195CDE2A00F38387 /* Antumbra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Antumbra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01486F1C195CDE2A00F38387 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		01486F1F195CDE2A00F38387 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -58,6 +78,7 @@
 		01486F58195CDE4700F38387 /* trianglespectra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglespectra.png; sourceTree = "<group>"; };
 		01B28D27199C412400F2117D /* ScreenColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenColor.h; sourceTree = "<group>"; };
 		01B28D28199C412400F2117D /* ScreenColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenColor.m; sourceTree = "<group>"; };
+		01E8CF53199D81260037056C /* libantumbra.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libantumbra.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +87,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				01486F1D195CDE2A00F38387 /* Cocoa.framework in Frameworks */,
+				011351B519A142870056A412 /* GPUImage.framework in Frameworks */,
+				01E8CF54199D81260037056C /* libantumbra.a in Frameworks */,
+				0130AA6C199D715500FFF9AC /* libusb-1.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +105,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0130AA67199D70CA00FFF9AC /* Antumbra */ = {
+			isa = PBXGroup;
+			children = (
+				0130AA68199D712800FFF9AC /* antumbra.h */,
+				0130AA6B199D715500FFF9AC /* libusb-1.0.a */,
+				01E8CF53199D81260037056C /* libantumbra.a */,
+			);
+			name = Antumbra;
+			sourceTree = "<group>";
+		};
 		01486F10195CDE2A00F38387 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +137,7 @@
 		01486F1B195CDE2A00F38387 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				011351B419A142870056A412 /* GPUImage.framework */,
 				01486F1C195CDE2A00F38387 /* Cocoa.framework */,
 				01486F3B195CDE2A00F38387 /* XCTest.framework */,
 				01486F1E195CDE2A00F38387 /* Other Frameworks */,
@@ -123,6 +158,7 @@
 		01486F22195CDE2A00F38387 /* Antumbra */ = {
 			isa = PBXGroup;
 			children = (
+				0130AA67199D70CA00FFF9AC /* Antumbra */,
 				01486F2E195CDE2A00F38387 /* AppDelegate.h */,
 				01486F2F195CDE2A00F38387 /* AppDelegate.m */,
 				01B28D27199C412400F2117D /* ScreenColor.h */,
@@ -177,6 +213,7 @@
 				01486F15195CDE2A00F38387 /* Sources */,
 				01486F16195CDE2A00F38387 /* Frameworks */,
 				01486F17195CDE2A00F38387 /* Resources */,
+				01BE6D9B19A143AD008F72F7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
