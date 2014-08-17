@@ -130,6 +130,13 @@
 
 - (IBAction)toggleOnOff:(id)sender {
     on = !on;
+    if (on) {
+        
+    } else {
+        red = 0;
+        green = 0;
+        blue = 0;
+    }
     [self updateBoard];
 }
 
@@ -255,6 +262,7 @@
     
     } else {
         
+      
     }
     
 }
