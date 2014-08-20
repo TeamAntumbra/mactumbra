@@ -14,28 +14,14 @@
 		01486F29195CDE2A00F38387 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F28195CDE2A00F38387 /* main.m */; };
 		01486F2D195CDE2A00F38387 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 01486F2B195CDE2A00F38387 /* Credits.rtf */; };
 		01486F30195CDE2A00F38387 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F2F195CDE2A00F38387 /* AppDelegate.m */; };
-		01486F33195CDE2A00F38387 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01486F31195CDE2A00F38387 /* MainMenu.xib */; };
 		01486F35195CDE2A00F38387 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01486F34195CDE2A00F38387 /* Images.xcassets */; };
-		01486F3C195CDE2A00F38387 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01486F3B195CDE2A00F38387 /* XCTest.framework */; };
-		01486F3D195CDE2A00F38387 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01486F1C195CDE2A00F38387 /* Cocoa.framework */; };
-		01486F45195CDE2B00F38387 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01486F43195CDE2B00F38387 /* InfoPlist.strings */; };
-		01486F47195CDE2B00F38387 /* AntumbraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F46195CDE2B00F38387 /* AntumbraTests.m */; };
 		01486F5A195CDE4700F38387 /* hsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 01486F52195CDE4700F38387 /* hsv.c */; };
 		01486F5D195CDE4700F38387 /* trianglespectra.png in Resources */ = {isa = PBXBuildFile; fileRef = 01486F58195CDE4700F38387 /* trianglespectra.png */; };
 		01B28D29199C412400F2117D /* ScreenColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B28D28199C412400F2117D /* ScreenColor.m */; };
 		01BE6D9C19A143B2008F72F7 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 011351B419A142870056A412 /* GPUImage.framework */; };
 		01E8CF54199D81260037056C /* libantumbra.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E8CF53199D81260037056C /* libantumbra.a */; };
+		226F092219A4CED9009CADB2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 226F092119A4CED9009CADB2 /* MainMenu.xib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		01486F3E195CDE2B00F38387 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 01486F11195CDE2A00F38387 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 01486F18195CDE2A00F38387;
-			remoteInfo = Antumbra;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		01BE6D9B19A143AD008F72F7 /* CopyFiles */ = {
@@ -66,19 +52,14 @@
 		01486F2C195CDE2A00F38387 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		01486F2E195CDE2A00F38387 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		01486F2F195CDE2A00F38387 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		01486F32195CDE2A00F38387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		01486F34195CDE2A00F38387 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		01486F3A195CDE2A00F38387 /* AntumbraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AntumbraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		01486F3B195CDE2A00F38387 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		01486F42195CDE2B00F38387 /* AntumbraTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AntumbraTests-Info.plist"; sourceTree = "<group>"; };
-		01486F44195CDE2B00F38387 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		01486F46195CDE2B00F38387 /* AntumbraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AntumbraTests.m; sourceTree = "<group>"; };
 		01486F52195CDE4700F38387 /* hsv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hsv.c; sourceTree = "<group>"; };
 		01486F53195CDE4700F38387 /* hsv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hsv.h; sourceTree = "<group>"; };
 		01486F58195CDE4700F38387 /* trianglespectra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trianglespectra.png; sourceTree = "<group>"; };
 		01B28D27199C412400F2117D /* ScreenColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenColor.h; sourceTree = "<group>"; };
 		01B28D28199C412400F2117D /* ScreenColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenColor.m; sourceTree = "<group>"; };
 		01E8CF53199D81260037056C /* libantumbra.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libantumbra.a; sourceTree = "<group>"; };
+		226F092119A4CED9009CADB2 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,15 +71,6 @@
 				011351B519A142870056A412 /* GPUImage.framework in Frameworks */,
 				01E8CF54199D81260037056C /* libantumbra.a in Frameworks */,
 				0130AA6C199D715500FFF9AC /* libusb-1.0.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		01486F37195CDE2A00F38387 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				01486F3D195CDE2A00F38387 /* Cocoa.framework in Frameworks */,
-				01486F3C195CDE2A00F38387 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,7 +91,6 @@
 			isa = PBXGroup;
 			children = (
 				01486F22195CDE2A00F38387 /* Antumbra */,
-				01486F40195CDE2B00F38387 /* AntumbraTests */,
 				01486F1B195CDE2A00F38387 /* Frameworks */,
 				01486F1A195CDE2A00F38387 /* Products */,
 			);
@@ -129,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				01486F19195CDE2A00F38387 /* Antumbra.app */,
-				01486F3A195CDE2A00F38387 /* AntumbraTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,7 +109,6 @@
 			children = (
 				011351B419A142870056A412 /* GPUImage.framework */,
 				01486F1C195CDE2A00F38387 /* Cocoa.framework */,
-				01486F3B195CDE2A00F38387 /* XCTest.framework */,
 				01486F1E195CDE2A00F38387 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -161,9 +130,9 @@
 				0130AA67199D70CA00FFF9AC /* Antumbra */,
 				01486F2E195CDE2A00F38387 /* AppDelegate.h */,
 				01486F2F195CDE2A00F38387 /* AppDelegate.m */,
+				226F092119A4CED9009CADB2 /* MainMenu.xib */,
 				01B28D27199C412400F2117D /* ScreenColor.h */,
 				01B28D28199C412400F2117D /* ScreenColor.m */,
-				01486F31195CDE2A00F38387 /* MainMenu.xib */,
 				01486F52195CDE4700F38387 /* hsv.c */,
 				01486F53195CDE4700F38387 /* hsv.h */,
 				01486F58195CDE4700F38387 /* trianglespectra.png */,
@@ -181,24 +150,6 @@
 				01486F28195CDE2A00F38387 /* main.m */,
 				01486F2A195CDE2A00F38387 /* Antumbra-Prefix.pch */,
 				01486F2B195CDE2A00F38387 /* Credits.rtf */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		01486F40195CDE2B00F38387 /* AntumbraTests */ = {
-			isa = PBXGroup;
-			children = (
-				01486F46195CDE2B00F38387 /* AntumbraTests.m */,
-				01486F41195CDE2B00F38387 /* Supporting Files */,
-			);
-			path = AntumbraTests;
-			sourceTree = "<group>";
-		};
-		01486F41195CDE2B00F38387 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				01486F42195CDE2B00F38387 /* AntumbraTests-Info.plist */,
-				01486F43195CDE2B00F38387 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -224,24 +175,6 @@
 			productReference = 01486F19195CDE2A00F38387 /* Antumbra.app */;
 			productType = "com.apple.product-type.application";
 		};
-		01486F39195CDE2A00F38387 /* AntumbraTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 01486F4D195CDE2B00F38387 /* Build configuration list for PBXNativeTarget "AntumbraTests" */;
-			buildPhases = (
-				01486F36195CDE2A00F38387 /* Sources */,
-				01486F37195CDE2A00F38387 /* Frameworks */,
-				01486F38195CDE2A00F38387 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				01486F3F195CDE2B00F38387 /* PBXTargetDependency */,
-			);
-			name = AntumbraTests;
-			productName = AntumbraTests;
-			productReference = 01486F3A195CDE2A00F38387 /* AntumbraTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -250,11 +183,6 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Nicholas Peretti";
-				TargetAttributes = {
-					01486F39195CDE2A00F38387 = {
-						TestTargetID = 01486F18195CDE2A00F38387;
-					};
-				};
 			};
 			buildConfigurationList = 01486F14195CDE2A00F38387 /* Build configuration list for PBXProject "Antumbra" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -270,7 +198,6 @@
 			projectRoot = "";
 			targets = (
 				01486F18195CDE2A00F38387 /* Antumbra */,
-				01486F39195CDE2A00F38387 /* AntumbraTests */,
 			);
 		};
 /* End PBXProject section */
@@ -281,18 +208,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				01486F27195CDE2A00F38387 /* InfoPlist.strings in Resources */,
+				226F092219A4CED9009CADB2 /* MainMenu.xib in Resources */,
 				01486F35195CDE2A00F38387 /* Images.xcassets in Resources */,
 				01486F2D195CDE2A00F38387 /* Credits.rtf in Resources */,
-				01486F33195CDE2A00F38387 /* MainMenu.xib in Resources */,
 				01486F5D195CDE4700F38387 /* trianglespectra.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		01486F38195CDE2A00F38387 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				01486F45195CDE2B00F38387 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,23 +229,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		01486F36195CDE2A00F38387 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				01486F47195CDE2B00F38387 /* AntumbraTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		01486F3F195CDE2B00F38387 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 01486F18195CDE2A00F38387 /* Antumbra */;
-			targetProxy = 01486F3E195CDE2B00F38387 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		01486F25195CDE2A00F38387 /* InfoPlist.strings */ = {
@@ -343,22 +246,6 @@
 				01486F2C195CDE2A00F38387 /* en */,
 			);
 			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		01486F31195CDE2A00F38387 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				01486F32195CDE2A00F38387 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		01486F43195CDE2B00F38387 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				01486F44195CDE2B00F38387 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -396,7 +283,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -429,7 +316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -480,46 +367,6 @@
 			};
 			name = Release;
 		};
-		01486F4E195CDE2B00F38387 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Antumbra.app/Contents/MacOS/Antumbra";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Antumbra/Antumbra-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "AntumbraTests/AntumbraTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		01486F4F195CDE2B00F38387 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Antumbra.app/Contents/MacOS/Antumbra";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Antumbra/Antumbra-Prefix.pch";
-				INFOPLIST_FILE = "AntumbraTests/AntumbraTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -537,15 +384,6 @@
 			buildConfigurations = (
 				01486F4B195CDE2B00F38387 /* Debug */,
 				01486F4C195CDE2B00F38387 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		01486F4D195CDE2B00F38387 /* Build configuration list for PBXNativeTarget "AntumbraTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				01486F4E195CDE2B00F38387 /* Debug */,
-				01486F4F195CDE2B00F38387 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
