@@ -102,7 +102,7 @@
     if (count == 0) {
         NSAlert *lert = [[NSAlert alloc]init];
         [lert setShowsSuppressionButton:YES];
-        [lert setMessageText:@"No antumbras found please plug in an antumra and then hit OK"];
+        [lert setMessageText:@"No Antumbra found. Plug one in and then press OK."];
         [lert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
             [self findAntumbra];
         }];
