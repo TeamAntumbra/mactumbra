@@ -23,7 +23,7 @@
     
     BOOL on;
     
-    NSColorPanel *panel;
+    
     
     NSTimer *sweepTimer;
     
@@ -36,10 +36,12 @@
 
 @synthesize statusBar;;
 @synthesize titleLabel;
-
+@synthesize colorWell;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+
+    
     antumbras = [[NSMutableArray alloc]init];
     self.statusBar = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     self.statusBar.title = @"A";
@@ -48,10 +50,11 @@
     self.statusMenu.delegate = self;
     self.statusBar.menu = self.statusMenu;
     self.statusBar.highlightMode = YES;
-    panel = [NSColorPanel sharedColorPanel];
-    [panel setTarget:self];
-    [panel setAction:@selector(changeColor:)];
-    [panel setContinuous:YES];
+    
+   
+    [colorWell setTarget:self];
+    [colorWell setAction:@selector(changeColor:)];
+    [colorWell setContinuous:YES];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(colorProcessFinishedNotification:) name:kScreenDidFinishProcessingNotification object:nil];
     tick=0;
     on = YES;
@@ -167,8 +170,7 @@
     [item setState:NSOnState];
     if ([item.title isEqualTo:@"Custom Color"]) {
         [self openSettings:nil];
-        [panel makeKeyWindow];
-        [panel makeKeyAndOrderFront:item];
+       
         
     }
     if ([item.title isEqualTo:@"Slow Sweep"]){

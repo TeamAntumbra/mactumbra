@@ -23,6 +23,7 @@
 - (IBAction)openSettings:(id)sender;
 - (IBAction)setMirrorArea:(id)sender;
 
+@property (weak) IBOutlet NSColorWell *colorWell;
 
 @property (strong) IBOutlet NSTextField *titleLabel;
 
