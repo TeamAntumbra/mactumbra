@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "antumbra.h"
+#import "libantumbra/libantumbra.h"
 #import "hsv.h"
 
 
