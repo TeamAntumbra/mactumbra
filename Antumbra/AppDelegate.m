@@ -9,12 +9,19 @@
 #import "AppDelegate.h"
 #import "ScreenColor.h"
 
+#define maxDifference = 5;
+
 
 
 @implementation AppDelegate {
-    uint8_t red;
-    uint8_t green;
-    uint8_t blue;
+    float red;
+    float green;
+    float blue;
+    
+    
+    float currentRed;
+    float currentGreen;
+    float currentBlue;
     
     int tick;
     
@@ -47,6 +54,7 @@
     self.statusBar.title = @"A";
     [_window setTitle:@""];
     [_window makeKeyAndOrderFront:NSApp];
+    [_window setBackgroundColor:[NSColor colorWithCalibratedWhite:0.098 alpha:1.000]];
     self.statusMenu.delegate = self;
     self.statusBar.menu = self.statusMenu;
     self.statusBar.highlightMode = YES;
@@ -66,8 +74,8 @@
     }
     
     red = 255;
-    green = 0;
-    blue = 0;
+    green = 255;
+    blue = 255;
     
     samplingRect = CGRectMake([ScreenColor width]*0.1, [ScreenColor height]*0.1, [ScreenColor width]*0.8, [ScreenColor height]*0.8);
     mirrorAreaWindow = [[NSWindow alloc]initWithContentRect:NSMakeRect([ScreenColor width]*0.1, [ScreenColor height]*0.1, [ScreenColor width]*0.8, [ScreenColor height]*0.8) styleMask:NSTitledWindowMask|NSResizableWindowMask backing:NSBackingStoreBuffered defer:NO];
@@ -134,7 +142,9 @@
 - (IBAction)toggleOnOff:(id)sender {
     on = !on;
     if (on) {
-        
+        red = 255;
+        green = 255;
+        blue = 255;
     } else {
         red = 0;
         green = 0;
@@ -246,6 +256,8 @@
 -(void)changeColor:(id)sender{
     [sweepTimer invalidate];
     NSColor *currentColor = [[NSColorPanel sharedColorPanel] color];
+    
+    
     red = floor(currentColor.redComponent*255.0);
     green = floor(currentColor.greenComponent*255.0);
     blue = floor(currentColor.blueComponent*255.0);
@@ -253,21 +265,32 @@
 }
 
 -(void)updateBoard{
-    if (on) {
-        //write RGB
-        
-        
-       //self.window.backgroundColor = [NSColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
-       
 
-       AnDevice_SetRGB_S(context, dev, (uint8_t)red,(uint8_t)green,(uint8_t)blue);
     
-    } else {
-        
-      
-    }
+        if (abs(currentGreen-green)+abs(currentBlue-blue)+abs(currentRed-red)>=0.1) {
+            currentRed = (((float)currentRed*0.90)+((float)red*0.10));
+            currentBlue = ((float)currentBlue*0.90)+((float)blue*0.10);
+            currentGreen = ((float)currentGreen*0.90)+((float)green*0.10);
+            
+            
+            
+            self.titleLabel.textColor = [NSColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
+            AnDevice_SetRGB_S(context, dev, (uint8_t)currentRed,(uint8_t)currentGreen,(uint8_t)currentBlue);
+            
+            [self performSelector:@selector(updateBoard) withObject:nil afterDelay:0.0166];
+          
+        }
+ 
+    
+    
+    
+ 
     
 }
+
+
+
+
 -(void)colorProcessFinishedNotification:(NSNotification *)notification{
     NSColor *color = [notification object];
     red = floor(color.redComponent*255.0);

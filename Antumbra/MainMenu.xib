@@ -679,9 +679,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="249" height="357"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
+                    <imageView appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Iez-IX-MBg">
+                        <rect key="frame" x="-45" y="142" width="339" height="244"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="trianglespectra" id="jak-gu-GWH"/>
+                    </imageView>
                     <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="O3f-Gv-6GG">
                         <rect key="frame" x="29" y="318" width="190" height="37"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Antumbra" id="UGn-U9-TxD">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Antumbra" allowsEditingTextAttributes="YES" id="UGn-U9-TxD">
                             <font key="font" size="28" name="Futura-Medium"/>
                             <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -727,10 +731,6 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <imageView appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Iez-IX-MBg">
-                        <rect key="frame" x="-45" y="142" width="339" height="244"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="trianglespectra" id="jak-gu-GWH"/>
-                    </imageView>
                     <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wtN-uZ-HyL">
                         <rect key="frame" x="53" y="75" width="158" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Adam Walsh (Windows)" id="abR-XB-Q8E">

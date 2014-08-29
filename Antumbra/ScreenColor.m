@@ -20,8 +20,6 @@ NSString * const kScreenDidFinishProcessingNotification = @"ScreenDidProcessNoti
 -(void)loadUpDimmensions{
     screenWidth = [NSScreen mainScreen].frame.size.width;
     screenHeight = [NSScreen mainScreen].frame.size.height;
-    
-    
 }
 +(float)width{
     return [NSScreen mainScreen].frame.size.width;

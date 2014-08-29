@@ -11,8 +11,10 @@
 #import "hsv.h"
 
 
-
 @interface AppDelegate : NSObject <NSApplicationDelegate,NSMenuDelegate>
+
+typedef struct {uint8_t r; uint8_t g; uint8_t b;} Color;
+
 
 @property (assign) IBOutlet NSWindow *window;
 
