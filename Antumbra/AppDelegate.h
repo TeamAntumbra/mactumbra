@@ -3,7 +3,7 @@
 //  antumbra
 //
 //  Created by Nick Peretti on 6/7/14.
-//  Copyright (c) 2014 Nicholas Peretti. All rights reserved.
+//  Copyright (c) 2014 Antumbra. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

@@ -170,7 +170,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Nicholas Peretti";
+				ORGANIZATIONNAME = "Antumbra";
 			};
 			buildConfigurationList = 01486F14195CDE2A00F38387 /* Build configuration list for PBXProject "Antumbra" */;
 			compatibilityVersion = "Xcode 3.2";

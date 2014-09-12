@@ -96,13 +96,13 @@ typedef int AnLogLevel;
         __func__, AnLogLevel_Sigil((lvl)), ##__VA_ARGS__)
 
 /* Log message. */
-void AnLog_Log(AnCtx *ctx, AnLogLevel lvl, const char *fmt, ...);
+An_DLL void AnLog_Log(AnCtx *ctx, AnLogLevel lvl, const char *fmt, ...);
 
 /* Set minimum level and output file for logging, or NULL to disable. */
-void AnLog_SetLogging(AnCtx *ctx, AnLogLevel lvl, FILE *f);
+An_DLL void AnLog_SetLogging(AnCtx *ctx, AnLogLevel lvl, FILE *f);
 
 /* Return a sigil (DD/II/WW/EE) for a given error level, or ?? for unknown
    level. */
-const char *AnLogLevel_Sigil(AnLogLevel lvl);
+An_DLL const char *AnLogLevel_Sigil(AnLogLevel lvl);
 
 #endif
