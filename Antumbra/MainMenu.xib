@@ -753,7 +753,7 @@
                     <colorWell appearanceType="lightContent" id="NDe-L3-t37">
                         <rect key="frame" x="55" y="147" width="138" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <color key="color" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </colorWell>
                     <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hKd-KY-2Z3">
                         <rect key="frame" x="70" y="182" width="108" height="17"/>

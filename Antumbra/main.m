@@ -10,5 +10,6 @@
 
 int main(int argc, const char * argv[])
 {
+    [[NSUserDefaults standardUserDefaults] setVolatileDomain:@{@"AppleAquaColorVariant": @6} forName:NSArgumentDomain];
     return NSApplicationMain(argc, argv);
 }

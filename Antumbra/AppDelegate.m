@@ -9,6 +9,10 @@
 #import "AppDelegate.h"
 #import "ScreenColor.h"
 
+typedef void * CGSConnection;
+extern OSStatus CGSSetWindowBackgroundBlurRadius(CGSConnection connection, NSInteger   windowNumber, int radius);
+extern CGSConnection CGSDefaultConnectionForThread();
+
 #define maxDifference = 5;
 
 
@@ -29,8 +33,7 @@
     CGRect samplingRect;
     
     BOOL on;
-    
-    
+
     
     NSTimer *sweepTimer;
     
@@ -73,6 +76,8 @@
         [currentItem setAction:@selector(itemClicked:)];
     }
     
+    [self enableBlurForWindow:_window];
+    
     red = 255;
     green = 255;
     blue = 255;
@@ -95,7 +100,6 @@
     [mirrorAreaWindow.contentView addSubview:setButton];
 
     [self findAntumbra];
-    
     
   
     
@@ -201,11 +205,11 @@
     }
     if ([item.title isEqualTo:@"Mirror Screen"]){
         [self screenCaptureTick];
-        sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.016 target:self selector:@selector(screenCaptureTick) userInfo:nil repeats:YES];
+        sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.032 target:self selector:@selector(screenCaptureTick) userInfo:nil repeats:YES];
         
     }
     if ([item.title isEqualTo:@"Augment Screen"]){
-        sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.016 target:self selector:@selector(augmentScreenTick) userInfo:nil repeats:YES];
+        sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.032 target:self selector:@selector(augmentScreenTick) userInfo:nil repeats:YES];
     }
     
     
@@ -257,20 +261,20 @@
     [sweepTimer invalidate];
     NSColor *currentColor = [[NSColorPanel sharedColorPanel] color];
     
-    
     red = floor(currentColor.redComponent*255.0);
     green = floor(currentColor.greenComponent*255.0);
     blue = floor(currentColor.blueComponent*255.0);
     [self updateBoard];
+    [self enableBlurForWindow:_window];
 }
 
 -(void)updateBoard{
-
     
+    if(true){
         if (abs(currentGreen-green)+abs(currentBlue-blue)+abs(currentRed-red)>=0.1) {
-            currentRed = (((float)currentRed*0.90)+((float)red*0.10));
-            currentBlue = ((float)currentBlue*0.90)+((float)blue*0.10);
-            currentGreen = ((float)currentGreen*0.90)+((float)green*0.10);
+            currentRed = (((float)currentRed*0.95)+((float)red*0.05));
+            currentBlue = ((float)currentBlue*0.95)+((float)blue*0.05);
+            currentGreen = ((float)currentGreen*0.95)+((float)green*0.05);
             
             
             
@@ -278,13 +282,17 @@
             AnDevice_SetRGB_S(context, dev, (uint8_t)currentRed,(uint8_t)currentGreen,(uint8_t)currentBlue);
             
             [self performSelector:@selector(updateBoard) withObject:nil afterDelay:0.0166];
-          
+            
+            NSLog(@"");
         }
- 
+        
+    } else {
+        self.titleLabel.textColor = [NSColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
+        AnDevice_SetRGB_S(context, dev, (uint8_t)red,(uint8_t)green,(uint8_t)blue);
+    }
     
     
     
- 
     
 }
 
@@ -297,6 +305,16 @@
     green = floor(color.greenComponent*255.0);
     blue = floor(color.blueComponent*255.0);
     [self updateBoard];
+}
+
+- (void)enableBlurForWindow:(NSWindow *)window
+{
+    [window setOpaque:NO];
+    
+    window.backgroundColor = [NSColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0  alpha:0.500];
+    
+    CGSConnection connection = CGSDefaultConnectionForThread();
+    CGSSetWindowBackgroundBlurRadius(connection, [window windowNumber], 20);
 }
 
 @end
