@@ -265,7 +265,6 @@ extern CGSConnection CGSDefaultConnectionForThread();
     green = floor(currentColor.greenComponent*255.0);
     blue = floor(currentColor.blueComponent*255.0);
     [self updateBoard];
-    [self enableBlurForWindow:_window];
 }
 
 -(void)updateBoard{
@@ -311,10 +310,10 @@ extern CGSConnection CGSDefaultConnectionForThread();
 {
     [window setOpaque:NO];
     
-    window.backgroundColor = [NSColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0  alpha:0.500];
+    window.backgroundColor = [NSColor colorWithWhite:0.2 alpha:0.600];
     
     CGSConnection connection = CGSDefaultConnectionForThread();
     CGSSetWindowBackgroundBlurRadius(connection, [window windowNumber], 20);
 }
-
+//(;
 @end

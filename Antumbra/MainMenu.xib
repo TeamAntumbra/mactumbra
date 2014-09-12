@@ -680,7 +680,7 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <imageView appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Iez-IX-MBg">
-                        <rect key="frame" x="-45" y="142" width="339" height="244"/>
+                        <rect key="frame" x="-45" y="143" width="339" height="244"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="trianglespectra" id="jak-gu-GWH"/>
                     </imageView>
                     <textField appearanceType="lightContent" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="O3f-Gv-6GG">
