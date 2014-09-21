@@ -8,14 +8,14 @@
 
 #import "AppDelegate.h"
 #import "ScreenColor.h"
+#import "MenuViewController.h"
+#import "AXStatusItemPopup.h"
 
 typedef void * CGSConnection;
 extern OSStatus CGSSetWindowBackgroundBlurRadius(CGSConnection connection, NSInteger   windowNumber, int radius);
 extern CGSConnection CGSDefaultConnectionForThread();
 
 #define maxDifference = 5;
-
-
 
 @implementation AppDelegate {
     float red;
@@ -37,46 +37,36 @@ extern CGSConnection CGSDefaultConnectionForThread();
     
     NSTimer *sweepTimer;
     
-    NSMutableArray *antumbras;
     AnDevice *dev;
     AnCtx *context;
     
-    NSMutableArray *savedColorConfigurations;
+    AXStatusItemPopup *_statusItemPopup;
 }
 
-@synthesize statusBar;;
-@synthesize titleLabel;
-@synthesize colorWell;
+
+
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-
     
-    antumbras = [[NSMutableArray alloc]init];
-    self.statusBar = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    self.statusBar.title = @"A";
-    [_window setTitle:@""];
-    [_window makeKeyAndOrderFront:NSApp];
-    [_window setBackgroundColor:[NSColor colorWithCalibratedWhite:0.098 alpha:1.000]];
-    self.statusMenu.delegate = self;
-    self.statusBar.menu = self.statusMenu;
-    self.statusBar.highlightMode = YES;
     
-   
-    [colorWell setTarget:self];
-    [colorWell setAction:@selector(changeColor:)];
-    [colorWell setContinuous:YES];
+    MenuViewController *contentViewController = [[MenuViewController alloc] initWithNibName:@"MenuView" bundle:nil];
+    
+    // create icon images shown in statusbar
+    NSImage *image = [NSImage imageNamed:@"icon"];
+    NSImage *alternateImage = [NSImage imageNamed:@"iconGrey"];
+    
+    _statusItemPopup = [[AXStatusItemPopup alloc] initWithViewController:contentViewController image:image alternateImage:alternateImage];
+    
+    contentViewController.statusItemPopup = _statusItemPopup;
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(colorProcessFinishedNotification:) name:kScreenDidFinishProcessingNotification object:nil];
+    
     tick=0;
     on = YES;
     
-    for (int i = 2; i<self.statusMenu.itemArray.count; i++) {
-        NSMenuItem *currentItem = self.statusMenu.itemArray[i];
-        [currentItem setTarget:self];
-        [currentItem setAction:@selector(itemClicked:)];
-    }
     
-    [self enableBlurForWindow:_window];
+ 
     
     red = 255;
     green = 255;
@@ -98,12 +88,12 @@ extern CGSConnection CGSDefaultConnectionForThread();
     [setButton setAlphaValue:1.0];
     [setButton setAutoresizingMask:NSViewMinXMargin | NSViewMaxXMargin | NSViewMinYMargin | NSViewMaxYMargin];
     [mirrorAreaWindow.contentView addSubview:setButton];
-
     [self findAntumbra];
     
   
     
 }
+
 
 -(void)findAntumbra{
     
@@ -118,9 +108,9 @@ extern CGSConnection CGSDefaultConnectionForThread();
         NSAlert *lert = [[NSAlert alloc]init];
         [lert setShowsSuppressionButton:YES];
         [lert setMessageText:@"No Antumbra found. Plug one in and then press OK."];
-        [lert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-            [self findAntumbra];
-        }];
+        //[lert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+        //    [self findAntumbra];
+        //}];
     } else{
         for (int i = 0; i < AnDevice_GetCount(context); ++i) {
             const char *ser;
@@ -143,93 +133,29 @@ extern CGSConnection CGSDefaultConnectionForThread();
 }
 
 
-- (IBAction)toggleOnOff:(id)sender {
-    on = !on;
-    if (on) {
-        red = 255;
-        green = 255;
-        blue = 255;
-    } else {
-        red = 0;
-        green = 0;
-        blue = 0;
-    }
-    [self updateBoard];
-}
-
-
-- (IBAction)openSettings:(id)sender {
-    [_window makeKeyAndOrderFront:sender];
-}
-
 - (IBAction)setMirrorArea:(id)sender {
-
     [mirrorAreaWindow setIsVisible:YES];
     [mirrorAreaWindow setFrame:mirrorAreaWindow.frame display:YES];
     [mirrorAreaWindow makeKeyAndOrderFront:self];
-    
 }
+
+
 -(void)mirrorAreaSelected{
     samplingRect = CGRectMake(mirrorAreaWindow.frame.origin.x, mirrorAreaWindow.frame.origin.y, mirrorAreaWindow.frame.size.width, mirrorAreaWindow.frame.size.height);
     [mirrorAreaWindow setIsVisible:NO];
 }
 
-- (void)itemClicked:(NSMenuItem *)item{
-    tick = 0;
-    [sweepTimer invalidate];
-    for (int i = 2; i<self.statusMenu.itemArray.count; i++) {
-        NSMenuItem *currentItem = self.statusMenu.itemArray[i];
-        [currentItem setState:NSOffState];
-    }
-    [item setState:NSOnState];
-    if ([item.title isEqualTo:@"Custom Color"]) {
-        [self openSettings:nil];
-       
-        
-    }
-    if ([item.title isEqualTo:@"Slow Sweep"]){
-        sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.005 target:self selector:@selector(slowSweep) userInfo:nil repeats:YES];
-        red = 50;
-        green = 200;
-        blue = 100;
-    }
-    if ([item.title isEqualTo:@"Fast Sweep"]){
-        sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.005 target:self selector:@selector(fastSweep) userInfo:nil repeats:YES];
-        red = 0;
-        green = 155;
-        blue = 200;
-    }
-    if ([item.title isEqualTo:@"Sound Reactive"]){
-        //Send Sound mode
-        
-    }
-    if ([item.title isEqualTo:@"Mirror Screen"]){
-        [self screenCaptureTick];
-        sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.032 target:self selector:@selector(screenCaptureTick) userInfo:nil repeats:YES];
-        
-    }
-    if ([item.title isEqualTo:@"Augment Screen"]){
-        sweepTimer = [NSTimer scheduledTimerWithTimeInterval:0.032 target:self selector:@selector(augmentScreenTick) userInfo:nil repeats:YES];
-    }
-    
-    
-}
--(void)augmentScreenTick{
 
+-(void)augmentScreenTick{
     [ScreenColor augmentColorFromRect:samplingRect];
     
 }
 
 
-
 -(void)screenCaptureTick{
-
     [ScreenColor colorFromRect:samplingRect];
-
     
 }
-
-
 
 
 -(void)fastSweep{
@@ -260,7 +186,6 @@ extern CGSConnection CGSDefaultConnectionForThread();
 -(void)changeColor:(id)sender{
     [sweepTimer invalidate];
     NSColor *currentColor = [[NSColorPanel sharedColorPanel] color];
-    
     red = floor(currentColor.redComponent*255.0);
     green = floor(currentColor.greenComponent*255.0);
     blue = floor(currentColor.blueComponent*255.0);
@@ -277,7 +202,6 @@ extern CGSConnection CGSDefaultConnectionForThread();
             
             
             
-            self.titleLabel.textColor = [NSColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
             AnDevice_SetRGB_S(context, dev, (uint8_t)currentRed,(uint8_t)currentGreen,(uint8_t)currentBlue);
             
             [self performSelector:@selector(updateBoard) withObject:nil afterDelay:0.0166];
@@ -286,7 +210,6 @@ extern CGSConnection CGSDefaultConnectionForThread();
         }
         
     } else {
-        self.titleLabel.textColor = [NSColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
         AnDevice_SetRGB_S(context, dev, (uint8_t)red,(uint8_t)green,(uint8_t)blue);
     }
     
@@ -294,7 +217,6 @@ extern CGSConnection CGSDefaultConnectionForThread();
     
     
 }
-
 
 
 
@@ -315,5 +237,4 @@ extern CGSConnection CGSDefaultConnectionForThread();
     CGSConnection connection = CGSDefaultConnectionForThread();
     CGSSetWindowBackgroundBlurRadius(connection, [window windowNumber], 20);
 }
-//(;
 @end
