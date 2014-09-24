@@ -25,6 +25,7 @@
 		01EECC3319CF19DB005B4DDC /* AXStatusItemPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EECC3219CF19DB005B4DDC /* AXStatusItemPopup.m */; };
 		01EECC3519CF1A73005B4DDC /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EECC3419CF1A73005B4DDC /* MenuView.xib */; };
 		01EECC3819CF1B04005B4DDC /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EECC3719CF1B04005B4DDC /* MenuViewController.m */; };
+		01FF7DB719D115FA00C3A42D /* AGlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FF7DB619D115FA00C3A42D /* AGlow.m */; };
 		226F092A19A58A2C009CADB2 /* libantumbra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226F092919A58A2C009CADB2 /* libantumbra.framework */; };
 		226F092B19A58A39009CADB2 /* libantumbra.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 226F092919A58A2C009CADB2 /* libantumbra.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,8 @@
 		01EECC3419CF1A73005B4DDC /* MenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
 		01EECC3619CF1B04005B4DDC /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		01EECC3719CF1B04005B4DDC /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		01FF7DB519D115FA00C3A42D /* AGlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGlow.h; sourceTree = "<group>"; };
+		01FF7DB619D115FA00C3A42D /* AGlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGlow.m; sourceTree = "<group>"; };
 		226F092919A58A2C009CADB2 /* libantumbra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libantumbra.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,10 +135,12 @@
 			children = (
 				01486F2E195CDE2A00F38387 /* AppDelegate.h */,
 				01486F2F195CDE2A00F38387 /* AppDelegate.m */,
-				0169245019CF84EB003ADE00 /* MainMenu.xib */,
+				01FF7DB519D115FA00C3A42D /* AGlow.h */,
+				01FF7DB619D115FA00C3A42D /* AGlow.m */,
+				01EECC3419CF1A73005B4DDC /* MenuView.xib */,
 				01EECC3619CF1B04005B4DDC /* MenuViewController.h */,
 				01EECC3719CF1B04005B4DDC /* MenuViewController.m */,
-				01EECC3419CF1A73005B4DDC /* MenuView.xib */,
+				0169245019CF84EB003ADE00 /* MainMenu.xib */,
 				01B28D27199C412400F2117D /* ScreenColor.h */,
 				01B28D28199C412400F2117D /* ScreenColor.m */,
 				01EECC3119CF19DB005B4DDC /* AXStatusItemPopup.h */,
@@ -239,6 +244,7 @@
 				01486F30195CDE2A00F38387 /* AppDelegate.m in Sources */,
 				01EECC3819CF1B04005B4DDC /* MenuViewController.m in Sources */,
 				01486F29195CDE2A00F38387 /* main.m in Sources */,
+				01FF7DB719D115FA00C3A42D /* AGlow.m in Sources */,
 				01EECC3319CF19DB005B4DDC /* AXStatusItemPopup.m in Sources */,
 				01486F5A195CDE4700F38387 /* hsv.c in Sources */,
 				01B28D29199C412400F2117D /* ScreenColor.m in Sources */,

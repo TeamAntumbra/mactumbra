@@ -11,9 +11,6 @@
 #import "MenuViewController.h"
 #import "AXStatusItemPopup.h"
 
-typedef void * CGSConnection;
-extern OSStatus CGSSetWindowBackgroundBlurRadius(CGSConnection connection, NSInteger   windowNumber, int radius);
-extern CGSConnection CGSDefaultConnectionForThread();
 
 #define maxDifference = 5;
 
@@ -22,10 +19,6 @@ extern CGSConnection CGSDefaultConnectionForThread();
     float green;
     float blue;
     
-    
-    float currentRed;
-    float currentGreen;
-    float currentBlue;
     
     int tick;
     
@@ -60,13 +53,12 @@ extern CGSConnection CGSDefaultConnectionForThread();
     
     contentViewController.statusItemPopup = _statusItemPopup;
     
+    
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(colorProcessFinishedNotification:) name:kScreenDidFinishProcessingNotification object:nil];
     
     tick=0;
     on = YES;
-    
-    
- 
     
     red = 255;
     green = 255;
@@ -90,8 +82,6 @@ extern CGSConnection CGSDefaultConnectionForThread();
     [mirrorAreaWindow.contentView addSubview:setButton];
     [self findAntumbra];
     
-  
-    
 }
 
 
@@ -107,7 +97,7 @@ extern CGSConnection CGSDefaultConnectionForThread();
     if (count == 0) {
         NSAlert *lert = [[NSAlert alloc]init];
         [lert setShowsSuppressionButton:YES];
-        [lert setMessageText:@"No Antumbra found. Plug one in and then press OK."];
+        [lert setMessageText:@"No Antumbra detected. Please plug one in and then press OK."];
         //[lert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
         //    [self findAntumbra];
         //}];
@@ -123,9 +113,7 @@ extern CGSConnection CGSDefaultConnectionForThread();
                 fputs("device open failed\n", stderr);
                 
             }
-            //AnDevice_Close(ctx, dev);
-            //AnDevice_Free(dev);
-            //[antumbras addObject:(__bridge id)(dev)];
+            
         }
         [self updateBoard];
     }
@@ -194,27 +182,7 @@ extern CGSConnection CGSDefaultConnectionForThread();
 
 -(void)updateBoard{
     
-    if(true){
-        if (abs(currentGreen-green)+abs(currentBlue-blue)+abs(currentRed-red)>=0.1) {
-            currentRed = (((float)currentRed*0.95)+((float)red*0.05));
-            currentBlue = ((float)currentBlue*0.95)+((float)blue*0.05);
-            currentGreen = ((float)currentGreen*0.95)+((float)green*0.05);
-            
-            
-            
-            AnDevice_SetRGB_S(context, dev, (uint8_t)currentRed,(uint8_t)currentGreen,(uint8_t)currentBlue);
-            
-            [self performSelector:@selector(updateBoard) withObject:nil afterDelay:0.0166];
-            
-            NSLog(@"");
-        }
-        
-    } else {
-        AnDevice_SetRGB_S(context, dev, (uint8_t)red,(uint8_t)green,(uint8_t)blue);
-    }
-    
-    
-    
+    AnDevice_SetRGB_S(context, dev, (uint8_t)red,(uint8_t)green,(uint8_t)blue);
     
 }
 
@@ -228,13 +196,5 @@ extern CGSConnection CGSDefaultConnectionForThread();
     [self updateBoard];
 }
 
-- (void)enableBlurForWindow:(NSWindow *)window
-{
-    [window setOpaque:NO];
-    
-    window.backgroundColor = [NSColor colorWithWhite:0.2 alpha:0.600];
-    
-    CGSConnection connection = CGSDefaultConnectionForThread();
-    CGSSetWindowBackgroundBlurRadius(connection, [window windowNumber], 20);
-}
+
 @end
