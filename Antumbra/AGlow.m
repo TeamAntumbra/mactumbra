@@ -66,17 +66,14 @@
         [setButton setAlphaValue:1.0];
         [setButton setAutoresizingMask:NSViewMinXMargin | NSViewMaxXMargin | NSViewMinYMargin | NSViewMaxYMargin];
         [mirrorAreaWindow.contentView addSubview:setButton];
+        
+        [self updateBoard];
 
     }
     return self;
 }
 
 
-- (IBAction)setMirrorArea:(id)sender {
-    [mirrorAreaWindow setIsVisible:YES];
-    [mirrorAreaWindow setFrame:mirrorAreaWindow.frame display:YES];
-    [mirrorAreaWindow makeKeyAndOrderFront:self];
-}
 
 
 -(void)mirrorAreaSelected{

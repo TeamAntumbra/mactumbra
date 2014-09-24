@@ -20,6 +20,7 @@
 		01486F35195CDE2A00F38387 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01486F34195CDE2A00F38387 /* Images.xcassets */; };
 		01486F5A195CDE4700F38387 /* hsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 01486F52195CDE4700F38387 /* hsv.c */; };
 		0169245119CF84EB003ADE00 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0169245019CF84EB003ADE00 /* MainMenu.xib */; };
+		018AB37219D378DF006CA84D /* MRSubtleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB37119D378DF006CA84D /* MRSubtleButton.m */; };
 		01B28D29199C412400F2117D /* ScreenColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B28D28199C412400F2117D /* ScreenColor.m */; };
 		01BE6D9C19A143B2008F72F7 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 011351B419A142870056A412 /* GPUImage.framework */; };
 		01EECC3319CF19DB005B4DDC /* AXStatusItemPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EECC3219CF19DB005B4DDC /* AXStatusItemPopup.m */; };
@@ -66,6 +67,8 @@
 		01486F52195CDE4700F38387 /* hsv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hsv.c; sourceTree = "<group>"; };
 		01486F53195CDE4700F38387 /* hsv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hsv.h; sourceTree = "<group>"; };
 		0169245019CF84EB003ADE00 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		018AB37019D378DF006CA84D /* MRSubtleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRSubtleButton.h; sourceTree = "<group>"; };
+		018AB37119D378DF006CA84D /* MRSubtleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRSubtleButton.m; sourceTree = "<group>"; };
 		01B28D27199C412400F2117D /* ScreenColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenColor.h; sourceTree = "<group>"; };
 		01B28D28199C412400F2117D /* ScreenColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenColor.m; sourceTree = "<group>"; };
 		01EECC3119CF19DB005B4DDC /* AXStatusItemPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXStatusItemPopup.h; sourceTree = "<group>"; };
@@ -145,6 +148,8 @@
 				01B28D28199C412400F2117D /* ScreenColor.m */,
 				01EECC3119CF19DB005B4DDC /* AXStatusItemPopup.h */,
 				01EECC3219CF19DB005B4DDC /* AXStatusItemPopup.m */,
+				018AB37019D378DF006CA84D /* MRSubtleButton.h */,
+				018AB37119D378DF006CA84D /* MRSubtleButton.m */,
 				01486F52195CDE4700F38387 /* hsv.c */,
 				01486F53195CDE4700F38387 /* hsv.h */,
 				01486F34195CDE2A00F38387 /* Images.xcassets */,
@@ -246,6 +251,7 @@
 				01486F29195CDE2A00F38387 /* main.m in Sources */,
 				01FF7DB719D115FA00C3A42D /* AGlow.m in Sources */,
 				01EECC3319CF19DB005B4DDC /* AXStatusItemPopup.m in Sources */,
+				018AB37219D378DF006CA84D /* MRSubtleButton.m in Sources */,
 				01486F5A195CDE4700F38387 /* hsv.c in Sources */,
 				01B28D29199C412400F2117D /* ScreenColor.m in Sources */,
 			);
