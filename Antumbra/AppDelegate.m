@@ -40,10 +40,13 @@
     
     _statusItemPopup = [[AXStatusItemPopup alloc] initWithViewController:contentViewController image:image alternateImage:alternateImage];
     
-    contentViewController.statusItemPopup = _statusItemPopup;
-    
+   
     
     [self findAntumbra];
+    
+    [_statusItemPopup showPopover];
+    [self appearanceValueChanged:self]; //This only works if I encapsulate this inside a show/hide setneedsdisplay? whatevs
+    [_statusItemPopup hidePopover];
     
 }
 
@@ -92,6 +95,13 @@
 -(void)changeColor:(id)sender{
     [foundDevice changeColor:sender];
 }
+- (void)appearanceValueChanged:(id)sender {
+    if ([_statusItemPopup isActive]) {
+        [_statusItemPopup hidePopover];
+    }
+    NSPopoverAppearance newAppearance = NSPopoverAppearanceHUD;
 
+    _statusItemPopup.popover.appearance = newAppearance;
+}
 
 @end

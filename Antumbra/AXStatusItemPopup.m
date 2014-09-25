@@ -63,6 +63,8 @@
         
         _active = NO;
         _animated = YES;
+        
+        
     }
     return self;
 }

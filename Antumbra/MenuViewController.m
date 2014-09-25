@@ -8,7 +8,9 @@
 
 #import "MenuViewController.h"
 
-@interface MenuViewController ()
+@interface MenuViewController (){
+    NSUInteger currentSelectedIndex;
+}
 
 @end
 
@@ -16,31 +18,43 @@
 
 @synthesize statusItemPopup;
 @synthesize glowDevice;
-@synthesize closeBtn;
 @synthesize colorWell;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
-        closeBtn.delegate = self;
-        [closeBtn setGradientWithStartColor:[NSColor whiteColor] endColor:[NSColor blackColor]];
-        [closeBtn setTitle:@"Close Antumbra"];
-        [closeBtn setTitleAlignment:MRCenterTitleAlignment];
-     
+        currentSelectedIndex = 0;
     }
     return self;
 }
 
 
--(void)subtleButtonEvent:(NSEvent *)event from:(id)sender{
-    if ([event type] == NSLeftMouseDown) {
-        NSLog(@"down");
+
+- (IBAction)controlBarChanged:(id)sender {
+    //undraw whatever
+    if (currentSelectedIndex==0) {
+        [colorWell setHidden:YES];
     }
-    else if ([event type] == NSLeftMouseUp) {
-        NSLog(@"out");
+    if (currentSelectedIndex==1) {
+        
     }
+    if (currentSelectedIndex==2) {
+        
+    }
+    
+    currentSelectedIndex = [(NSSegmentedControl *)sender selectedSegment];
+    //draw new items
+    if (currentSelectedIndex==0) {
+        [colorWell setHidden:NO];
+    }
+    if (currentSelectedIndex==1) {
+        
+    }
+    if (currentSelectedIndex==2) {
+        
+    }
+    
 }
 
 
