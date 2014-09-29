@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "AXStatusItemPopup.h"
+#import "AppDelegate.h"
 #import "AGlow.h"
 
 
@@ -18,7 +19,12 @@
 @property (weak) IBOutlet NSColorWell *colorWell;
 
 
+@property (weak) IBOutlet NSSegmentedControl *controlBar;
+
+
 - (IBAction)controlBarChanged:(id)sender;
+
+- (IBAction)quiteAntumbra:(id)sender;
 
 
 

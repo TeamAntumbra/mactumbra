@@ -103,5 +103,8 @@
 
     _statusItemPopup.popover.appearance = newAppearance;
 }
+-(void)resizePopover:(CGSize)newSize{
+    [_statusItemPopup setContentSize:newSize];
+}
 
 @end
