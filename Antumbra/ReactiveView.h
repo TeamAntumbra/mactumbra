@@ -1,5 +1,5 @@
 //
-//  POPButton.h
+//  ReactiveView.h
 //  Antumbra
 //
 //  Created by Nicholas Peretti on 9/29/14.
@@ -8,6 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface POPButton : NSButton 
+@interface ReactiveView : NSView
+
+@property (nonatomic) NSColor *color;
+@property (nonatomic) float growthFactor;
 
 @end

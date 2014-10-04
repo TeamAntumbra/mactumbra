@@ -106,5 +106,8 @@
 -(void)resizePopover:(CGSize)newSize{
     [_statusItemPopup setContentSize:newSize];
 }
+-(BOOL)isHiden{
+    return _statusItemPopup.isActive;
+}
 
 @end

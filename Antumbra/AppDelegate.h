@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "libantumbra/libantumbra.h"
+#import "AXStatusItemPopup.h"
 #import "hsv.h"
 
 
@@ -18,6 +19,6 @@
 typedef struct {uint8_t r; uint8_t g; uint8_t b;} Color;
 
 -(void)resizePopover:(CGSize)newSize;
-
+-(BOOL)isHiden;
 
 @end

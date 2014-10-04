@@ -18,11 +18,14 @@
 
 @property (nonatomic) AnDevice * device;
 @property (nonatomic) AnCtx * context;
+@property (nonatomic) float sweepSpeed;
 
 
--initWithAntumbraDevice:(AnDevice *)dev andContext:(AnCtx *)con;
+-(id)initWithAntumbraDevice:(AnDevice *)dev andContext:(AnCtx *)con;
 
+-(void)augment;
+-(void)mirror;
 
-
+-(void)sweep;
 
 @end

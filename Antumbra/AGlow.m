@@ -23,6 +23,7 @@
     
     int tick;
     
+    
     NSWindow *mirrorAreaWindow;
     CGRect samplingRect;
     
@@ -33,13 +34,14 @@
 }
 @synthesize device;
 @synthesize context;
+@synthesize sweepSpeed;
 
--initWithAntumbraDevice:(AnDevice *)dev andContext:(AnCtx *)con{
+-(id)initWithAntumbraDevice:(AnDevice *)dev andContext:(AnCtx *)con{
     self = [super init];
     if (self) {
         device = dev;
         context = con;
-        
+        sweepSpeed = 0.2;
         
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(colorProcessFinishedNotification:) name:kScreenDidFinishProcessingNotification object:nil];
         
@@ -50,8 +52,8 @@
         green = 255;
         blue = 255;
         
-        samplingRect = CGRectMake([ScreenColor width]*0.1, [ScreenColor height]*0.1, [ScreenColor width]*0.8, [ScreenColor height]*0.8);
-        mirrorAreaWindow = [[NSWindow alloc]initWithContentRect:NSMakeRect([ScreenColor width]*0.1, [ScreenColor height]*0.1, [ScreenColor width]*0.8, [ScreenColor height]*0.8) styleMask:NSTitledWindowMask|NSResizableWindowMask backing:NSBackingStoreBuffered defer:NO];
+        samplingRect = CGRectMake([ScreenColor width]*0.2, [ScreenColor height]*0.2, [ScreenColor width]*0.6, [ScreenColor height]*0.6);
+        mirrorAreaWindow = [[NSWindow alloc]initWithContentRect:NSMakeRect([ScreenColor width]*0.2, [ScreenColor height]*0.2, [ScreenColor width]*0.6, [ScreenColor height]*0.6) styleMask:NSTitledWindowMask|NSResizableWindowMask backing:NSBackingStoreBuffered defer:NO];
         mirrorAreaWindow.backgroundColor = [NSColor colorWithCalibratedRed:0.083 green:0.449 blue:0.618 alpha:0.690];
         mirrorAreaWindow.minSize = NSMakeSize(200, 200);
         mirrorAreaWindow.title = @"Resize to the area you want to grab colors from";
@@ -98,26 +100,15 @@
     uint8_t reed;
     uint8_t bluee;
     uint8_t greeen;
-    hsv2rgb(tick*0.2, 1.0, 1.0, &reed, &greeen, &bluee);
+    hsv2rgb((tick*sweepSpeed)+(tick*0.01), 1.0, 1.0, &reed, &greeen, &bluee);
     red = reed;
     green = greeen;
     blue = bluee;
-    
     tick++;
     [self updateBoard];
 }
 
--(void)slowSweep{
-    uint8_t reed;
-    uint8_t bluee;
-    uint8_t greeen;
-    hsv2rgb(tick*0.05, 1.0, 1.0, &reed, &greeen, &bluee);
-    red = reed;
-    green = greeen;
-    blue = bluee;
-    tick++;
-    [self updateBoard];
-}
+
 
 -(void)changeColor:(id)sender{
     [sweepTimer invalidate];
@@ -144,6 +135,20 @@
     [self updateBoard];
 }
 
+-(void)augment{
+    [sweepTimer invalidate];
+    sweepTimer = [NSTimer scheduledTimerWithTimeInterval:1/50.0 target:self selector:@selector(augmentScreenTick) userInfo:nil repeats:YES];
+    
+}
+-(void)mirror{
+    [sweepTimer invalidate];
+    sweepTimer = [NSTimer scheduledTimerWithTimeInterval:1/50.0 target:self selector:@selector(screenCaptureTick) userInfo:nil repeats:YES];
+    
+}
+-(void)sweep{
+    [sweepTimer invalidate];
+    sweepTimer = [NSTimer scheduledTimerWithTimeInterval:1/100.0 target:self selector:@selector(fastSweep) userInfo:nil repeats:YES];
+}
 
 
 
