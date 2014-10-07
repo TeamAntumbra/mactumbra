@@ -18,8 +18,6 @@
 		0140C11B19E379BE00BC30D7 /* BFColorPickerPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0140C11119E379BE00BC30D7 /* BFColorPickerPopoverView.m */; };
 		0140C11C19E379BE00BC30D7 /* BFColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0140C11319E379BE00BC30D7 /* BFColorPickerViewController.m */; };
 		0140C11D19E379BE00BC30D7 /* BFIconTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0140C11519E379BE00BC30D7 /* BFIconTabBar.m */; };
-		0140C12019E38EA800BC30D7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0140C11E19E38EA800BC30D7 /* icon.png */; };
-		0140C12119E38EA800BC30D7 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0140C11F19E38EA800BC30D7 /* icon@2x.png */; };
 		01486F1D195CDE2A00F38387 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01486F1C195CDE2A00F38387 /* Cocoa.framework */; };
 		01486F27195CDE2A00F38387 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01486F25195CDE2A00F38387 /* InfoPlist.strings */; };
 		01486F29195CDE2A00F38387 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F28195CDE2A00F38387 /* main.m */; };
@@ -27,6 +25,7 @@
 		01486F30195CDE2A00F38387 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F2F195CDE2A00F38387 /* AppDelegate.m */; };
 		01486F35195CDE2A00F38387 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01486F34195CDE2A00F38387 /* Images.xcassets */; };
 		01486F5A195CDE4700F38387 /* hsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 01486F52195CDE4700F38387 /* hsv.c */; };
+		015B803A19E39F4900883DC3 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 015B803919E39F4900883DC3 /* icon.png */; };
 		0169245119CF84EB003ADE00 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0169245019CF84EB003ADE00 /* MainMenu.xib */; };
 		018AB38519D9221B006CA84D /* ReactiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB38419D9221B006CA84D /* ReactiveView.m */; };
 		01B28D29199C412400F2117D /* ScreenColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B28D28199C412400F2117D /* ScreenColor.m */; };
@@ -73,8 +72,6 @@
 		0140C11319E379BE00BC30D7 /* BFColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFColorPickerViewController.m; sourceTree = "<group>"; };
 		0140C11419E379BE00BC30D7 /* BFIconTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFIconTabBar.h; sourceTree = "<group>"; };
 		0140C11519E379BE00BC30D7 /* BFIconTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFIconTabBar.m; sourceTree = "<group>"; };
-		0140C11E19E38EA800BC30D7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		0140C11F19E38EA800BC30D7 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		01486F19195CDE2A00F38387 /* Antumbra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Antumbra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01486F1C195CDE2A00F38387 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		01486F1F195CDE2A00F38387 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -90,6 +87,7 @@
 		01486F34195CDE2A00F38387 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		01486F52195CDE4700F38387 /* hsv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hsv.c; sourceTree = "<group>"; };
 		01486F53195CDE4700F38387 /* hsv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hsv.h; sourceTree = "<group>"; };
+		015B803919E39F4900883DC3 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		0169245019CF84EB003ADE00 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		018AB38319D9221B006CA84D /* ReactiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReactiveView.h; sourceTree = "<group>"; };
 		018AB38419D9221B006CA84D /* ReactiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReactiveView.m; sourceTree = "<group>"; };
@@ -241,8 +239,7 @@
 		01486F23195CDE2A00F38387 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0140C11E19E38EA800BC30D7 /* icon.png */,
-				0140C11F19E38EA800BC30D7 /* icon@2x.png */,
+				015B803919E39F4900883DC3 /* icon.png */,
 				0114C78E19CF748100A5BE24 /* iconGrey@2x.png */,
 				0114C78F19CF748100A5BE24 /* iconGrey.png */,
 				01486F24195CDE2A00F38387 /* Antumbra-Info.plist */,
@@ -311,11 +308,10 @@
 				01486F27195CDE2A00F38387 /* InfoPlist.strings in Resources */,
 				01EECC3519CF1A73005B4DDC /* MenuView.xib in Resources */,
 				01486F35195CDE2A00F38387 /* Images.xcassets in Resources */,
-				0140C12019E38EA800BC30D7 /* icon.png in Resources */,
+				015B803A19E39F4900883DC3 /* icon.png in Resources */,
 				01486F2D195CDE2A00F38387 /* Credits.rtf in Resources */,
 				0114C79319CF748100A5BE24 /* iconGrey.png in Resources */,
 				0169245119CF84EB003ADE00 /* MainMenu.xib in Resources */,
-				0140C12119E38EA800BC30D7 /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

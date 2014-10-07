@@ -38,7 +38,7 @@
     NSImage *image = [NSImage imageNamed:@"icon"];
     NSImage *alternateImage = [NSImage imageNamed:@"iconGrey"];
     
-    _statusItemPopup = [[AXStatusItemPopup alloc] initWithViewController:contentViewController image:image alternateImage:nil];
+    _statusItemPopup = [[AXStatusItemPopup alloc] initWithViewController:contentViewController image:alternateImage alternateImage:alternateImage];
     
     
     [self findAntumbra];
