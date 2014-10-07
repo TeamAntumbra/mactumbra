@@ -43,8 +43,13 @@
             for (int i =1; i<6; i++) {
                 [self addCircles:i*6 atPoint:NSMakePoint(self.view.frame.size.width/2.0,self.view.frame.size.height/2.0) withDistance:i*18 size:NSMakeSize(ballSize, ballSize)];
             }
+            [[BFColorPickerPopover sharedPopover]setAppearance:NSPopoverAppearanceHUD];
+            [[BFColorPickerPopover sharedPopover]setContentSize:NSMakeSize(200, 300)];
+            [colorWell setPreferredEdgeForPopover:NSMaxXEdge];
+            
+            
+            
         });
-        
         
     }
     return self;
@@ -177,6 +182,7 @@
         }];
     }
 }
+
 
 
 @end

@@ -119,6 +119,9 @@
     [self updateBoard];
 }
 
+
+
+
 -(void)updateBoard{
     
     AnDevice_SetRGB_S(context, device, (uint8_t)red,(uint8_t)green,(uint8_t)blue);
