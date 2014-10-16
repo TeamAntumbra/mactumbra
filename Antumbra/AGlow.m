@@ -120,7 +120,15 @@
 }
 
 
-
+-(void)setColor:(NSColor *)newColor{
+    CGFloat r,g,b;
+    [newColor getRed:&r green:&g blue:&b alpha:NULL];
+    red = floorf(r*255.0);
+    green = floorf(g*255.0);
+    blue = floorf(b*255.0);
+    [self updateBoard];
+    
+}
 
 -(void)updateBoard{
     

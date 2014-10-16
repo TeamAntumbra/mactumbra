@@ -14,12 +14,14 @@
     BOOL canUndraw;
     CGRect originalSize;
     CGRect modedSize;
+    BOOL growing;
 }
 
 @synthesize growthFactor,color;
 
 -(void)setUpThings{
-    self.growthFactor = 20;
+    growing = false;
+    self.growthFactor = 15;
     self.color = [NSColor whiteColor];
     NSTrackingAreaOptions options = NSTrackingActiveAlways|NSTrackingMouseMoved|NSTrackingMouseEnteredAndExited|NSTrackingActiveInKeyWindow;
     NSTrackingArea *area = [[NSTrackingArea alloc]initWithRect:self.bounds options:options owner:self userInfo:nil];
@@ -44,34 +46,6 @@
     [self drawWithSize:self.bounds];
 }
 
--(void)mouseEntered:(NSEvent *)theEvent{
-    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context){
-        // Start some animations.
-        [context setDuration:0.2];
-        [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
-        [[self animator] setFrame:NSRectFromCGRect(modedSize)];
-       
-    } completionHandler:^{
-        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context){
-            // Start some animations.
-            [context setDuration:0.2];
-            [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
-            [[self animator] setFrame:NSRectFromCGRect(originalSize)];
-            
-        } completionHandler:^{
-            
-        }];
-        
-    }];
-    
-}
--(void)mouseMoved:(NSEvent *)theEvent{
-    
-}
--(void)mouseExited:(NSEvent *)theEvent{
-    
-}
-
 
 - (void)drawWithSize: (NSRect)frame ;
 {
@@ -83,6 +57,76 @@
     [mainColor setFill];
     [ovalPath fill];
 }
+-(void)antimateGlow{
+    if (growing) {
+        return;
+    }
+    growing = true;
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context){
+        // Start some animations.
+        [context setDuration:0.2];
+        [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+        [[self animator] setFrame:NSRectFromCGRect(modedSize)];
+        
+    } completionHandler:^{
+        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context){
+            // Start some animations.
+            [context setDuration:0.2];
+            [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+            [[self animator] setFrame:NSRectFromCGRect(originalSize)];
+            
+        } completionHandler:^{
+            growing = false;
+        }];
+        
+    }];
 
+}
+-(void)selectAnimate{
+    
+    growing = true;
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context){
+        // Start some animations.
+        [context setDuration:0.1];
+        [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+        [[self animator] setFrame:NSRectFromCGRect([self scaleRect:originalSize scale:0.5])];
+        
+    } completionHandler:^{
+        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context){
+            // Start some animations.
+            [context setDuration:0.2];
+            [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+            [[self animator] setFrame:NSRectFromCGRect([self scaleRect:originalSize scale:2.5])];
+        } completionHandler:^{
+            [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context){
+                // Start some animations.
+                [context setDuration:0.2];
+                [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+                [[self animator] setFrame:NSRectFromCGRect([self scaleRect:originalSize scale:0.65])];
+            } completionHandler:^{
+                [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context){
+                    // Start some animations.
+                    [context setDuration:0.2];
+                    [context setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+                    [[self animator] setFrame:NSRectFromCGRect([self scaleRect:originalSize scale:1.0])];
+                } completionHandler:^{
+                    growing = false;
+                }];
+            }];
+        }];
+    }];
+}
+
+-(CGRect)scaleRect:(CGRect)rect scale:(float)s{
+    CGRect newRect;
+    
+    newRect.size.width = rect.size.width*s;
+    newRect.size.height = rect.size.height*s;
+    
+    newRect.origin.x = rect.origin.x-(newRect.size.width-rect.size.width)*0.5;
+    newRect.origin.y = rect.origin.y-(newRect.size.height-rect.size.height)*0.5;
+    
+    return newRect;
+}
 
 @end

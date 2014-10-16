@@ -13,4 +13,7 @@
 @property (nonatomic) NSColor *color;
 @property (nonatomic) float growthFactor;
 
+-(void)antimateGlow;
+-(void)selectAnimate;
+
 @end

@@ -27,6 +27,7 @@
 -(void)mirror;
 
 -(void)sweep;
+-(void)setColor:(NSColor *)newColor;
 
 
 @end

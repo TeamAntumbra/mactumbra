@@ -39,13 +39,16 @@
     NSImage *alternateImage = [NSImage imageNamed:@"iconGrey"];
     
     _statusItemPopup = [[AXStatusItemPopup alloc] initWithViewController:contentViewController image:alternateImage alternateImage:alternateImage];
-    
+   
+
     
     [self findAntumbra];
     
     [_statusItemPopup showPopover];
     [self appearanceValueChanged:self]; //This only works if I encapsulate this inside a show/hide setneedsdisplay? whatevs
     [_statusItemPopup hidePopover];
+    
+   
     
 }
 

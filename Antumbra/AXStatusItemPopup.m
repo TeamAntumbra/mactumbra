@@ -65,6 +65,7 @@
         _animated = YES;
         
         
+        
     }
     return self;
 }
@@ -170,10 +171,12 @@
 - (void)showPopoverAnimated:(BOOL)animated
 {
     self.active = YES;
+    [NSApp activateIgnoringOtherApps:YES];
     
     if (!_popover) {
         _popover = [[NSPopover alloc] init];
         _popover.contentViewController = _viewController;
+        
     }
     
     if (!_popover.isShown) {
@@ -198,6 +201,11 @@
             _popoverTransiencyMonitor = nil;
         }
     }
+}
+
+-(void)mouseMoved:(NSEvent *)theEvent{
+    NSPoint locationInView = [self convertPoint:[theEvent locationInWindow]fromView:nil];
+    NSLog(@"%f %f",locationInView.x,locationInView.y);
 }
 
 @end

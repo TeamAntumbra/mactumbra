@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1070" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
@@ -36,9 +36,9 @@
                     <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
                 <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q8M-3N-vdW">
-                    <rect key="frame" x="12" y="242" width="177" height="23"/>
+                    <rect key="frame" x="12" y="242" width="177" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <segmentedCell key="cell" alignment="left" style="capsule" trackingMode="selectOne" id="5Zt-xl-qPc">
+                    <segmentedCell key="cell" alignment="left" style="texturedRounded" trackingMode="selectOne" id="5Zt-xl-qPc">
                         <font key="font" metaFont="system"/>
                         <segments>
                             <segment label="Color" imageScaling="none" selected="YES"/>
@@ -97,7 +97,7 @@
                 <slider hidden="YES" horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bos-Q4-kP7">
                     <rect key="frame" x="131" y="46" width="26" height="183"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="left" numberOfTickMarks="5" sliderType="linear" id="OfC-Ff-1Q9"/>
+                    <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="right" numberOfTickMarks="5" sliderType="linear" id="OfC-Ff-1Q9"/>
                     <connections>
                         <action selector="tickSliderChanged:" target="-2" id="Oky-Zz-WNE"/>
                     </connections>
