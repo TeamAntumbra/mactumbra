@@ -30,8 +30,8 @@
             <rect key="frame" x="0.0" y="0.0" width="200" height="279"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7TU-c9-zfW" customClass="BFPopoverColorWell">
-                    <rect key="frame" x="167" y="4" width="29" height="27"/>
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7TU-c9-zfW">
+                    <rect key="frame" x="166" y="5" width="29" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>

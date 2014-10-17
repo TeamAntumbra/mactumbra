@@ -11,14 +11,14 @@
 #import "AppDelegate.h"
 #import "AGlow.h"
 #import "ReactiveView.h"
-#import "BFPopoverColorWell.h"
-#import "BFColorPickerPopover.h"
+#import "DescriptiveButton.h"
+
 
 @interface MenuViewController : NSViewController 
 
 @property(weak, nonatomic) AXStatusItemPopup *statusItemPopup;
 @property(weak, nonatomic) AGlow *glowDevice;
-@property (weak) IBOutlet BFPopoverColorWell *colorWell;
+@property (weak) IBOutlet NSColorWell *colorWell;
 
 
 @property (weak) IBOutlet NSSegmentedControl *controlBar;

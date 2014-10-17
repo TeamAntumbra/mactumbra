@@ -21,7 +21,7 @@
 
 -(void)setUpThings{
     growing = false;
-    self.growthFactor = 15;
+    self.growthFactor = 14;
     self.color = [NSColor whiteColor];
     NSTrackingAreaOptions options = NSTrackingActiveAlways|NSTrackingMouseMoved|NSTrackingMouseEnteredAndExited|NSTrackingActiveInKeyWindow;
     NSTrackingArea *area = [[NSTrackingArea alloc]initWithRect:self.bounds options:options owner:self userInfo:nil];
@@ -49,10 +49,8 @@
 
 - (void)drawWithSize: (NSRect)frame ;
 {
-    //// Color Declarations
     NSColor* mainColor = self.color;
-    
-    //// Oval Drawing
+  
     NSBezierPath* ovalPath = [NSBezierPath bezierPathWithOvalInRect:frame];
     [mainColor setFill];
     [ovalPath fill];

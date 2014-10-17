@@ -46,23 +46,20 @@
     if (self) {
         currentSelectedIndex = 0;
         circles = [[NSMutableArray alloc]init];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [controlBar setSegmentStyle:NSSegmentStyleAutomatic];
-            float ballSize = 14;
-            ReactiveView *v = [[ReactiveView alloc]initWithFrame:NSMakeRect(self.view.frame.size.width/2.0-(ballSize*0.5),self.view.frame.size.height/2.0-(ballSize*0.5),ballSize,ballSize)];
-            [self.view addSubview:v];
-            [v setNeedsDisplay:YES];
-            [circles addObject:v];
-            for (int i =1; i<6; i++) {
-                [self addCircles:i*6 atPoint:NSMakePoint(self.view.frame.size.width/2.0,self.view.frame.size.height/2.0) withDistance:i*17 size:NSMakeSize(ballSize, ballSize)];
-            }
-            [[BFColorPickerPopover sharedPopover]setAppearance:NSPopoverAppearanceHUD];
-            [[BFColorPickerPopover sharedPopover]setContentSize:NSMakeSize(200, 300)];
-            [colorWell setPreferredEdgeForPopover:NSMaxXEdge];
-            
-            
-            
-        });
+        
+      
+        
+        [controlBar setSegmentStyle:NSSegmentStyleAutomatic];
+        float ballSize = 14;
+        ReactiveView *v = [[ReactiveView alloc]initWithFrame:NSMakeRect(self.view.frame.size.width/2.0-(ballSize*0.5),self.view.frame.size.height/2.0-(ballSize*0.5),ballSize,ballSize)];
+        [self.view addSubview:v];
+        [v setNeedsDisplay:YES];
+        [circles addObject:v];
+        for (int i =1; i<6; i++) {
+            [self addCircles:i*6 atPoint:NSMakePoint(self.view.frame.size.width/2.0,self.view.frame.size.height/2.0) withDistance:i*17 size:NSMakeSize(ballSize, ballSize)];
+        }
+        
+        
         
     }
     return self;
@@ -170,8 +167,10 @@
 }
 
 
+
 -(void)mouseUp:(NSEvent *)theEvent{
-     NSPoint mouse = [theEvent.window mouseLocationOutsideOfEventStream];
+    NSPoint mouse = [theEvent.window mouseLocationOutsideOfEventStream];
+    [glowDevice setColor:[self colorAtLocation:mouse]];
     [[self viewAtLocation:mouse]selectAnimate];
     
 }
@@ -180,26 +179,7 @@
     
     if (currentSelectedIndex == 0) {
         NSPoint mouse = [theEvent.window mouseLocationOutsideOfEventStream];
-        NSPoint center = NSMakePoint(self.view.frame.origin.x+self.view.frame.size.width/2.0, self.view.frame.origin.y+self.view.frame.size.height/2.0);
-        float distance = sqrtf(((mouse.x-center.x)*(mouse.x-center.x))+((mouse.y-center.y)*(mouse.y-center.y)));
-       
-        float radians = 0;
-        if(mouse.x>center.x){
-            if(mouse.y>center.y){
-                radians = asinf((mouse.y-center.y)/distance);
-            } else {
-                radians = asinf((mouse.x-center.x)/distance)+M_PI_2*3;
-            }
-        } else {
-            if (mouse.y>center.y) {
-         
-                radians = asinf((center.x-mouse.x)/distance)+M_PI_2;
-            } else {
-                
-                radians = asinf((center.y-mouse.y)/distance)+M_PI_2*2;
-            }
-        }
-        [glowDevice setColor:[NSColor colorWithCalibratedHue:radians/(2*M_PI) saturation:distance/(self.view.frame.size.width/2.0) brightness:1.0 alpha:1.0]];
+        [glowDevice setColor:[self colorAtLocation:mouse]];
         [[self viewAtLocation:mouse]antimateGlow];
         
     }
@@ -222,6 +202,31 @@
     }
     ReactiveView *circ = circles[closestIndex];
     return circ;
+    
+}
+
+-(NSColor *)colorAtLocation:(NSPoint)loc{
+    NSPoint center = NSMakePoint(self.view.frame.origin.x+self.view.frame.size.width/2.0, self.view.frame.origin.y+self.view.frame.size.height/2.0);
+    float distance = sqrtf(((loc.x-center.x)*(loc.x-center.x))+((loc.y-center.y)*(loc.y-center.y)));
+    
+    float radians = 0;
+    if(loc.x>center.x){
+        if(loc.y>center.y){
+            radians = asinf((loc.y-center.y)/distance);
+        } else {
+            radians = asinf((loc.x-center.x)/distance)+M_PI_2*3;
+        }
+    } else {
+        if (loc.y>center.y) {
+            
+            radians = asinf((center.x-loc.x)/distance)+M_PI_2;
+        } else {
+            
+            radians = asinf((center.y-loc.y)/distance)+M_PI_2*2;
+        }
+    }
+    return [NSColor colorWithCalibratedHue:radians/(2*M_PI) saturation:distance/(self.view.frame.size.width/2.0) brightness:1.0 alpha:1.0];
+    
     
 }
 
