@@ -37,17 +37,16 @@
     
     [self.view addTrackingArea:area];
     
+
     
-    [self setNextResponder:self.view];
-    [self.view.subviews enumerateObjectsUsingBlock:^(NSView *subview, NSUInteger idx, BOOL *stop) { [subview setNextResponder:self]; }];
+   // [self setNextResponder:self.view];
+   // [self.view.subviews enumerateObjectsUsingBlock:^(NSView *subview, NSUInteger idx, BOOL *stop) { [subview setNextResponder:self]; }];
     
     
     
     if (self) {
         currentSelectedIndex = 0;
         circles = [[NSMutableArray alloc]init];
-        
-      
         
         [controlBar setSegmentStyle:NSSegmentStyleAutomatic];
         float ballSize = 14;
@@ -58,8 +57,6 @@
         for (int i =1; i<6; i++) {
             [self addCircles:i*6 atPoint:NSMakePoint(self.view.frame.size.width/2.0,self.view.frame.size.height/2.0) withDistance:i*17 size:NSMakeSize(ballSize, ballSize)];
         }
-        
-        
         
     }
     return self;
@@ -75,7 +72,7 @@
         float yAdd = sin(currentRadians)*distance;
         ReactiveView *v = [[ReactiveView alloc]initWithFrame:NSMakeRect(center.x+xAdd-fram.width/2.0, center.y+yAdd-fram.height/2.0, fram.width, fram.width)];
         //distance based saturation
-        v.color = [NSColor colorWithCalibratedHue:currentRadians/(M_PI*2) saturation:distance/(self.view.frame.size.width/2.0) brightness:1.0 alpha:1.0];
+        v.color = [NSColor colorWithCalibratedHue:currentRadians/(M_PI*2) saturation:distance/((self.view.frame.size.width/2.0)-30) brightness:1.0 alpha:1.0];
         [self.view addSubview:v];
         [v setNeedsDisplay:YES];
         [circles addObject:v];
@@ -84,17 +81,7 @@
 }
 
 
-- (IBAction)mirrorClicked:(id)sender {
-    [glowDevice mirror];
-}
 
-- (IBAction)augmentClicked:(id)sender {
-    [glowDevice augment];
-}
-
-- (IBAction)smoothClicked:(id)sender {
-    [glowDevice mirror];
-}
 
 - (IBAction)tickSliderChanged:(id)sender {
     NSSlider *slider = sender;
@@ -169,10 +156,11 @@
 
 
 -(void)mouseUp:(NSEvent *)theEvent{
+    if (currentSelectedIndex == 0) {
     NSPoint mouse = [theEvent.window mouseLocationOutsideOfEventStream];
     [glowDevice setColor:[self colorAtLocation:mouse]];
     [[self viewAtLocation:mouse]selectAnimate];
-    
+    }
 }
 
 -(void)mouseDragged:(NSEvent *)theEvent{
@@ -225,7 +213,7 @@
             radians = asinf((center.y-loc.y)/distance)+M_PI_2*2;
         }
     }
-    return [NSColor colorWithCalibratedHue:radians/(2*M_PI) saturation:distance/(self.view.frame.size.width/2.0) brightness:1.0 alpha:1.0];
+    return [NSColor colorWithCalibratedHue:radians/(2*M_PI) saturation:distance/((self.view.frame.size.width/2.0)-30) brightness:1.0 alpha:1.0];
     
     
 }

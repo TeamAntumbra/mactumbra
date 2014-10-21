@@ -1,0 +1,117 @@
+//
+//  DescriptiveView.m
+//  Antumbra
+//
+//  Created by Nicholas Peretti on 10/17/14.
+//  Copyright (c) 2014 Antumbra. All rights reserved.
+//
+
+#import "DescriptiveView.h"
+
+@implementation DescriptiveView {
+    BOOL selected;
+    BOOL inside;
+    NSTrackingArea *trackingArea;
+    BOOL setup;
+
+}
+
+@synthesize descriptiveTitle,mainTitle;
+
+-(void)awakeFromNib{
+    [self setUpAll];
+}
+
+- (id)initWithFrame:(NSRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setUpAll];
+    }
+    return self;
+}
+
+-(void)setUpAll{
+    [self.window setAcceptsMouseMovedEvents:YES];
+    [self setAcceptsTouchEvents:YES];
+    if(!setup){
+        NSTrackingAreaOptions options = NSTrackingActiveAlways|NSTrackingMouseMoved|NSTrackingMouseEnteredAndExited|NSTrackingActiveInKeyWindow;
+        trackingArea = [[NSTrackingArea alloc]initWithRect:self.bounds options:options owner:self userInfo:nil];
+        [self addTrackingArea:trackingArea];
+        setup = true;
+    }
+    selected = false;
+    inside = false;
+    mainTitle = @"Tittle";
+    descriptiveTitle = @"Short Description";
+
+    
+}
+
+-(void)updateTrackingAreas{
+    NSLog(@"%@",self.trackingAreas[0]);
+}
+
+- (void)drawRect:(NSRect)dirtyRect
+{
+    
+    [super drawRect:dirtyRect];
+    NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:[self bounds] xRadius:8 yRadius:8];
+    [path setLineWidth:0.0];
+    
+    if (selected) {
+        [[NSColor colorWithCalibratedWhite:0.168 alpha:0.500]setFill];
+    }else{
+        [[NSColor colorWithCalibratedWhite:0.433 alpha:0.500]setFill];
+    }
+    [path fill];
+    
+    
+    NSString *toBeWritten;
+    int fontSize;
+    NSDictionary *attributes;
+    if (inside) {
+        toBeWritten = descriptiveTitle;
+        fontSize = 16;
+      
+    }else{
+        toBeWritten = mainTitle;
+        fontSize = 22;
+    }
+    
+    attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont systemFontOfSize:fontSize], NSFontAttributeName,[NSColor colorWithCalibratedWhite:0.888 alpha:1.0], NSForegroundColorAttributeName, nil];
+   
+    
+    NSAttributedString *titleString = [[NSAttributedString alloc]initWithString:toBeWritten attributes:attributes];
+    NSSize textSize = [titleString size];
+    
+    NSPoint drawPoint = NSMakePoint((self.bounds.size.width/2.0)-(textSize.width/2.0), (self.bounds.size.height/2.0)-(textSize.height/2.0));
+    
+    [titleString drawAtPoint:drawPoint];
+}
+
+
+
+-(void)mouseEntered:(NSEvent *)theEvent{
+
+    inside = true;
+    [self setNeedsDisplay:YES];
+}
+
+-(void)mouseExited:(NSEvent *)theEvent{
+
+    inside = false;
+    [self setNeedsDisplay:YES];
+    
+}
+
+-(void)mouseDown:(NSEvent *)theEvent{
+    selected = true;
+    [self setNeedsDisplay:YES];
+}
+-(void)mouseUp:(NSEvent *)theEvent{
+    selected = false;
+    [self setNeedsDisplay:YES];
+}
+
+@end

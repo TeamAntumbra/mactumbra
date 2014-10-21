@@ -10,16 +10,11 @@
                 <outlet property="DeepBlueButtpn" destination="UX7-8D-YVV" id="juD-Rx-6ed"/>
                 <outlet property="HSVButton" destination="uD0-2l-QMd" id="W1n-1a-mfh"/>
                 <outlet property="RGBButtpn" destination="fvg-eg-JEa" id="lDh-vf-0UB"/>
-                <outlet property="augmentButton" destination="OwK-KP-5nM" id="DPR-Dq-4UH"/>
-                <outlet property="augmentClicked" destination="OwK-KP-5nM" id="nkZ-Ss-EoQ"/>
                 <outlet property="colorWell" destination="7TU-c9-zfW" id="x4N-0a-Fhd"/>
                 <outlet property="controlBar" destination="q8M-3N-vdW" id="nNT-zY-IMV"/>
-                <outlet property="deepBlueTapped" destination="UX7-8D-YVV" id="nnD-3Z-UFm"/>
                 <outlet property="fastLabel" destination="0Rp-gG-eyw" id="aOH-xS-zvF"/>
-                <outlet property="mirrorButton" destination="Cdq-km-dDi" id="S6p-2z-ZYA"/>
-                <outlet property="rgbTapped" destination="fvg-eg-JEa" id="Tmf-Xu-PDe"/>
+                <outlet property="mirrorButton" destination="mpr-JB-OZs" id="LVU-hs-tc3"/>
                 <outlet property="slowLabel" destination="rxN-E3-1I0" id="joe-Tv-FiS"/>
-                <outlet property="smoothMirrorButton" destination="PZl-C5-QSf" id="GD9-9O-D9r"/>
                 <outlet property="tickSlider" destination="bos-Q4-kP7" id="ubB-qe-1Hi"/>
                 <outlet property="view" destination="c22-O7-iKe" id="Meh-X2-0uB"/>
             </connections>
@@ -31,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7TU-c9-zfW">
-                    <rect key="frame" x="166" y="5" width="29" height="20"/>
+                    <rect key="frame" x="165" y="5" width="30" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
@@ -59,39 +54,6 @@
                     </buttonCell>
                     <connections>
                         <action selector="quiteAntumbra:" target="-2" id="MOb-Xs-3oN"/>
-                    </connections>
-                </button>
-                <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cdq-km-dDi">
-                    <rect key="frame" x="20" y="179" width="160" height="48"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="Mirror" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TPw-TH-DjS">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="mirrorClicked:" target="-2" id="H1j-1o-CQO"/>
-                    </connections>
-                </button>
-                <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OwK-KP-5nM">
-                    <rect key="frame" x="20" y="114" width="160" height="48"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="Augment" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bvj-gM-XEi">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="augmentClicked:" target="-2" id="yV0-7f-pKY"/>
-                    </connections>
-                </button>
-                <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PZl-C5-QSf">
-                    <rect key="frame" x="20" y="49" width="160" height="48"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="Smooth" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AXj-sw-BAf">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="smoothClicked:" target="-2" id="RES-WN-EeL"/>
                     </connections>
                 </button>
                 <slider hidden="YES" horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bos-Q4-kP7">
@@ -153,6 +115,10 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mpr-JB-OZs" customClass="DescriptiveView">
+                    <rect key="frame" x="20" y="179" width="160" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
             </subviews>
         </customView>
         <toolbar implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="rEB-Gb-Upq">

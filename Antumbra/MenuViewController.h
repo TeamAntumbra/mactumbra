@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "AGlow.h"
 #import "ReactiveView.h"
-#import "DescriptiveButton.h"
+#import "DescriptiveView.h"
 
 
 @interface MenuViewController : NSViewController 
@@ -23,9 +23,9 @@
 
 @property (weak) IBOutlet NSSegmentedControl *controlBar;
 
-@property (weak) IBOutlet NSButton *mirrorButton;
-@property (weak) IBOutlet NSButton *augmentButton;
-@property (weak) IBOutlet NSButton *smoothMirrorButton;
+@property (weak) IBOutlet DescriptiveView *mirrorButton;
+@property (weak) IBOutlet DescriptiveView *augmentButton;
+@property (weak) IBOutlet DescriptiveView *smoothMirrorButton;
 @property (weak) IBOutlet NSSlider *tickSlider;
 @property (weak) IBOutlet NSButton *HSVButton;
 @property (weak) IBOutlet NSButton *RGBButtpn;
@@ -33,9 +33,7 @@
 @property (weak) IBOutlet NSTextField *slowLabel;
 @property (weak) IBOutlet NSTextField *fastLabel;
 
-- (IBAction)mirrorClicked:(id)sender;
-- (IBAction)augmentClicked:(id)sender;
-- (IBAction)smoothClicked:(id)sender;
+
 
 - (IBAction)tickSliderChanged:(id)sender;
 
