@@ -18,6 +18,7 @@
 
 @property(weak, nonatomic) AXStatusItemPopup *statusItemPopup;
 @property(weak, nonatomic) AGlow *glowDevice;
+@property(weak, nonatomic) NSMutableArray *glowDevices;
 @property (weak) IBOutlet NSColorWell *colorWell;
 
 

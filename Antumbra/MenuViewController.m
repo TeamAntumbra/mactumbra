@@ -18,7 +18,7 @@
 @implementation MenuViewController
 
 @synthesize statusItemPopup;
-@synthesize glowDevice;
+@synthesize glowDevice,glowDevices;
 @synthesize colorWell;
 @synthesize controlBar;
 
@@ -101,11 +101,16 @@
 
 - (IBAction)tickSliderChanged:(id)sender {
     NSSlider *slider = sender;
-    [glowDevice  setSweepSpeed:slider.floatValue/100.0];
+    for (AGlow *glow in glowDevices) {
+         [glow  setSweepSpeed:slider.floatValue/100.0];
+    }
+    //[glowDevice  setSweepSpeed:slider.floatValue/100.0];
 }
 
 - (IBAction)settingsTapped:(id)sender {
-    [glowDevice openWindow];
+    for (AGlow *glow in glowDevices) {
+        [glow  openWindow];
+    }
 }
 
 -(void)receivedNotification:(NSNotification *)note {
@@ -170,12 +175,19 @@
 
 
 -(void)mouseUp:(NSEvent *)theEvent{
+    
     if (currentSelectedIndex == 0) {
-        if(glowDevice.isMirroring){
-            [glowDevice stopUpdates];
+        for (AGlow *glow in glowDevices) {
+            if(glow.isMirroring){
+                [glow stopUpdates];
+            }
         }
+        
+        
     NSPoint mouse = [theEvent.window mouseLocationOutsideOfEventStream];
-    [glowDevice setColor:[self colorAtLocation:mouse]];
+        for (AGlow *glow in glowDevices) {
+              [glow setColor:[self colorAtLocation:mouse]];
+        }
     [[self viewAtLocation:mouse]selectAnimate];
     }
 }
@@ -183,11 +195,15 @@
 -(void)mouseDragged:(NSEvent *)theEvent{
     
     if (currentSelectedIndex == 0) {
-        if(glowDevice.isMirroring){
-            [glowDevice stopUpdates];
+        for (AGlow *glow in glowDevices) {
+            if(glow.isMirroring){
+                [glow stopUpdates];
+            }
         }
         NSPoint mouse = [theEvent.window mouseLocationOutsideOfEventStream];
-        [glowDevice setColor:[self colorAtLocation:mouse]];
+        for (AGlow *glow in glowDevices) {
+            [glow setColor:[self colorAtLocation:mouse]];
+        }
         [[self viewAtLocation:mouse]antimateGlow];
         
     }
@@ -239,22 +255,34 @@
 }
 -(void)handleButtonTap:(NSString *)buttonTitle{
     if([buttonTitle isEqualToString:@"Mirror"]){
-        [glowDevice mirror];
+        for (AGlow *glow in glowDevices) {
+            [glow mirror];
+        }
     }
     if([buttonTitle isEqualToString:@"Augment"]){
-        [glowDevice augment];
+        for (AGlow *glow in glowDevices) {
+            [glow augment];
+        }
     }
     if([buttonTitle isEqualToString:@"Smooth"]){
-        [glowDevice augment];
+        for (AGlow *glow in glowDevices) {
+            [glow augment];
+        }
     }
     if([buttonTitle isEqualToString:@"Rainbow"]){
-        [glowDevice sweep];
+        for (AGlow *glow in glowDevices) {
+            [glow sweep];
+        }
     }
     if([buttonTitle isEqualToString:@"Pulse"]){
-        [glowDevice sweep];
+        for (AGlow *glow in glowDevices) {
+            [glow sweep];
+        }
     }
     if([buttonTitle isEqualToString:@"Fractal"]){
-        [glowDevice sweep];
+        for (AGlow *glow in glowDevices) {
+            [glow sweep];
+        }
     }
    
 }

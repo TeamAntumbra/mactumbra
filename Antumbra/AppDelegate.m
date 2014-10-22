@@ -23,6 +23,8 @@
     AXStatusItemPopup *_statusItemPopup;
     MenuViewController *contentViewController;
     AGlow *foundDevice;
+
+    NSMutableArray *foundDevices;
 }
 
 
@@ -39,8 +41,8 @@
     NSImage *alternateImage = [NSImage imageNamed:@"iconGrey"];
     
     _statusItemPopup = [[AXStatusItemPopup alloc] initWithViewController:contentViewController image:alternateImage alternateImage:alternateImage];
-   
-
+    
+    foundDevices = [[NSMutableArray alloc]init];
     
     [self findAntumbra];
     
@@ -82,13 +84,14 @@
             
             if (AnDevice_Open(context, dev)) {
                 fputs("device open failed\n", stderr);
-                
             }
             
+            [foundDevices addObject:[[AGlow alloc]initWithAntumbraDevice:dev andContext:context]];
         }
         
         foundDevice = [[AGlow alloc]initWithAntumbraDevice:dev andContext:context];
         contentViewController.glowDevice = foundDevice;
+        contentViewController.glowDevices = foundDevices;
         
     }
     
