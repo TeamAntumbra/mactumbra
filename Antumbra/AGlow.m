@@ -28,13 +28,27 @@
     CGRect samplingRect;
     
     BOOL on;
-    
+
     
     NSTimer *sweepTimer;
 }
 @synthesize device;
 @synthesize context;
 @synthesize sweepSpeed;
+@synthesize isMirroring;
+
+typedef void * CGSConnection;
+extern OSStatus CGSSetWindowBackgroundBlurRadius(CGSConnection connection, NSInteger   windowNumber, int radius);
+extern CGSConnection CGSDefaultConnectionForThread();
+
+- (void)enableBlurForWindow:(NSWindow *)window  withColor:(NSColor *)coler
+{
+    [window setOpaque:NO];
+    window.backgroundColor = coler;
+    
+    CGSConnection connection = CGSDefaultConnectionForThread();
+    CGSSetWindowBackgroundBlurRadius(connection, [window windowNumber], 20);
+}
 
 -(id)initWithAntumbraDevice:(AnDevice *)dev andContext:(AnCtx *)con{
     self = [super init];
@@ -42,7 +56,7 @@
         device = dev;
         context = con;
         sweepSpeed = 0.2;
-        
+        isMirroring = false;
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(colorProcessFinishedNotification:) name:kScreenDidFinishProcessingNotification object:nil];
         
         tick=0;
@@ -52,29 +66,40 @@
         green = 255;
         blue = 255;
         
+        currentBlue = 1.0;
+        currentRed = 1.0;
+        currentGreen = 1.0;
+        
         samplingRect = CGRectMake([ScreenColor width]*0.2, [ScreenColor height]*0.2, [ScreenColor width]*0.6, [ScreenColor height]*0.6);
         mirrorAreaWindow = [[NSWindow alloc]initWithContentRect:NSMakeRect([ScreenColor width]*0.2, [ScreenColor height]*0.2, [ScreenColor width]*0.6, [ScreenColor height]*0.6) styleMask:NSTitledWindowMask|NSResizableWindowMask backing:NSBackingStoreBuffered defer:NO];
-        mirrorAreaWindow.backgroundColor = [NSColor colorWithCalibratedRed:0.083 green:0.449 blue:0.618 alpha:0.690];
+        mirrorAreaWindow.backgroundColor = [NSColor whiteColor];
         mirrorAreaWindow.minSize = NSMakeSize(200, 200);
-        mirrorAreaWindow.title = @"Resize to the area you want to grab colors from";
+        mirrorAreaWindow.title = @"Resize to the area you want this glow to grab colors from";
         [mirrorAreaWindow setOpaque:NO];
         [mirrorAreaWindow setAlphaValue:0.75];
         [mirrorAreaWindow setShowsResizeIndicator:YES];
         [mirrorAreaWindow.contentView setAutoresizesSubviews:YES];
-        NSButton *setButton = [[NSButton alloc]initWithFrame:NSMakeRect(mirrorAreaWindow.frame.size.width/2.0-100, mirrorAreaWindow.frame.size.height/2.0+32, 200, 64)];
+        NSButton *setButton = [[NSButton alloc]initWithFrame:NSMakeRect(mirrorAreaWindow.frame.size.width/2.0-50, mirrorAreaWindow.frame.size.height/2.0+32, 100, 64)];
         [setButton setAction:@selector(mirrorAreaSelected)];
+        [setButton setTarget:self];
         [setButton setBezelStyle:NSRoundedBezelStyle];
         [setButton setTitle:@"Save"];
         [setButton setAlphaValue:1.0];
         [setButton setAutoresizingMask:NSViewMinXMargin | NSViewMaxXMargin | NSViewMinYMargin | NSViewMaxYMargin];
         [mirrorAreaWindow.contentView addSubview:setButton];
         
+        [self enableBlurForWindow:mirrorAreaWindow withColor:[NSColor colorWithCalibratedRed:0.757 green:0.967 blue:1.000 alpha:0.490]];
         [self updateBoard];
 
     }
     return self;
 }
 
+-(void)openWindow{
+    
+    [self enableBlurForWindow:mirrorAreaWindow withColor:[NSColor colorWithCalibratedRed:0.185 green:0.210 blue:1.000 alpha:0.500]];
+    [mirrorAreaWindow setIsVisible:YES];
+}
 
 
 
@@ -92,7 +117,6 @@
 
 -(void)screenCaptureTick{
     [ScreenColor colorFromRect:samplingRect];
-    
 }
 
 
@@ -133,7 +157,6 @@
 -(void)updateBoard{
     
     AnDevice_SetRGB_S(context, device, (uint8_t)red,(uint8_t)green,(uint8_t)blue);
-    
 }
 
 
@@ -147,20 +170,26 @@
 }
 
 -(void)augment{
-    [sweepTimer invalidate];
-    sweepTimer = [NSTimer scheduledTimerWithTimeInterval:1/50.0 target:self selector:@selector(augmentScreenTick) userInfo:nil repeats:YES];
     
+    [sweepTimer invalidate];
+    sweepTimer = [NSTimer scheduledTimerWithTimeInterval:1/30.0 target:self selector:@selector(augmentScreenTick) userInfo:nil repeats:YES];
+    isMirroring = true;
 }
 -(void)mirror{
     [sweepTimer invalidate];
-    sweepTimer = [NSTimer scheduledTimerWithTimeInterval:1/50.0 target:self selector:@selector(screenCaptureTick) userInfo:nil repeats:YES];
+    sweepTimer = [NSTimer scheduledTimerWithTimeInterval:1/30.0 target:self selector:@selector(screenCaptureTick) userInfo:nil repeats:YES];
+    isMirroring = true;
     
 }
 -(void)sweep{
     [sweepTimer invalidate];
     sweepTimer = [NSTimer scheduledTimerWithTimeInterval:1/100.0 target:self selector:@selector(fastSweep) userInfo:nil repeats:YES];
+    isMirroring = true;
 }
-
+-(void)stopUpdates{
+    isMirroring = false;
+     [sweepTimer invalidate];
+}
 
 
 

@@ -19,6 +19,8 @@
 @property (nonatomic) AnDevice * device;
 @property (nonatomic) AnCtx * context;
 @property (nonatomic) float sweepSpeed;
+@property (nonatomic) bool isMirroring;
+
 
 
 -(id)initWithAntumbraDevice:(AnDevice *)dev andContext:(AnCtx *)con;
@@ -28,6 +30,8 @@
 
 -(void)sweep;
 -(void)setColor:(NSColor *)newColor;
+-(void)openWindow;
 
+-(void)stopUpdates;
 
 @end

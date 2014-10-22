@@ -39,6 +39,8 @@
 
 
 
+- (IBAction)settingsTapped:(id)sender;
+
 
 
 
@@ -46,6 +48,7 @@
 
 - (IBAction)quiteAntumbra:(id)sender;
 
+@property (weak) IBOutlet NSButton *settingsButton;
 
 
 @end

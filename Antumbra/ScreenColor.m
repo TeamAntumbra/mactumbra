@@ -33,8 +33,9 @@ NSString * const kScreenDidFinishProcessingNotification = @"ScreenDidProcessNoti
     
     CGDirectDisplayID disp = (CGDirectDisplayID) [[[[NSScreen mainScreen]deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
     CGImageRef first = CGDisplayCreateImageForRect(disp, rect);
-    GPUImagePicture *pic = [[GPUImagePicture alloc]initWithCGImage:first];
     
+    
+    GPUImagePicture *pic = [[GPUImagePicture alloc]initWithCGImage:first];
     
     GPUImageAverageColor *average = [[GPUImageAverageColor alloc]init];
     
@@ -56,7 +57,6 @@ NSString * const kScreenDidFinishProcessingNotification = @"ScreenDidProcessNoti
   
 }
 +(void)augmentColorFromRect:(NSRect)rect{
-
     
     CGDirectDisplayID disp = (CGDirectDisplayID) [[[[NSScreen mainScreen]deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
     CGImageRef first = CGDisplayCreateImageForRect(disp, rect);

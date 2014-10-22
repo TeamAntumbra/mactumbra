@@ -26,6 +26,7 @@
 @synthesize HSVButton,RGBButtpn,DeepBlueButtpn;
 @synthesize tickSlider;
 @synthesize fastLabel,slowLabel;
+@synthesize settingsButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,7 +51,7 @@
     [RGBButtpn setMainTitle:@"Pulse"];
     [RGBButtpn setDescriptiveTitle:@"Pulse current color"];
     [DeepBlueButtpn setMainTitle:@"Fractal"];
-    [DeepBlueButtpn setDescriptiveTitle:@"Complementary color sweep"];
+    [DeepBlueButtpn setDescriptiveTitle:@"Complementary colors"];
     
     NSArray *buttons = @[mirrorButton,augmentButton,smoothMirrorButton,HSVButton,RGBButtpn,DeepBlueButtpn];
 
@@ -103,8 +104,13 @@
     [glowDevice  setSweepSpeed:slider.floatValue/100.0];
 }
 
+- (IBAction)settingsTapped:(id)sender {
+    [glowDevice openWindow];
+}
+
 -(void)receivedNotification:(NSNotification *)note {
     DescriptiveView *obj = [note object];
+    [self handleButtonTap:obj.mainTitle];
     
 }
 - (IBAction)controlBarChanged:(id)sender {
@@ -120,7 +126,7 @@
         [mirrorButton setHidden:YES];
         [augmentButton setHidden:YES];
         [smoothMirrorButton setHidden:YES];
-        
+        [settingsButton setHidden:YES];
         
     }
     if (currentSelectedIndex==2&&newIndex!=currentSelectedIndex) {
@@ -144,6 +150,7 @@
         [mirrorButton setHidden:NO];
         [augmentButton setHidden:NO];
         [smoothMirrorButton setHidden:NO];
+        [settingsButton setHidden:NO];
     }
     if (currentSelectedIndex==2) {
         [tickSlider setHidden:NO];
@@ -164,6 +171,9 @@
 
 -(void)mouseUp:(NSEvent *)theEvent{
     if (currentSelectedIndex == 0) {
+        if(glowDevice.isMirroring){
+            [glowDevice stopUpdates];
+        }
     NSPoint mouse = [theEvent.window mouseLocationOutsideOfEventStream];
     [glowDevice setColor:[self colorAtLocation:mouse]];
     [[self viewAtLocation:mouse]selectAnimate];
@@ -173,6 +183,9 @@
 -(void)mouseDragged:(NSEvent *)theEvent{
     
     if (currentSelectedIndex == 0) {
+        if(glowDevice.isMirroring){
+            [glowDevice stopUpdates];
+        }
         NSPoint mouse = [theEvent.window mouseLocationOutsideOfEventStream];
         [glowDevice setColor:[self colorAtLocation:mouse]];
         [[self viewAtLocation:mouse]antimateGlow];
@@ -225,7 +238,6 @@
     
 }
 -(void)handleButtonTap:(NSString *)buttonTitle{
-    
     if([buttonTitle isEqualToString:@"Mirror"]){
         [glowDevice mirror];
     }

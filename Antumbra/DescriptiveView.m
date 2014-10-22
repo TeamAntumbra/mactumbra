@@ -53,9 +53,6 @@ NSString * const kButtonTappedNotification = @"ButtonDidGetTappedNotification";
     
 }
 
--(void)updateTrackingAreas{
-    NSLog(@"%@",self.trackingAreas[0]);
-}
 
 - (void)drawRect:(NSRect)dirtyRect
 {
