@@ -20,6 +20,7 @@
 @property (nonatomic) AnCtx * context;
 @property (nonatomic) float sweepSpeed;
 @property (nonatomic) bool isMirroring;
+@property (nonatomic) float smoothFactor; // 1.0 means no smoothinh 0.1 means VERY smooth hardly any change
 
 
 

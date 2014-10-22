@@ -28,6 +28,7 @@
     CGRect samplingRect;
     
     BOOL on;
+    
 
     
     NSTimer *sweepTimer;
@@ -35,7 +36,7 @@
 @synthesize device;
 @synthesize context;
 @synthesize sweepSpeed;
-@synthesize isMirroring;
+@synthesize isMirroring, smoothFactor;
 
 typedef void * CGSConnection;
 extern OSStatus CGSSetWindowBackgroundBlurRadius(CGSConnection connection, NSInteger   windowNumber, int radius);
@@ -66,9 +67,11 @@ extern CGSConnection CGSDefaultConnectionForThread();
         green = 255;
         blue = 255;
         
-        currentBlue = 1.0;
-        currentRed = 1.0;
-        currentGreen = 1.0;
+        smoothFactor = 0.9;
+        
+        currentBlue = blue;
+        currentRed = red;
+        currentGreen = green;
         
         samplingRect = CGRectMake([ScreenColor width]*0.2, [ScreenColor height]*0.2, [ScreenColor width]*0.6, [ScreenColor height]*0.6);
         mirrorAreaWindow = [[NSWindow alloc]initWithContentRect:NSMakeRect([ScreenColor width]*0.2, [ScreenColor height]*0.2, [ScreenColor width]*0.6, [ScreenColor height]*0.6) styleMask:NSTitledWindowMask|NSResizableWindowMask backing:NSBackingStoreBuffered defer:NO];
@@ -155,8 +158,14 @@ extern CGSConnection CGSDefaultConnectionForThread();
 }
 
 -(void)updateBoard{
-    
-    AnDevice_SetRGB_S(context, device, (uint8_t)red,(uint8_t)green,(uint8_t)blue);
+    if (isMirroring) {
+        currentRed = (red*smoothFactor)+(currentRed*(1.0-smoothFactor));
+        currentBlue = (blue*smoothFactor)+(currentBlue*(1.0-smoothFactor));
+        currentGreen = (green*smoothFactor)+(currentGreen*(1.0-smoothFactor));
+        AnDevice_SetRGB_S(context, device, (uint8_t)currentRed,(uint8_t)currentGreen,(uint8_t)currentBlue);
+    }else{
+        AnDevice_SetRGB_S(context, device, (uint8_t)red,(uint8_t)green,(uint8_t)blue);
+    }
 }
 
 
@@ -172,6 +181,9 @@ extern CGSConnection CGSDefaultConnectionForThread();
 -(void)augment{
     
     [sweepTimer invalidate];
+    currentRed = red;
+    currentGreen = green;
+    currentBlue = blue;
     sweepTimer = [NSTimer scheduledTimerWithTimeInterval:1/30.0 target:self selector:@selector(augmentScreenTick) userInfo:nil repeats:YES];
     isMirroring = true;
 }
@@ -184,7 +196,7 @@ extern CGSConnection CGSDefaultConnectionForThread();
 -(void)sweep{
     [sweepTimer invalidate];
     sweepTimer = [NSTimer scheduledTimerWithTimeInterval:1/100.0 target:self selector:@selector(fastSweep) userInfo:nil repeats:YES];
-    isMirroring = true;
+    isMirroring = false;
 }
 -(void)stopUpdates{
     isMirroring = false;

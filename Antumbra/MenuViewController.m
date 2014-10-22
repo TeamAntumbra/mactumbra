@@ -256,16 +256,19 @@
 -(void)handleButtonTap:(NSString *)buttonTitle{
     if([buttonTitle isEqualToString:@"Mirror"]){
         for (AGlow *glow in glowDevices) {
+            [glow setSmoothFactor:0.7];
             [glow mirror];
         }
     }
     if([buttonTitle isEqualToString:@"Augment"]){
         for (AGlow *glow in glowDevices) {
+            [glow setSmoothFactor:0.5];
             [glow augment];
         }
     }
     if([buttonTitle isEqualToString:@"Smooth"]){
         for (AGlow *glow in glowDevices) {
+            [glow setSmoothFactor:0.1];
             [glow augment];
         }
     }
