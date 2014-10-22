@@ -89,8 +89,6 @@
             [foundDevices addObject:[[AGlow alloc]initWithAntumbraDevice:dev andContext:context]];
         }
         
-        foundDevice = [[AGlow alloc]initWithAntumbraDevice:dev andContext:context];
-        contentViewController.glowDevice = foundDevice;
         contentViewController.glowDevices = foundDevices;
         
     }
@@ -98,7 +96,7 @@
 }
 
 -(void)changeColor:(id)sender{
-    [foundDevice changeColor:sender];
+    [foundDevices[0] changeColor:sender];
 }
 - (void)appearanceValueChanged:(id)sender {
     if ([_statusItemPopup isActive]) {

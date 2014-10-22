@@ -61,11 +61,11 @@ extern CGSConnection CGSDefaultConnectionForThread();
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(colorProcessFinishedNotification:) name:kScreenDidFinishProcessingNotification object:nil];
         
         tick=0;
-        on = YES;
+        on = false;
         
-        red = 255;
-        green = 255;
-        blue = 255;
+        red = 0;
+        green = 0;
+        blue = 0;
         
         smoothFactor = 0.9;
         
@@ -92,10 +92,31 @@ extern CGSConnection CGSDefaultConnectionForThread();
         [mirrorAreaWindow.contentView addSubview:setButton];
         
         [self enableBlurForWindow:mirrorAreaWindow withColor:[NSColor colorWithCalibratedRed:0.757 green:0.967 blue:1.000 alpha:0.490]];
-        [self updateBoard];
+        
+        [self fadeToColor:[NSColor whiteColor] inTime:1.0];
 
     }
     return self;
+}
+
+-(void)fadeToColor:(NSColor *)col inTime:(NSTimeInterval)time{
+    col =  [col colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
+    int numSteps = 50;
+    NSTimeInterval stepTime = time/numSteps;
+    int newRed = (floorf(col.redComponent*255.0)-red)/numSteps;
+    int newGreen = (floorf(col.greenComponent*255.0)-green)/numSteps;
+    int newBlue = (floorf(col.blueComponent*255.0)-blue)/numSteps;
+    
+    for (int i = 0; i<numSteps; i++) {
+        red = red+newRed;
+        blue = blue+newBlue;
+        green = green+newGreen;
+        [self updateBoard];
+        [NSThread sleepForTimeInterval:stepTime];
+    }
+    
+    
+    
 }
 
 -(void)openWindow{
