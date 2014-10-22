@@ -37,12 +37,27 @@
     
     [self.view addTrackingArea:area];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receivedNotification:) name:kButtonTappedNotification object:nil];
+    [mirrorButton setMainTitle:@"Mirror"];
+    [mirrorButton setDescriptiveTitle:@"Best for work"];
+    [augmentButton setMainTitle:@"Augment"];
+    [augmentButton setDescriptiveTitle:@"Best for play"];
+    [smoothMirrorButton setMainTitle:@"Smooth"];
+    [smoothMirrorButton setDescriptiveTitle:@"Best for anything"];
+    
+    [HSVButton setMainTitle:@"Rainbow"];
+    [HSVButton setDescriptiveTitle:@"Rainbow color sweep"];
+    [RGBButtpn setMainTitle:@"Pulse"];
+    [RGBButtpn setDescriptiveTitle:@"Pulse current color"];
+    [DeepBlueButtpn setMainTitle:@"Fractal"];
+    [DeepBlueButtpn setDescriptiveTitle:@"Complementary color sweep"];
+    
+    NSArray *buttons = @[mirrorButton,augmentButton,smoothMirrorButton,HSVButton,RGBButtpn,DeepBlueButtpn];
 
-    
-   // [self setNextResponder:self.view];
-   // [self.view.subviews enumerateObjectsUsingBlock:^(NSView *subview, NSUInteger idx, BOOL *stop) { [subview setNextResponder:self]; }];
-    
-    
+    for (DescriptiveView *vie in buttons) {
+        [vie setLargeFont:[NSFont systemFontOfSize:20]];
+        [vie setSmallFont:[NSFont systemFontOfSize:14]];
+    }
     
     if (self) {
         currentSelectedIndex = 0;
@@ -88,18 +103,10 @@
     [glowDevice  setSweepSpeed:slider.floatValue/100.0];
 }
 
-- (IBAction)HSVSweepTapped:(id)sender {
-    [glowDevice sweep];
+-(void)receivedNotification:(NSNotification *)note {
+    DescriptiveView *obj = [note object];
+    
 }
-
-- (IBAction)deepBlueTapped:(id)sender {
-    [glowDevice sweep];
-}
-
-- (IBAction)rgbTapped:(id)sender {
-    [glowDevice sweep];
-}
-
 - (IBAction)controlBarChanged:(id)sender {
     NSUInteger newIndex = [(NSSegmentedControl *)sender selectedSegment];
     if (currentSelectedIndex==0&&newIndex!=currentSelectedIndex) {
@@ -217,6 +224,27 @@
     
     
 }
-
+-(void)handleButtonTap:(NSString *)buttonTitle{
+    
+    if([buttonTitle isEqualToString:@"Mirror"]){
+        [glowDevice mirror];
+    }
+    if([buttonTitle isEqualToString:@"Augment"]){
+        [glowDevice augment];
+    }
+    if([buttonTitle isEqualToString:@"Smooth"]){
+        [glowDevice augment];
+    }
+    if([buttonTitle isEqualToString:@"Rainbow"]){
+        [glowDevice sweep];
+    }
+    if([buttonTitle isEqualToString:@"Pulse"]){
+        [glowDevice sweep];
+    }
+    if([buttonTitle isEqualToString:@"Fractal"]){
+        [glowDevice sweep];
+    }
+   
+}
 
 @end

@@ -7,14 +7,16 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MenuViewController">
             <connections>
-                <outlet property="DeepBlueButtpn" destination="UX7-8D-YVV" id="juD-Rx-6ed"/>
-                <outlet property="HSVButton" destination="uD0-2l-QMd" id="W1n-1a-mfh"/>
-                <outlet property="RGBButtpn" destination="fvg-eg-JEa" id="lDh-vf-0UB"/>
+                <outlet property="DeepBlueButtpn" destination="98p-om-W3I" id="wou-rp-QYJ"/>
+                <outlet property="HSVButton" destination="n27-no-ZcN" id="xwn-q1-U7r"/>
+                <outlet property="RGBButtpn" destination="CVo-9c-vyq" id="CqC-33-ZKH"/>
+                <outlet property="augmentButton" destination="DwY-CL-xbU" id="1kp-Z7-QII"/>
                 <outlet property="colorWell" destination="7TU-c9-zfW" id="x4N-0a-Fhd"/>
                 <outlet property="controlBar" destination="q8M-3N-vdW" id="nNT-zY-IMV"/>
                 <outlet property="fastLabel" destination="0Rp-gG-eyw" id="aOH-xS-zvF"/>
                 <outlet property="mirrorButton" destination="mpr-JB-OZs" id="LVU-hs-tc3"/>
                 <outlet property="slowLabel" destination="rxN-E3-1I0" id="joe-Tv-FiS"/>
+                <outlet property="smoothMirrorButton" destination="8aW-Zu-Mve" id="E6x-MI-roN"/>
                 <outlet property="tickSlider" destination="bos-Q4-kP7" id="ubB-qe-1Hi"/>
                 <outlet property="view" destination="c22-O7-iKe" id="Meh-X2-0uB"/>
             </connections>
@@ -31,9 +33,9 @@
                     <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
                 <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q8M-3N-vdW">
-                    <rect key="frame" x="12" y="242" width="177" height="25"/>
+                    <rect key="frame" x="14" y="242" width="173" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <segmentedCell key="cell" alignment="left" style="texturedRounded" trackingMode="selectOne" id="5Zt-xl-qPc">
+                    <segmentedCell key="cell" alignment="left" style="texturedSquare" trackingMode="selectOne" id="5Zt-xl-qPc">
                         <font key="font" metaFont="system"/>
                         <segments>
                             <segment label="Color" imageScaling="none" selected="YES"/>
@@ -64,39 +66,6 @@
                         <action selector="tickSliderChanged:" target="-2" id="Oky-Zz-WNE"/>
                     </connections>
                 </slider>
-                <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uD0-2l-QMd">
-                    <rect key="frame" x="20" y="179" width="105" height="48"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="HSV" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sNb-hg-kBQ">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="HSVSweepTapped:" target="-2" id="JeS-vF-xVc"/>
-                    </connections>
-                </button>
-                <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvg-eg-JEa">
-                    <rect key="frame" x="20" y="114" width="105" height="48"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="RGB" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GOz-Ik-1pK">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="rgbTapped:" target="-2" id="kA0-Sl-3lU"/>
-                    </connections>
-                </button>
-                <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UX7-8D-YVV">
-                    <rect key="frame" x="20" y="49" width="105" height="48"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="Deep Blue" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ALM-u7-pgx">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="deepBlueTapped:" target="-2" id="61I-Cs-291"/>
-                    </connections>
-                </button>
                 <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rxN-E3-1I0">
                     <rect key="frame" x="158" y="47" width="33" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -119,22 +88,27 @@
                     <rect key="frame" x="20" y="179" width="160" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
+                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DwY-CL-xbU" customClass="DescriptiveView">
+                    <rect key="frame" x="20" y="115" width="160" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8aW-Zu-Mve" customClass="DescriptiveView">
+                    <rect key="frame" x="20" y="49" width="160" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n27-no-ZcN" customClass="DescriptiveView">
+                    <rect key="frame" x="20" y="179" width="105" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CVo-9c-vyq" customClass="DescriptiveView">
+                    <rect key="frame" x="20" y="114" width="105" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="98p-om-W3I" customClass="DescriptiveView">
+                    <rect key="frame" x="20" y="49" width="105" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
             </subviews>
         </customView>
-        <toolbar implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="rEB-Gb-Upq">
-            <allowedToolbarItems>
-                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="Kwz-V0-cZq"/>
-                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="B8b-sE-dcS"/>
-                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="gJr-Tv-LAp"/>
-                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="hCO-5m-6lO"/>
-                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="tRR-RA-rGW"/>
-            </allowedToolbarItems>
-            <defaultToolbarItems>
-                <toolbarItem reference="Kwz-V0-cZq"/>
-                <toolbarItem reference="B8b-sE-dcS"/>
-                <toolbarItem reference="tRR-RA-rGW"/>
-                <toolbarItem reference="gJr-Tv-LAp"/>
-            </defaultToolbarItems>
-        </toolbar>
     </objects>
 </document>

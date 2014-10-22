@@ -27,9 +27,9 @@
 @property (weak) IBOutlet DescriptiveView *augmentButton;
 @property (weak) IBOutlet DescriptiveView *smoothMirrorButton;
 @property (weak) IBOutlet NSSlider *tickSlider;
-@property (weak) IBOutlet NSButton *HSVButton;
-@property (weak) IBOutlet NSButton *RGBButtpn;
-@property (weak) IBOutlet NSButton *DeepBlueButtpn;
+@property (weak) IBOutlet DescriptiveView *HSVButton;
+@property (weak) IBOutlet DescriptiveView *RGBButtpn;
+@property (weak) IBOutlet DescriptiveView *DeepBlueButtpn;
 @property (weak) IBOutlet NSTextField *slowLabel;
 @property (weak) IBOutlet NSTextField *fastLabel;
 
@@ -38,9 +38,7 @@
 - (IBAction)tickSliderChanged:(id)sender;
 
 
-- (IBAction)HSVSweepTapped:(id)sender;
-- (IBAction)deepBlueTapped:(id)sender;
-- (IBAction)rgbTapped:(id)sender;
+
 
 
 

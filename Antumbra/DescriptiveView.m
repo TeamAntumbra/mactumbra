@@ -8,15 +8,18 @@
 
 #import "DescriptiveView.h"
 
+NSString * const kButtonTappedNotification = @"ButtonDidGetTappedNotification";
+
 @implementation DescriptiveView {
     BOOL selected;
     BOOL inside;
     NSTrackingArea *trackingArea;
     BOOL setup;
+    
 
 }
 
-@synthesize descriptiveTitle,mainTitle;
+@synthesize descriptiveTitle,mainTitle,smallFont,largeFont;
 
 -(void)awakeFromNib{
     [self setUpAll];
@@ -44,6 +47,8 @@
     inside = false;
     mainTitle = @"Tittle";
     descriptiveTitle = @"Short Description";
+    smallFont = [NSFont systemFontOfSize:18];
+    largeFont = [NSFont systemFontOfSize:22];
 
     
 }
@@ -68,47 +73,45 @@
     
     
     NSString *toBeWritten;
-    int fontSize;
+    NSFont *fontToBeUsed;
     NSDictionary *attributes;
     if (inside) {
         toBeWritten = descriptiveTitle;
-        fontSize = 16;
+        fontToBeUsed = smallFont;
       
     }else{
         toBeWritten = mainTitle;
-        fontSize = 22;
+        fontToBeUsed = largeFont;
     }
     
-    attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont systemFontOfSize:fontSize], NSFontAttributeName,[NSColor colorWithCalibratedWhite:0.888 alpha:1.0], NSForegroundColorAttributeName, nil];
+    attributes = [NSDictionary dictionaryWithObjectsAndKeys:fontToBeUsed, NSFontAttributeName,[NSColor colorWithCalibratedWhite:0.888 alpha:1.0], NSForegroundColorAttributeName, nil];
    
     
     NSAttributedString *titleString = [[NSAttributedString alloc]initWithString:toBeWritten attributes:attributes];
     NSSize textSize = [titleString size];
+    
     
     NSPoint drawPoint = NSMakePoint((self.bounds.size.width/2.0)-(textSize.width/2.0), (self.bounds.size.height/2.0)-(textSize.height/2.0));
     
     [titleString drawAtPoint:drawPoint];
 }
 
-
-
 -(void)mouseEntered:(NSEvent *)theEvent{
-
     inside = true;
     [self setNeedsDisplay:YES];
 }
 
 -(void)mouseExited:(NSEvent *)theEvent{
-
     inside = false;
     [self setNeedsDisplay:YES];
-    
 }
 
 -(void)mouseDown:(NSEvent *)theEvent{
     selected = true;
     [self setNeedsDisplay:YES];
+    [[NSNotificationCenter defaultCenter]postNotificationName:kButtonTappedNotification object:self];
 }
+
 -(void)mouseUp:(NSEvent *)theEvent{
     selected = false;
     [self setNeedsDisplay:YES];
