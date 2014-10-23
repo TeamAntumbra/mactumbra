@@ -170,6 +170,7 @@ extern CGSConnection CGSDefaultConnectionForThread();
 
 -(void)setColor:(NSColor *)newColor{
     CGFloat r,g,b;
+    newColor = [newColor colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
     [newColor getRed:&r green:&g blue:&b alpha:NULL];
     red = floorf(r*255.0);
     green = floorf(g*255.0);
@@ -193,6 +194,7 @@ extern CGSConnection CGSDefaultConnectionForThread();
 
 -(void)colorProcessFinishedNotification:(NSNotification *)notification{
     NSColor *color = [notification object];
+    color =  [color colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
     red = floor(color.redComponent*255.0);
     green = floor(color.greenComponent*255.0);
     blue = floor(color.blueComponent*255.0);
