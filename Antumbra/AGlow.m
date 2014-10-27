@@ -37,6 +37,7 @@
 @synthesize context;
 @synthesize sweepSpeed;
 @synthesize isMirroring, smoothFactor;
+@synthesize isFading;
 
 typedef void * CGSConnection;
 extern OSStatus CGSSetWindowBackgroundBlurRadius(CGSConnection connection, NSInteger   windowNumber, int radius);
@@ -58,6 +59,7 @@ extern CGSConnection CGSDefaultConnectionForThread();
         context = con;
         sweepSpeed = 0.2;
         isMirroring = false;
+        isFading = false;
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(colorProcessFinishedNotification:) name:kScreenDidFinishProcessingNotification object:nil];
         
         tick=0;
@@ -115,8 +117,6 @@ extern CGSConnection CGSDefaultConnectionForThread();
         [NSThread sleepForTimeInterval:stepTime];
     }
     
-    
-    
 }
 
 -(void)openWindow{
@@ -134,13 +134,12 @@ extern CGSConnection CGSDefaultConnectionForThread();
 
 
 -(void)augmentScreenTick{
-    [ScreenColor augmentColorFromRect:samplingRect];
-    
+    [self augmentColorFromRect:samplingRect];
 }
 
 
 -(void)screenCaptureTick{
-    [ScreenColor colorFromRect:samplingRect];
+    [self colorFromRect:samplingRect];
 }
 
 
@@ -209,22 +208,94 @@ extern CGSConnection CGSDefaultConnectionForThread();
     currentBlue = blue;
     sweepTimer = [NSTimer scheduledTimerWithTimeInterval:1/30.0 target:self selector:@selector(augmentScreenTick) userInfo:nil repeats:YES];
     isMirroring = true;
+    isFading = false;
 }
 -(void)mirror{
     [sweepTimer invalidate];
     sweepTimer = [NSTimer scheduledTimerWithTimeInterval:1/30.0 target:self selector:@selector(screenCaptureTick) userInfo:nil repeats:YES];
     isMirroring = true;
+    isFading = false;
     
 }
 -(void)sweep{
     [sweepTimer invalidate];
     sweepTimer = [NSTimer scheduledTimerWithTimeInterval:1/100.0 target:self selector:@selector(fastSweep) userInfo:nil repeats:YES];
     isMirroring = false;
+    isFading = true;
 }
 -(void)stopUpdates{
     isMirroring = false;
+    isFading = false;
      [sweepTimer invalidate];
 }
+
+
+-(void)colorFromRect:(NSRect)rect{
+    
+    CGDirectDisplayID disp = (CGDirectDisplayID) [[[[NSScreen mainScreen]deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
+    CGImageRef first = CGDisplayCreateImageForRect(disp, rect);
+    
+    
+    GPUImagePicture *pic = [[GPUImagePicture alloc]initWithCGImage:first];
+    
+    GPUImageAverageColor *average = [[GPUImageAverageColor alloc]init];
+    
+    
+    [pic addTarget:average];
+    
+    
+    [average setColorAverageProcessingFinishedBlock:^(CGFloat r, CGFloat g, CGFloat b, CGFloat a, CMTime time) {
+        
+        
+        red = floor(r*255.0);
+        green = floor(g*255.0);
+        blue = floor(b*255.0);
+        [self updateBoard];
+        
+    }];
+    
+    
+    [pic processImage];
+    
+    CFRelease(first);
+    
+}
+
+-(void)augmentColorFromRect:(NSRect)rect{
+    
+    CGDirectDisplayID disp = (CGDirectDisplayID) [[[[NSScreen mainScreen]deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
+    CGImageRef first = CGDisplayCreateImageForRect(disp, rect);
+    GPUImagePicture *pic = [[GPUImagePicture alloc]initWithCGImage:first];
+    
+    GPUImageSaturationFilter *sat = [[GPUImageSaturationFilter alloc]init];
+    sat.saturation = 2.0;
+    
+    
+    GPUImageAverageColor *average = [[GPUImageAverageColor alloc]init];
+    
+    
+    [pic addTarget:sat];
+    
+    [sat addTarget:average];
+    
+    
+    [average setColorAverageProcessingFinishedBlock:^(CGFloat r, CGFloat g, CGFloat b, CGFloat a, CMTime time) {
+        
+        red = floor(r*255.0);
+        green = floor(g*255.0);
+        blue = floor(b*255.0);
+        [self updateBoard];
+        
+    }];
+    
+    
+    [pic processImage];
+    
+    CFRelease(first);
+    
+}
+
+
 
 
 

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <libantumbra/libantumbra.h>
+#import <GPUImage/GPUImage.h>
 #import "ScreenColor.h"
 #import "hsv.h"
 
@@ -20,6 +21,7 @@
 @property (nonatomic) AnCtx * context;
 @property (nonatomic) float sweepSpeed;
 @property (nonatomic) bool isMirroring;
+@property (nonatomic) bool isFading;
 @property (nonatomic) float smoothFactor; // 1.0 means no smoothinh 0.1 means VERY smooth hardly any change
 
 
@@ -33,6 +35,6 @@
 -(void)setColor:(NSColor *)newColor;
 -(void)openWindow;
 
--(void)stopUpdates;
+-(void)stopUpdates; // stop all updates from things like mirroring and fading basically set antumbra into static color mode
 
 @end

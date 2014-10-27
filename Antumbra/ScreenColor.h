@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <GPUImage/GPUImage.h>
+#import "AGlow.h"
 
 
 extern NSString * const kScreenDidFinishProcessingNotification;
