@@ -159,6 +159,8 @@ extern CGSConnection CGSDefaultConnectionForThread();
 
 -(void)changeColor:(id)sender{
     [sweepTimer invalidate];
+    isMirroring = false;
+    isFading = false;
     NSColor *currentColor = [[NSColorPanel sharedColorPanel] color];
     red = floor(currentColor.redComponent*255.0);
     green = floor(currentColor.greenComponent*255.0);
@@ -246,10 +248,26 @@ extern CGSConnection CGSDefaultConnectionForThread();
     
     [average setColorAverageProcessingFinishedBlock:^(CGFloat r, CGFloat g, CGFloat b, CGFloat a, CMTime time) {
         
-        
         red = floor(r*255.0);
         green = floor(g*255.0);
         blue = floor(b*255.0);
+        
+        /*
+        float outH,outS,outV;
+        
+        rgb2hsv(red, green, blue, &outH, &outS, &outV);
+        
+        outS = outS * 1.2 > 1.0 ? 1.0 : outS * 1.5;
+        
+        uint8_t oR,oG,oB;
+        
+        hsv2rgb(outH, outS, outV, &oR, &oG, &oB);
+        
+        red = oR;
+        green = oG;
+        blue = oB;
+        */
+        
         [self updateBoard];
         
     }];

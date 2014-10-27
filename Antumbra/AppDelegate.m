@@ -96,7 +96,9 @@
 }
 
 -(void)changeColor:(id)sender{
-    [foundDevices[0] changeColor:sender];
+    for(AGlow *glowDev in foundDevices){
+        [glowDev changeColor:sender];
+    }
 }
 - (void)appearanceValueChanged:(id)sender {
     if ([_statusItemPopup isActive]) {
