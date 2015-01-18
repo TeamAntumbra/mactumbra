@@ -28,8 +28,8 @@
     CGRect samplingRect;
     
     BOOL on;
+    AnLightInfo inf;
     
-
     
     NSTimer *sweepTimer;
 }
@@ -63,7 +63,7 @@ extern CGSConnection CGSDefaultConnectionForThread();
         
         tick=0;
         on = false;
-        
+        AnLight_Info_S(context, device, &inf);
         red = 0;
         green = 0;
         blue = 0;
@@ -104,9 +104,9 @@ extern CGSConnection CGSDefaultConnectionForThread();
     col =  [col colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
     int numSteps = 50;
     NSTimeInterval stepTime = time/numSteps;
-    int newRed = (floorf(col.redComponent*255.0)-red)/numSteps;
-    int newGreen = (floorf(col.greenComponent*255.0)-green)/numSteps;
-    int newBlue = (floorf(col.blueComponent*255.0)-blue)/numSteps;
+    int newRed = (floorf(col.redComponent*65535.0)-red)/numSteps;
+    int newGreen = (floorf(col.greenComponent*65535.0)-green)/numSteps;
+    int newBlue = (floorf(col.blueComponent*65535.0)-blue)/numSteps;
     
     for (int i = 0; i<numSteps; i++) {
         red = red+newRed;
@@ -161,9 +161,9 @@ extern CGSConnection CGSDefaultConnectionForThread();
     isMirroring = false;
     isFading = false;
     NSColor *currentColor = [[NSColorPanel sharedColorPanel] color];
-    red = floor(currentColor.redComponent*255.0);
-    green = floor(currentColor.greenComponent*255.0);
-    blue = floor(currentColor.blueComponent*255.0);
+    red = floor(currentColor.redComponent*65535.0);
+    green = floor(currentColor.greenComponent*65535.0);
+    blue = floor(currentColor.blueComponent*65535.0);
     [self updateBoard];
 }
 
@@ -172,9 +172,9 @@ extern CGSConnection CGSDefaultConnectionForThread();
     CGFloat r,g,b;
     newColor = [newColor colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
     [newColor getRed:&r green:&g blue:&b alpha:NULL];
-    red = floorf(r*255.0);
-    green = floorf(g*255.0);
-    blue = floorf(b*255.0);
+    red = floorf(r*65535.0);
+    green = floorf(g*65535.0);
+    blue = floorf(b*65535.0);
     [self updateBoard];
     
 }
@@ -184,9 +184,14 @@ extern CGSConnection CGSDefaultConnectionForThread();
         currentRed = (red*smoothFactor)+(currentRed*(1.0-smoothFactor));
         currentBlue = (blue*smoothFactor)+(currentBlue*(1.0-smoothFactor));
         currentGreen = (green*smoothFactor)+(currentGreen*(1.0-smoothFactor));
-        AnDevice_SetRGB_S(context, device, (uint8_t)currentRed,(uint8_t)currentGreen,(uint8_t)currentBlue);
+        
+       
+        AnLight_Set_S(context, device, &inf, (uint16_t)currentRed, (uint16_t)currentGreen, (uint16_t)currentBlue);
+        
     }else{
-        AnDevice_SetRGB_S(context, device, (uint8_t)red,(uint8_t)green,(uint8_t)blue);
+       
+        
+        AnLight_Set_S(context, device, &inf, (uint16_t)red, (uint16_t)green, (uint16_t)blue);
     }
 }
 
@@ -195,9 +200,9 @@ extern CGSConnection CGSDefaultConnectionForThread();
 -(void)colorProcessFinishedNotification:(NSNotification *)notification{
     NSColor *color = [notification object];
     color =  [color colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
-    red = floor(color.redComponent*255.0);
-    green = floor(color.greenComponent*255.0);
-    blue = floor(color.blueComponent*255.0);
+    red = floor(color.redComponent*65535.0);
+    green = floor(color.greenComponent*65535.0);
+    blue = floor(color.blueComponent*65535.0);
     [self updateBoard];
 }
 
@@ -248,9 +253,9 @@ extern CGSConnection CGSDefaultConnectionForThread();
     
     [average setColorAverageProcessingFinishedBlock:^(CGFloat r, CGFloat g, CGFloat b, CGFloat a, CMTime time) {
         
-        red = floor(r*255.0);
-        green = floor(g*255.0);
-        blue = floor(b*255.0);
+        red = floor(r*65535.0);
+        green = floor(g*65535.0);
+        blue = floor(b*65535.0);
         
         /*
         float outH,outS,outV;
@@ -299,9 +304,9 @@ extern CGSConnection CGSDefaultConnectionForThread();
     
     [average setColorAverageProcessingFinishedBlock:^(CGFloat r, CGFloat g, CGFloat b, CGFloat a, CMTime time) {
         
-        red = floor(r*255.0);
-        green = floor(g*255.0);
-        blue = floor(b*255.0);
+        red = floor(r*65535.0);
+        green = floor(g*65535.0);
+        blue = floor(b*65535.0);
         [self updateBoard];
         
     }];

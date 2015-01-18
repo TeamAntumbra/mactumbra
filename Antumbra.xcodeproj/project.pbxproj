@@ -10,6 +10,8 @@
 		011351B519A142870056A412 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011351B419A142870056A412 /* GPUImage.framework */; };
 		0114C79219CF748100A5BE24 /* iconGrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0114C78E19CF748100A5BE24 /* iconGrey@2x.png */; };
 		0114C79319CF748100A5BE24 /* iconGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 0114C78F19CF748100A5BE24 /* iconGrey.png */; };
+		012DCCD51A6B51AC000C849D /* libantumbra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012DCCD41A6B51AC000C849D /* libantumbra.framework */; };
+		012DCCD61A6B59C7000C849D /* libantumbra.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 012DCCD41A6B51AC000C849D /* libantumbra.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01486F1D195CDE2A00F38387 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01486F1C195CDE2A00F38387 /* Cocoa.framework */; };
 		01486F27195CDE2A00F38387 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01486F25195CDE2A00F38387 /* InfoPlist.strings */; };
 		01486F29195CDE2A00F38387 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F28195CDE2A00F38387 /* main.m */; };
@@ -29,8 +31,6 @@
 		01EECC3519CF1A73005B4DDC /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EECC3419CF1A73005B4DDC /* MenuView.xib */; };
 		01EECC3819CF1B04005B4DDC /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EECC3719CF1B04005B4DDC /* MenuViewController.m */; };
 		01FF7DB719D115FA00C3A42D /* AGlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FF7DB619D115FA00C3A42D /* AGlow.m */; };
-		226F092A19A58A2C009CADB2 /* libantumbra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226F092919A58A2C009CADB2 /* libantumbra.framework */; };
-		226F092B19A58A39009CADB2 /* libantumbra.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 226F092919A58A2C009CADB2 /* libantumbra.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,7 +40,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				226F092B19A58A39009CADB2 /* libantumbra.framework in CopyFiles */,
+				012DCCD61A6B59C7000C849D /* libantumbra.framework in CopyFiles */,
 				01BE6D9C19A143B2008F72F7 /* GPUImage.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +51,7 @@
 		011351B419A142870056A412 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
 		0114C78E19CF748100A5BE24 /* iconGrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconGrey@2x.png"; sourceTree = "<group>"; };
 		0114C78F19CF748100A5BE24 /* iconGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconGrey.png; sourceTree = "<group>"; };
+		012DCCD41A6B51AC000C849D /* libantumbra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libantumbra.framework; sourceTree = "<group>"; };
 		01486F19195CDE2A00F38387 /* Antumbra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Antumbra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01486F1C195CDE2A00F38387 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		01486F1F195CDE2A00F38387 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -85,7 +86,6 @@
 		01EECC3719CF1B04005B4DDC /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		01FF7DB519D115FA00C3A42D /* AGlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGlow.h; sourceTree = "<group>"; };
 		01FF7DB619D115FA00C3A42D /* AGlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGlow.m; sourceTree = "<group>"; };
-		226F092919A58A2C009CADB2 /* libantumbra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libantumbra.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				226F092A19A58A2C009CADB2 /* libantumbra.framework in Frameworks */,
+				012DCCD51A6B51AC000C849D /* libantumbra.framework in Frameworks */,
 				01486F1D195CDE2A00F38387 /* Cocoa.framework in Frameworks */,
 				011351B519A142870056A412 /* GPUImage.framework in Frameworks */,
 			);
@@ -131,7 +131,7 @@
 		01486F1B195CDE2A00F38387 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				226F092919A58A2C009CADB2 /* libantumbra.framework */,
+				012DCCD41A6B51AC000C849D /* libantumbra.framework */,
 				011351B419A142870056A412 /* GPUImage.framework */,
 				01486F1C195CDE2A00F38387 /* Cocoa.framework */,
 				01486F1E195CDE2A00F38387 /* Other Frameworks */,
