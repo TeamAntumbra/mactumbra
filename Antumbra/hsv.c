@@ -8,7 +8,7 @@ void hsv2rgb(float H, float S, float V, uint8_t *R, uint8_t *G, uint8_t *B)
 {
     float Hp = fmodf(H, 360) / 60;
     float C = V * S;
-    float X = 1 - fabsf(fmodf(Hp, 2) - 1);
+    float X = C * (1 - fabsf(fmodf(Hp, 2) - 1));
     float R1, G1, B1;
     float m = V - C;
     if (RANGE(0, Hp, 1)) {
