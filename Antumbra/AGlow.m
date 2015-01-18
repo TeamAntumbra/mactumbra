@@ -45,9 +45,8 @@ extern CGSConnection CGSDefaultConnectionForThread();
 
 - (void)enableBlurForWindow:(NSWindow *)window  withColor:(NSColor *)coler
 {
-    [window setOpaque:NO];
+    [window setOpaque:YES];
     window.backgroundColor = coler;
-    
     CGSConnection connection = CGSDefaultConnectionForThread();
     CGSSetWindowBackgroundBlurRadius(connection, [window windowNumber], 20);
 }
@@ -230,6 +229,7 @@ extern CGSConnection CGSDefaultConnectionForThread();
     isFading = false;
      [sweepTimer invalidate];
 }
+
 
 
 -(void)colorFromRect:(NSRect)rect{

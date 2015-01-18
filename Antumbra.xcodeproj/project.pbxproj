@@ -19,6 +19,8 @@
 		01486F5A195CDE4700F38387 /* hsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 01486F52195CDE4700F38387 /* hsv.c */; };
 		015B803A19E39F4900883DC3 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 015B803919E39F4900883DC3 /* icon.png */; };
 		0169245119CF84EB003ADE00 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0169245019CF84EB003ADE00 /* MainMenu.xib */; };
+		0187DAC71A54A5D70067AB50 /* GlowDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0187DAC61A54A5D70067AB50 /* GlowDevice.m */; };
+		0187DACA1A54B21B0067AB50 /* FlatSegmentedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0187DAC91A54B21B0067AB50 /* FlatSegmentedView.m */; };
 		018AB38519D9221B006CA84D /* ReactiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB38419D9221B006CA84D /* ReactiveView.m */; };
 		01B164FE19F1E73D0034E324 /* DescriptiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B164FD19F1E73D0034E324 /* DescriptiveView.m */; };
 		01B28D29199C412400F2117D /* ScreenColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B28D28199C412400F2117D /* ScreenColor.m */; };
@@ -66,6 +68,10 @@
 		01486F53195CDE4700F38387 /* hsv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hsv.h; sourceTree = "<group>"; };
 		015B803919E39F4900883DC3 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		0169245019CF84EB003ADE00 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		0187DAC51A54A5D70067AB50 /* GlowDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlowDevice.h; sourceTree = "<group>"; };
+		0187DAC61A54A5D70067AB50 /* GlowDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlowDevice.m; sourceTree = "<group>"; };
+		0187DAC81A54B21B0067AB50 /* FlatSegmentedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatSegmentedView.h; sourceTree = "<group>"; };
+		0187DAC91A54B21B0067AB50 /* FlatSegmentedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatSegmentedView.m; sourceTree = "<group>"; };
 		018AB38319D9221B006CA84D /* ReactiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReactiveView.h; sourceTree = "<group>"; };
 		018AB38419D9221B006CA84D /* ReactiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReactiveView.m; sourceTree = "<group>"; };
 		01B164FC19F1E73D0034E324 /* DescriptiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptiveView.h; sourceTree = "<group>"; };
@@ -150,19 +156,23 @@
 				01486F2F195CDE2A00F38387 /* AppDelegate.m */,
 				01FF7DB519D115FA00C3A42D /* AGlow.h */,
 				01FF7DB619D115FA00C3A42D /* AGlow.m */,
+				0187DAC51A54A5D70067AB50 /* GlowDevice.h */,
+				0187DAC61A54A5D70067AB50 /* GlowDevice.m */,
 				01EECC3419CF1A73005B4DDC /* MenuView.xib */,
 				018AB38319D9221B006CA84D /* ReactiveView.h */,
 				018AB38419D9221B006CA84D /* ReactiveView.m */,
 				01B164FC19F1E73D0034E324 /* DescriptiveView.h */,
 				01B164FD19F1E73D0034E324 /* DescriptiveView.m */,
+				0187DAC81A54B21B0067AB50 /* FlatSegmentedView.h */,
+				0187DAC91A54B21B0067AB50 /* FlatSegmentedView.m */,
 				01EECC3619CF1B04005B4DDC /* MenuViewController.h */,
 				01EECC3719CF1B04005B4DDC /* MenuViewController.m */,
 				0169245019CF84EB003ADE00 /* MainMenu.xib */,
 				01B28D27199C412400F2117D /* ScreenColor.h */,
 				01B28D28199C412400F2117D /* ScreenColor.m */,
-				0140C10219E3602F00BC30D7 /* StatusItem */,
 				01486F52195CDE4700F38387 /* hsv.c */,
 				01486F53195CDE4700F38387 /* hsv.h */,
+				0140C10219E3602F00BC30D7 /* StatusItem */,
 				01486F34195CDE2A00F38387 /* Images.xcassets */,
 				01486F23195CDE2A00F38387 /* Supporting Files */,
 			);
@@ -259,6 +269,8 @@
 				01EECC3819CF1B04005B4DDC /* MenuViewController.m in Sources */,
 				01486F29195CDE2A00F38387 /* main.m in Sources */,
 				01FF7DB719D115FA00C3A42D /* AGlow.m in Sources */,
+				0187DAC71A54A5D70067AB50 /* GlowDevice.m in Sources */,
+				0187DACA1A54B21B0067AB50 /* FlatSegmentedView.m in Sources */,
 				01EECC3319CF19DB005B4DDC /* AXStatusItemPopup.m in Sources */,
 				01486F5A195CDE4700F38387 /* hsv.c in Sources */,
 				01B164FE19F1E73D0034E324 /* DescriptiveView.m in Sources */,

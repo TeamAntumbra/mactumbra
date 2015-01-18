@@ -30,11 +30,9 @@
 
 -(void)augment;
 -(void)mirror;
-
 -(void)sweep;
 -(void)setColor:(NSColor *)newColor;
 -(void)openWindow;
-
 -(void)stopUpdates; // stop all updates from things like mirroring and fading basically set antumbra into static color mode
 
 @end
