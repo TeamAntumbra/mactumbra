@@ -10,27 +10,17 @@
 
 
 @implementation AGlow{
-
-    
     float red;
     float green;
     float blue;
-    
-    
     float currentRed;
     float currentGreen;
     float currentBlue;
-    
     int tick;
-    
-    
     NSWindow *mirrorAreaWindow;
     CGRect samplingRect;
-    
     BOOL on;
     AnLightInfo inf;
-    
-    
     NSTimer *sweepTimer;
 }
 @synthesize device;
@@ -38,7 +28,6 @@
 @synthesize sweepSpeed;
 @synthesize isMirroring, smoothFactor;
 @synthesize isFading;
-
 typedef void * CGSConnection;
 extern OSStatus CGSSetWindowBackgroundBlurRadius(CGSConnection connection, NSInteger   windowNumber, int radius);
 extern CGSConnection CGSDefaultConnectionForThread();
@@ -60,20 +49,16 @@ extern CGSConnection CGSDefaultConnectionForThread();
         isMirroring = false;
         isFading = false;
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(colorProcessFinishedNotification:) name:kScreenDidFinishProcessingNotification object:nil];
-        
         tick=0;
         on = false;
         AnLight_Info_S(context, device, &inf);
         red = 0;
         green = 0;
         blue = 0;
-        
         smoothFactor = 0.9;
-        
         currentBlue = blue;
         currentRed = red;
         currentGreen = green;
-        
         samplingRect = CGRectMake([ScreenColor width]*0.2, [ScreenColor height]*0.2, [ScreenColor width]*0.6, [ScreenColor height]*0.6);
         mirrorAreaWindow = [[NSWindow alloc]initWithContentRect:NSMakeRect([ScreenColor width]*0.2, [ScreenColor height]*0.2, [ScreenColor width]*0.6, [ScreenColor height]*0.6) styleMask:NSTitledWindowMask|NSResizableWindowMask backing:NSBackingStoreBuffered defer:NO];
         mirrorAreaWindow.backgroundColor = [NSColor whiteColor];
@@ -91,11 +76,8 @@ extern CGSConnection CGSDefaultConnectionForThread();
         [setButton setAlphaValue:1.0];
         [setButton setAutoresizingMask:NSViewMinXMargin | NSViewMaxXMargin | NSViewMinYMargin | NSViewMaxYMargin];
         [mirrorAreaWindow.contentView addSubview:setButton];
-        
         [self enableBlurForWindow:mirrorAreaWindow withColor:[NSColor colorWithCalibratedRed:0.757 green:0.967 blue:1.000 alpha:0.490]];
-        
         [self fadeToColor:[NSColor whiteColor] inTime:1.0];
-
     }
     return self;
 }
@@ -119,11 +101,9 @@ extern CGSConnection CGSDefaultConnectionForThread();
 }
 
 -(void)openWindow{
-    
     [self enableBlurForWindow:mirrorAreaWindow withColor:[NSColor colorWithCalibratedRed:0.185 green:0.210 blue:1.000 alpha:0.500]];
     [mirrorAreaWindow setIsVisible:YES];
 }
-
 
 
 -(void)mirrorAreaSelected{
@@ -141,7 +121,6 @@ extern CGSConnection CGSDefaultConnectionForThread();
     [self colorFromRect:samplingRect];
 }
 
-
 -(void)fastSweep{
     uint8_t reed;
     uint8_t bluee;
@@ -154,8 +133,6 @@ extern CGSConnection CGSDefaultConnectionForThread();
     [self updateBoard];
 }
 
-
-
 -(void)changeColor:(id)sender{
     [sweepTimer invalidate];
     isMirroring = false;
@@ -166,7 +143,6 @@ extern CGSConnection CGSDefaultConnectionForThread();
     blue = floor(currentColor.blueComponent*65535.0);
     [self updateBoard];
 }
-
 
 -(void)setColor:(NSColor *)newColor{
     CGFloat r,g,b;
