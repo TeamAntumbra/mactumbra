@@ -10,8 +10,8 @@
 		011351B519A142870056A412 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011351B419A142870056A412 /* GPUImage.framework */; };
 		0114C79219CF748100A5BE24 /* iconGrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0114C78E19CF748100A5BE24 /* iconGrey@2x.png */; };
 		0114C79319CF748100A5BE24 /* iconGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 0114C78F19CF748100A5BE24 /* iconGrey.png */; };
-		012DCCD51A6B51AC000C849D /* libantumbra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012DCCD41A6B51AC000C849D /* libantumbra.framework */; };
-		012DCCD61A6B59C7000C849D /* libantumbra.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 012DCCD41A6B51AC000C849D /* libantumbra.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		013DD4EE1A81A3020056BE7A /* libantumbra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013DD4ED1A81A3020056BE7A /* libantumbra.framework */; };
+		013DD4EF1A81A3100056BE7A /* libantumbra.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 013DD4ED1A81A3020056BE7A /* libantumbra.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01486F1D195CDE2A00F38387 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01486F1C195CDE2A00F38387 /* Cocoa.framework */; };
 		01486F27195CDE2A00F38387 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01486F25195CDE2A00F38387 /* InfoPlist.strings */; };
 		01486F29195CDE2A00F38387 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F28195CDE2A00F38387 /* main.m */; };
@@ -40,7 +40,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				012DCCD61A6B59C7000C849D /* libantumbra.framework in CopyFiles */,
+				013DD4EF1A81A3100056BE7A /* libantumbra.framework in CopyFiles */,
 				01BE6D9C19A143B2008F72F7 /* GPUImage.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,7 +51,7 @@
 		011351B419A142870056A412 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
 		0114C78E19CF748100A5BE24 /* iconGrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconGrey@2x.png"; sourceTree = "<group>"; };
 		0114C78F19CF748100A5BE24 /* iconGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconGrey.png; sourceTree = "<group>"; };
-		012DCCD41A6B51AC000C849D /* libantumbra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libantumbra.framework; sourceTree = "<group>"; };
+		013DD4ED1A81A3020056BE7A /* libantumbra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libantumbra.framework; sourceTree = "<group>"; };
 		01486F19195CDE2A00F38387 /* Antumbra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Antumbra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01486F1C195CDE2A00F38387 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		01486F1F195CDE2A00F38387 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				012DCCD51A6B51AC000C849D /* libantumbra.framework in Frameworks */,
+				013DD4EE1A81A3020056BE7A /* libantumbra.framework in Frameworks */,
 				01486F1D195CDE2A00F38387 /* Cocoa.framework in Frameworks */,
 				011351B519A142870056A412 /* GPUImage.framework in Frameworks */,
 			);
@@ -131,7 +131,7 @@
 		01486F1B195CDE2A00F38387 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				012DCCD41A6B51AC000C849D /* libantumbra.framework */,
+				013DD4ED1A81A3020056BE7A /* libantumbra.framework */,
 				011351B419A142870056A412 /* GPUImage.framework */,
 				01486F1C195CDE2A00F38387 /* Cocoa.framework */,
 				01486F1E195CDE2A00F38387 /* Other Frameworks */,

@@ -5,8 +5,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#ifdef ANTUMBRA_WINDOWS
+#ifdef ANTUMBRA_WIN_DLLBUILD
 #define An_DLL __cdecl __declspec(dllexport)
+#elif _WIN32
+#define An_DLL __cdecl __declspec(dllimport)
 #else
 #define An_DLL
 #endif
@@ -27,6 +29,8 @@
 #define AnError_UNSUPPORTED 6
 /* Protocol command failed (whatever that may mean). */
 #define AnError_CMDFAILURE 7
+/* Protocol error of unspecified nature. */
+#define AnError_PROTOERROR 8
 
 /* Error value. Zero is success, nonzero is flaming death. */
 typedef int AnError;
@@ -41,13 +45,6 @@ An_DLL AnError AnCtx_Init(AnCtx **ctx);
 
 /* Free resources and destroy context. */
 An_DLL void AnCtx_Deinit(AnCtx *ctx);
-
-/* Disconnected / no longer available. */
-#define AnDeviceState_DEAD 0
-/* Handle open, but no interface in use. */
-#define AnDeviceState_IDLE 1
-/* Open and interface in use. */
-#define AnDeviceState_OPEN 2
 
 typedef struct AnDeviceInfo AnDeviceInfo;
 
@@ -87,8 +84,7 @@ An_DLL void AnLog_Log(AnCtx *ctx, AnLogLevel lvl, const char *fmt, ...);
 /* Set minimum level and output file for logging, or NULL to disable. */
 An_DLL void AnLog_SetLogging(AnCtx *ctx, AnLogLevel lvl, FILE *f);
 
-/* Return a sigil (DD/II/WW/EE) for a given error level, or ?? for unknown
-   level. */
+/* Return a sigil (D/I/W/E) for a given error level, or ?? for unknown level. */
 An_DLL const char *AnLogLevel_Sigil(AnLogLevel lvl);
 
 /* Synchronously send packet of <=64 bytes on OUT endpoint. Actual sent packet
@@ -123,11 +119,41 @@ An_DLL AnError AnCmd_Invoke_S(AnCtx *ctx, AnDevice *dev,
 
 #define AnCore_API 0x00000000
 
+#define AnCore_CMD_ECHO 0x0000
 #define AnCore_CMD_ASK 0x0001
+#define AnCore_CMD_DIAGNOSTIC 0x0002
+#define AnCore_CMD_IMPLEMENTATIONID 0x0003
+#define AnCore_CMD_DEVICEID 0x0004
 #define AnCore_CMD_RESET 0x0005
+#define AnCore_CMD_HARDWAREID 0x0006
+
+An_DLL AnError AnCore_Echo_S(AnCtx *ctx, AnDevice *dev,
+                             const void *outdata, unsigned int outdata_sz,
+                             void *indata, unsigned int indata_sz);
 
 An_DLL AnError AnCore_Ask_S(AnCtx *ctx, AnDevice *dev,
                             uint32_t api, bool *supp);
+
+An_DLL AnError AnCore_Diagnostic_S(AnCtx *ctx, AnDevice *dev,
+                                   void *diagdata, unsigned int diagdata_sz);
+
+/* Retrieve implementation ID into idout as null-terminated string. idout_sz
+   specifies the maximum number of bytes to copy into idout, including
+   terminator. The implementation ID may be up to 56 characters long, so to
+   ensure that the full ID is always obtained, pass 57 for idout_sz. Unless
+   idout_sz is 0, the copied string will always be null-terminated, even if that
+   means truncating it. */
+An_DLL AnError AnCore_ImplementationId_S(AnCtx *ctx, AnDevice *dev,
+                                         char *idstr, unsigned int idstr_sz);
+
+/* Retrieve device ID (arbitrary bytes) into idout, of length min(idout_sz,
+   56). */
+An_DLL AnError AnCore_DeviceId_S(AnCtx *ctx, AnDevice *dev,
+                                 void *idout, unsigned int idout_sz);
+
+/* As AnCore_ImplementationId_S. */
+An_DLL AnError AnCore_HardwareId_S(AnCtx *ctx, AnDevice *dev,
+                                   char *idstr, unsigned int idstr_sz);
 
 An_DLL AnError AnCore_Reset_S(AnCtx *ctx, AnDevice *dev);
 
@@ -190,5 +216,27 @@ An_DLL AnError AnLight_Info_S(AnCtx *ctx, AnDevice *dev, AnLightInfo *info);
 
 An_DLL AnError AnLight_Set_S(AnCtx *ctx, AnDevice *dev, AnLightInfo *info,
                              uint16_t r, uint16_t g, uint16_t b);
+
+#define AnTemp_API 0x00000005
+
+#define AnTemp_CMD_READRAW 0x0000
+#define AnTemp_CMD_READTEMP 0x0001
+#define AnTemp_CMD_READCAL 0x0002
+#define AnTemp_CMD_WRITECAL 0x0003
+
+typedef struct {
+    uint32_t a_sensor;
+    uint32_t a_temp;
+    uint32_t b_sensor;
+    uint32_t b_temp;
+} AnTempCal;
+
+An_DLL AnError AnTemp_ReadRaw_S(AnCtx *ctx, AnDevice *dev, uint32_t *rawout);
+
+An_DLL AnError AnTemp_ReadTemp_S(AnCtx *ctx, AnDevice *dev, uint32_t *tempout);
+
+An_DLL AnError AnTemp_ReadCal_S(AnCtx *ctx, AnDevice *dev, AnTempCal *calout);
+
+An_DLL AnError AnTemp_WriteCal_S(AnCtx *ctx, AnDevice *dev, const AnTempCal *calin);
 
 #endif
