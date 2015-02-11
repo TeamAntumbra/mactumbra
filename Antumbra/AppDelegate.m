@@ -56,8 +56,6 @@
 
 
 -(void)findAntumbra{
-    
-    
     if (AnCtx_Init(&context)) {
         fputs("ctx init failed\n", stderr);
     }
@@ -86,18 +84,23 @@
             if (AnDevice_Open(context, dev)) {
                 fputs("device open failed\n", stderr);
             }
-            
-            [foundDevices addObject:[[AGlow alloc]initWithAntumbraDevice:dev andContext:context]];
         }
-        
-        contentViewController.glowDevices = foundDevices;
-        
+        AnDevice_FreeList(devs);
+    }else{
+        NSLog(@"no antumbras found");
     }
+    
+    
+    contentViewController.glowDevices = foundDevices;
+        
+    
     
 }
 
 -(void)changeColor:(id)sender{
-    [foundDevices[0] changeColor:sender];
+    for(AGlow *glowDev in foundDevices){
+        [glowDev changeColor:sender];
+    }
 }
 - (void)appearanceValueChanged:(id)sender {
     if ([_statusItemPopup isActive]) {

@@ -8,7 +8,7 @@ void hsv2rgb(float H, float S, float V, uint8_t *R, uint8_t *G, uint8_t *B)
 {
     float Hp = fmodf(H, 360) / 60;
     float C = V * S;
-    float X = 1 - fabsf(fmodf(Hp, 2) - 1);
+    float X = C * (1 - fabsf(fmodf(Hp, 2) - 1));
     float R1, G1, B1;
     float m = V - C;
     if (RANGE(0, Hp, 1)) {
@@ -44,4 +44,25 @@ void hsv2rgb(float H, float S, float V, uint8_t *R, uint8_t *G, uint8_t *B)
     *R = 0xff * (R1 + m);
     *G = 0xff * (G1 + m);
     *B = 0xff * (B1 + m);
+}
+
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+
+void rgb2hsv(uint8_t R_, uint8_t G_, uint8_t B_, float *Ho, float *So, float *Vo)
+{
+    float R = R_ / 255., G = G_ / 255., B = B_ / 255.;
+    float M = MAX(R, MAX(G, B));
+    float m = MIN(R, MIN(G, B));
+    float C = M - m;
+
+    float Hp = (C == 0 ? 0 :
+                M == R ? fmodf((G - B) / C, 6) :
+                M == G ? (B - R) / C + 2 :
+                M == B ? (R - G) / C + 4 :
+                0); // ???
+    
+    *Ho = 60 * Hp;
+    *So = M == 0 ? 0 : C / M;
+    *Vo = M;
 }

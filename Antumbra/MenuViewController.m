@@ -196,7 +196,8 @@
     
     if (currentSelectedIndex == 0) {
         for (AGlow *glow in glowDevices) {
-            if(glow.isMirroring){
+            if(glow.isMirroring || glow.isFading){
+                NSLog(@"Stopped Updates");
                 [glow stopUpdates];
             }
         }

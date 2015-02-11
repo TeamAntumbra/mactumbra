@@ -15,8 +15,6 @@ NSString * const kButtonTappedNotification = @"ButtonDidGetTappedNotification";
     BOOL inside;
     NSTrackingArea *trackingArea;
     BOOL setup;
-    
-
 }
 
 @synthesize descriptiveTitle,mainTitle,smallFont,largeFont;
@@ -59,15 +57,17 @@ NSString * const kButtonTappedNotification = @"ButtonDidGetTappedNotification";
     
     [super drawRect:dirtyRect];
     NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:[self bounds] xRadius:8 yRadius:8];
-    [path setLineWidth:0.0];
+    
+    [path setLineWidth:1.5];
     
     if (selected) {
         [[NSColor colorWithCalibratedWhite:0.168 alpha:0.500]setFill];
     }else{
-        [[NSColor colorWithCalibratedWhite:0.433 alpha:0.500]setFill];
+        [[NSColor clearColor]setFill];
     }
+    [[NSColor whiteColor]setStroke];
     [path fill];
-    
+    [path stroke];
     
     NSString *toBeWritten;
     NSFont *fontToBeUsed;

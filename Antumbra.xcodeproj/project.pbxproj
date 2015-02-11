@@ -10,6 +10,8 @@
 		011351B519A142870056A412 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011351B419A142870056A412 /* GPUImage.framework */; };
 		0114C79219CF748100A5BE24 /* iconGrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0114C78E19CF748100A5BE24 /* iconGrey@2x.png */; };
 		0114C79319CF748100A5BE24 /* iconGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 0114C78F19CF748100A5BE24 /* iconGrey.png */; };
+		013DD4EE1A81A3020056BE7A /* libantumbra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013DD4ED1A81A3020056BE7A /* libantumbra.framework */; };
+		013DD4EF1A81A3100056BE7A /* libantumbra.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 013DD4ED1A81A3020056BE7A /* libantumbra.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01486F1D195CDE2A00F38387 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01486F1C195CDE2A00F38387 /* Cocoa.framework */; };
 		01486F27195CDE2A00F38387 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01486F25195CDE2A00F38387 /* InfoPlist.strings */; };
 		01486F29195CDE2A00F38387 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01486F28195CDE2A00F38387 /* main.m */; };
@@ -19,6 +21,8 @@
 		01486F5A195CDE4700F38387 /* hsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 01486F52195CDE4700F38387 /* hsv.c */; };
 		015B803A19E39F4900883DC3 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 015B803919E39F4900883DC3 /* icon.png */; };
 		0169245119CF84EB003ADE00 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0169245019CF84EB003ADE00 /* MainMenu.xib */; };
+		0187DAC71A54A5D70067AB50 /* GlowDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0187DAC61A54A5D70067AB50 /* GlowDevice.m */; };
+		0187DACA1A54B21B0067AB50 /* FlatSegmentedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0187DAC91A54B21B0067AB50 /* FlatSegmentedView.m */; };
 		018AB38519D9221B006CA84D /* ReactiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB38419D9221B006CA84D /* ReactiveView.m */; };
 		01B164FE19F1E73D0034E324 /* DescriptiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B164FD19F1E73D0034E324 /* DescriptiveView.m */; };
 		01B28D29199C412400F2117D /* ScreenColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B28D28199C412400F2117D /* ScreenColor.m */; };
@@ -27,8 +31,6 @@
 		01EECC3519CF1A73005B4DDC /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EECC3419CF1A73005B4DDC /* MenuView.xib */; };
 		01EECC3819CF1B04005B4DDC /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EECC3719CF1B04005B4DDC /* MenuViewController.m */; };
 		01FF7DB719D115FA00C3A42D /* AGlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FF7DB619D115FA00C3A42D /* AGlow.m */; };
-		226F092A19A58A2C009CADB2 /* libantumbra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226F092919A58A2C009CADB2 /* libantumbra.framework */; };
-		226F092B19A58A39009CADB2 /* libantumbra.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 226F092919A58A2C009CADB2 /* libantumbra.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,7 +40,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				226F092B19A58A39009CADB2 /* libantumbra.framework in CopyFiles */,
+				013DD4EF1A81A3100056BE7A /* libantumbra.framework in CopyFiles */,
 				01BE6D9C19A143B2008F72F7 /* GPUImage.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,6 +51,7 @@
 		011351B419A142870056A412 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
 		0114C78E19CF748100A5BE24 /* iconGrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconGrey@2x.png"; sourceTree = "<group>"; };
 		0114C78F19CF748100A5BE24 /* iconGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconGrey.png; sourceTree = "<group>"; };
+		013DD4ED1A81A3020056BE7A /* libantumbra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libantumbra.framework; sourceTree = "<group>"; };
 		01486F19195CDE2A00F38387 /* Antumbra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Antumbra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01486F1C195CDE2A00F38387 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		01486F1F195CDE2A00F38387 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -66,6 +69,10 @@
 		01486F53195CDE4700F38387 /* hsv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hsv.h; sourceTree = "<group>"; };
 		015B803919E39F4900883DC3 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		0169245019CF84EB003ADE00 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		0187DAC51A54A5D70067AB50 /* GlowDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlowDevice.h; sourceTree = "<group>"; };
+		0187DAC61A54A5D70067AB50 /* GlowDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlowDevice.m; sourceTree = "<group>"; };
+		0187DAC81A54B21B0067AB50 /* FlatSegmentedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatSegmentedView.h; sourceTree = "<group>"; };
+		0187DAC91A54B21B0067AB50 /* FlatSegmentedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatSegmentedView.m; sourceTree = "<group>"; };
 		018AB38319D9221B006CA84D /* ReactiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReactiveView.h; sourceTree = "<group>"; };
 		018AB38419D9221B006CA84D /* ReactiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReactiveView.m; sourceTree = "<group>"; };
 		01B164FC19F1E73D0034E324 /* DescriptiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptiveView.h; sourceTree = "<group>"; };
@@ -79,7 +86,6 @@
 		01EECC3719CF1B04005B4DDC /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		01FF7DB519D115FA00C3A42D /* AGlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGlow.h; sourceTree = "<group>"; };
 		01FF7DB619D115FA00C3A42D /* AGlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGlow.m; sourceTree = "<group>"; };
-		226F092919A58A2C009CADB2 /* libantumbra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libantumbra.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				226F092A19A58A2C009CADB2 /* libantumbra.framework in Frameworks */,
+				013DD4EE1A81A3020056BE7A /* libantumbra.framework in Frameworks */,
 				01486F1D195CDE2A00F38387 /* Cocoa.framework in Frameworks */,
 				011351B519A142870056A412 /* GPUImage.framework in Frameworks */,
 			);
@@ -125,7 +131,7 @@
 		01486F1B195CDE2A00F38387 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				226F092919A58A2C009CADB2 /* libantumbra.framework */,
+				013DD4ED1A81A3020056BE7A /* libantumbra.framework */,
 				011351B419A142870056A412 /* GPUImage.framework */,
 				01486F1C195CDE2A00F38387 /* Cocoa.framework */,
 				01486F1E195CDE2A00F38387 /* Other Frameworks */,
@@ -150,19 +156,23 @@
 				01486F2F195CDE2A00F38387 /* AppDelegate.m */,
 				01FF7DB519D115FA00C3A42D /* AGlow.h */,
 				01FF7DB619D115FA00C3A42D /* AGlow.m */,
+				0187DAC51A54A5D70067AB50 /* GlowDevice.h */,
+				0187DAC61A54A5D70067AB50 /* GlowDevice.m */,
 				01EECC3419CF1A73005B4DDC /* MenuView.xib */,
 				018AB38319D9221B006CA84D /* ReactiveView.h */,
 				018AB38419D9221B006CA84D /* ReactiveView.m */,
 				01B164FC19F1E73D0034E324 /* DescriptiveView.h */,
 				01B164FD19F1E73D0034E324 /* DescriptiveView.m */,
+				0187DAC81A54B21B0067AB50 /* FlatSegmentedView.h */,
+				0187DAC91A54B21B0067AB50 /* FlatSegmentedView.m */,
 				01EECC3619CF1B04005B4DDC /* MenuViewController.h */,
 				01EECC3719CF1B04005B4DDC /* MenuViewController.m */,
 				0169245019CF84EB003ADE00 /* MainMenu.xib */,
 				01B28D27199C412400F2117D /* ScreenColor.h */,
 				01B28D28199C412400F2117D /* ScreenColor.m */,
-				0140C10219E3602F00BC30D7 /* StatusItem */,
 				01486F52195CDE4700F38387 /* hsv.c */,
 				01486F53195CDE4700F38387 /* hsv.h */,
+				0140C10219E3602F00BC30D7 /* StatusItem */,
 				01486F34195CDE2A00F38387 /* Images.xcassets */,
 				01486F23195CDE2A00F38387 /* Supporting Files */,
 			);
@@ -259,6 +269,8 @@
 				01EECC3819CF1B04005B4DDC /* MenuViewController.m in Sources */,
 				01486F29195CDE2A00F38387 /* main.m in Sources */,
 				01FF7DB719D115FA00C3A42D /* AGlow.m in Sources */,
+				0187DAC71A54A5D70067AB50 /* GlowDevice.m in Sources */,
+				0187DACA1A54B21B0067AB50 /* FlatSegmentedView.m in Sources */,
 				01EECC3319CF19DB005B4DDC /* AXStatusItemPopup.m in Sources */,
 				01486F5A195CDE4700F38387 /* hsv.c in Sources */,
 				01B164FE19F1E73D0034E324 /* DescriptiveView.m in Sources */,
