@@ -61,6 +61,7 @@
     if (AnCtx_Init(&context)) {
         fputs("ctx init failed\n", stderr);
     }
+    AnLog_SetLogging(context, AnLog_DEBUG, stderr);
     AnDevice_Populate(context);
     
     int count  = AnDevice_GetCount(context);
@@ -76,7 +77,7 @@
     } else{
         
         //Atleast 1 antumbra found
-        for (int i = 0; i < AnDevice_GetCount(context); ++i) {
+        for (int i = 0; i < count; ++i) {
             const char *ser;
             dev = AnDevice_Get(context, i);
             
