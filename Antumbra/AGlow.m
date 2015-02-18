@@ -22,6 +22,7 @@
     BOOL on;
     AnLightInfo inf;
     NSTimer *sweepTimer;
+
 }
 @synthesize device;
 @synthesize context;
@@ -215,7 +216,7 @@ extern CGSConnection CGSDefaultConnectionForThread();
 
 -(void)colorFromRect:(NSRect)rect{
     
-    CGDirectDisplayID disp = (CGDirectDisplayID) [[[[NSScreen mainScreen]deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
+    CGDirectDisplayID disp = (CGDirectDisplayID) [[[mirrorAreaWindow.screen deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
     CGImageRef first = CGDisplayCreateImageForRect(disp, rect);
     
     
@@ -233,22 +234,6 @@ extern CGSConnection CGSDefaultConnectionForThread();
         green = floor(g*65535.0);
         blue = floor(b*65535.0);
         
-        /*
-        float outH,outS,outV;
-        
-        rgb2hsv(red, green, blue, &outH, &outS, &outV);
-        
-        outS = outS * 1.2 > 1.0 ? 1.0 : outS * 1.5;
-        
-        uint8_t oR,oG,oB;
-        
-        hsv2rgb(outH, outS, outV, &oR, &oG, &oB);
-        
-        red = oR;
-        green = oG;
-        blue = oB;
-        */
-        
         [self updateBoard];
         
     }];
@@ -262,7 +247,7 @@ extern CGSConnection CGSDefaultConnectionForThread();
 
 -(void)augmentColorFromRect:(NSRect)rect{
     
-    CGDirectDisplayID disp = (CGDirectDisplayID) [[[[NSScreen mainScreen]deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
+    CGDirectDisplayID disp = (CGDirectDisplayID) [[[mirrorAreaWindow.screen deviceDescription] objectForKey:@"NSScreenNumber"] intValue];
     CGImageRef first = CGDisplayCreateImageForRect(disp, rect);
     GPUImagePicture *pic = [[GPUImagePicture alloc]initWithCGImage:first];
     

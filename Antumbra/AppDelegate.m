@@ -59,30 +59,21 @@
     if (AnCtx_Init(&context)) {
         fputs("ctx init failed\n", stderr);
     }
-    AnLog_SetLogging(context, AnLog_DEBUG, stderr);
-    AnDevice_Populate(context);
     
-    int count  = AnDevice_GetCount(context);
-    if (count == 0) {
-        
-        //Handle no Antumbra found
-        NSAlert *lert = [[NSAlert alloc]init];
-        [lert setShowsSuppressionButton:YES];
-        [lert setMessageText:@"No Antumbra detected. Please plug one in and then press OK."];
-        //[lert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-        //    [self findAntumbra];
-        //}];
-    } else{
-        
-        //Atleast 1 antumbra found
-        for (int i = 0; i < count; ++i) {
-            const char *ser;
-            dev = AnDevice_Get(context, i);
-            
-            AnDevice_Info(dev, NULL, NULL, &ser);
-            
-            if (AnDevice_Open(context, dev)) {
-                fputs("device open failed\n", stderr);
+    AnDeviceInfo **devs;
+    size_t nDevices;
+    
+    AnDevice_GetList(context, &devs, &nDevices);
+    if (nDevices>=1) {
+        for (int i =0; i<nDevices; i++) {
+            AnDeviceInfo *inf = devs[i];
+            AnDevice *newDevice;
+            AnError er = AnDevice_Open(context, inf, &newDevice);
+            if (er) {
+                //error deal with it
+                NSLog(@"%s",AnError_String(er));
+            }else{
+                [foundDevices addObject:[[AGlow alloc]initWithAntumbraDevice:newDevice andContext:context]];
             }
         }
         AnDevice_FreeList(devs);
