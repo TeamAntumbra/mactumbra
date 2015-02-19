@@ -185,6 +185,7 @@
 }
 
 -(void)manualColor:(NSColor *)color{
+    [self endFading];
     if (mirroring) {
         mirroring = NO;
     } else {
