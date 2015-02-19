@@ -45,10 +45,9 @@ NSString * const kButtonTappedNotification = @"ButtonDidGetTappedNotification";
     inside = false;
     mainTitle = @"Tittle";
     descriptiveTitle = @"Short Description";
-    smallFont = [NSFont systemFontOfSize:18];
-    largeFont = [NSFont systemFontOfSize:22];
+    smallFont = [[NSFontManager sharedFontManager]fontWithFamily:@"Helvetica" traits:NSNarrowFontMask weight:2 size:18];
+    largeFont = [[NSFontManager sharedFontManager]fontWithFamily:@"Helvetica" traits:NSNarrowFontMask weight:2 size:22];
 
-    
 }
 
 

@@ -11,6 +11,7 @@
 @interface MenuViewController (){
     NSUInteger currentSelectedIndex;
     NSMutableArray *circles;
+    NSPoint centerOffset;
 }
 
 @end
@@ -18,20 +19,19 @@
 @implementation MenuViewController
 
 @synthesize statusItemPopup;
-@synthesize glowDevice,glowDevices;
-@synthesize colorWell;
+@synthesize manager;
 @synthesize controlBar;
-
 @synthesize mirrorButton,augmentButton,smoothMirrorButton;
 @synthesize HSVButton,RGBButtpn,DeepBlueButtpn;
 @synthesize tickSlider;
 @synthesize fastLabel,slowLabel;
 @synthesize settingsButton;
+@synthesize brightnessSlider;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    
+    centerOffset = NSMakePoint(-10, 0);
     NSTrackingAreaOptions options = NSTrackingActiveAlways|NSTrackingMouseMoved;
     
     NSTrackingArea *area = [[NSTrackingArea alloc]initWithRect:self.view.bounds options:options owner:self userInfo:nil];
@@ -47,11 +47,11 @@
     [smoothMirrorButton setDescriptiveTitle:@"Best for anything"];
     
     [HSVButton setMainTitle:@"Rainbow"];
-    [HSVButton setDescriptiveTitle:@"Rainbow color sweep"];
-    [RGBButtpn setMainTitle:@"Pulse"];
-    [RGBButtpn setDescriptiveTitle:@"Pulse current color"];
-    [DeepBlueButtpn setMainTitle:@"Fractal"];
-    [DeepBlueButtpn setDescriptiveTitle:@"Complementary colors"];
+    [HSVButton setDescriptiveTitle:@"Rainbow Colors"];
+    [RGBButtpn setMainTitle:@"Black & White"];
+    [RGBButtpn setDescriptiveTitle:@"B&W Fades"];
+    [DeepBlueButtpn setMainTitle:@"Neon"];
+    [DeepBlueButtpn setDescriptiveTitle:@"Neon colors!"];
     
     NSArray *buttons = @[mirrorButton,augmentButton,smoothMirrorButton,HSVButton,RGBButtpn,DeepBlueButtpn];
 
@@ -66,12 +66,12 @@
         
         [controlBar setSegmentStyle:NSSegmentStyleAutomatic];
         float ballSize = 14;
-        ReactiveView *v = [[ReactiveView alloc]initWithFrame:NSMakeRect(self.view.frame.size.width/2.0-(ballSize*0.5),self.view.frame.size.height/2.0-(ballSize*0.5),ballSize,ballSize)];
+        ReactiveView *v = [[ReactiveView alloc]initWithFrame:NSMakeRect(self.view.frame.size.width/2.0-(ballSize*0.5)+centerOffset.x,self.view.frame.size.height/2.0-(ballSize*0.5)+centerOffset.y,ballSize,ballSize)];
         [self.view addSubview:v];
         [v setNeedsDisplay:YES];
         [circles addObject:v];
         for (int i =1; i<6; i++) {
-            [self addCircles:i*6 atPoint:NSMakePoint(self.view.frame.size.width/2.0,self.view.frame.size.height/2.0) withDistance:i*17 size:NSMakeSize(ballSize, ballSize)];
+            [self addCircles:i*6 atPoint:NSMakePoint(self.view.frame.size.width/2.0+centerOffset.x,self.view.frame.size.height/2.0+centerOffset.y) withDistance:i*17 size:NSMakeSize(ballSize, ballSize)];
         }
         
     }
@@ -101,16 +101,11 @@
 
 - (IBAction)tickSliderChanged:(id)sender {
     NSSlider *slider = sender;
-    for (AGlow *glow in glowDevices) {
-         [glow  setSweepSpeed:slider.floatValue/100.0];
-    }
-    //[glowDevice  setSweepSpeed:slider.floatValue/100.0];
+    [manager setFadeSpeed:slider.intValue];
 }
 
 - (IBAction)settingsTapped:(id)sender {
-    for (AGlow *glow in glowDevices) {
-        [glow  openWindow];
-    }
+    [manager showWindows];
 }
 
 -(void)receivedNotification:(NSNotification *)note {
@@ -121,11 +116,10 @@
 - (IBAction)controlBarChanged:(id)sender {
     NSUInteger newIndex = [(NSSegmentedControl *)sender selectedSegment];
     if (currentSelectedIndex==0&&newIndex!=currentSelectedIndex) {
-        [colorWell setHidden:YES];
         for(ReactiveView *ve in circles){
             [ve setHidden:YES];
         }
-        
+       // brightnessSlider.hidden = YES;
     }
     if (currentSelectedIndex==1&&newIndex!=currentSelectedIndex) {
         [mirrorButton setHidden:YES];
@@ -145,11 +139,10 @@
     
     currentSelectedIndex = newIndex;
     if (currentSelectedIndex==0) {
-        [colorWell setHidden:NO];
         for(ReactiveView *ve in circles){
             [ve setHidden:NO];
         }
-        
+       // brightnessSlider.hidden = NO;
     }
     if (currentSelectedIndex==1) {
         [mirrorButton setHidden:NO];
@@ -172,41 +165,32 @@
     [[NSApplication sharedApplication]terminate:self];
 }
 
+- (IBAction)brightnessSlide:(id)sender {
+    [manager brightness:brightnessSlider.floatValue/100.0];
+}
+
+
 
 
 -(void)mouseUp:(NSEvent *)theEvent{
     
     if (currentSelectedIndex == 0) {
-        for (AGlow *glow in glowDevices) {
-            if(glow.isMirroring){
-                [glow stopUpdates];
-            }
-        }
-        
-        
-    NSPoint mouse = [theEvent.window mouseLocationOutsideOfEventStream];
-        for (AGlow *glow in glowDevices) {
-              [glow setColor:[self colorAtLocation:mouse]];
-        }
-    [[self viewAtLocation:mouse]selectAnimate];
+        NSPoint mouse = [theEvent.window mouseLocationOutsideOfEventStream];
+        NSColor *color = [self colorAtLocation:mouse];
+        [manager stopMirroring];
+        [manager manualColor:color];
+        [[self viewAtLocation:mouse]selectAnimate];
     }
 }
 
 -(void)mouseDragged:(NSEvent *)theEvent{
     
     if (currentSelectedIndex == 0) {
-        for (AGlow *glow in glowDevices) {
-            if(glow.isMirroring || glow.isFading){
-                NSLog(@"Stopped Updates");
-                [glow stopUpdates];
-            }
-        }
         NSPoint mouse = [theEvent.window mouseLocationOutsideOfEventStream];
-        for (AGlow *glow in glowDevices) {
-            [glow setColor:[self colorAtLocation:mouse]];
-        }
-        [[self viewAtLocation:mouse]antimateGlow];
-        
+        NSColor *color = [self colorAtLocation:mouse];
+        [manager stopMirroring];
+        [manager manualColor:color];
+        [[self viewAtLocation:mouse] antimateGlow];
     }
     
 }
@@ -231,7 +215,7 @@
 }
 
 -(NSColor *)colorAtLocation:(NSPoint)loc{
-    NSPoint center = NSMakePoint(self.view.frame.origin.x+self.view.frame.size.width/2.0, self.view.frame.origin.y+self.view.frame.size.height/2.0);
+    NSPoint center = NSMakePoint(self.view.frame.origin.x+self.view.frame.size.width/2.0+centerOffset.x, self.view.frame.origin.y+self.view.frame.size.height/2.0+centerOffset.y);
     float distance = sqrtf(((loc.x-center.x)*(loc.x-center.x))+((loc.y-center.y)*(loc.y-center.y)));
     
     float radians = 0;
@@ -256,37 +240,28 @@
 }
 -(void)handleButtonTap:(NSString *)buttonTitle{
     if([buttonTitle isEqualToString:@"Mirror"]){
-        for (AGlow *glow in glowDevices) {
-            [glow setSmoothFactor:0.7];
-            [glow mirror];
-        }
+        [manager stopMirroring];
+        [manager mirror];
     }
     if([buttonTitle isEqualToString:@"Augment"]){
-        for (AGlow *glow in glowDevices) {
-            [glow setSmoothFactor:0.5];
-            [glow augment];
-        }
+        [manager stopMirroring];
+        [manager augment];
     }
     if([buttonTitle isEqualToString:@"Smooth"]){
-        for (AGlow *glow in glowDevices) {
-            [glow setSmoothFactor:0.1];
-            [glow augment];
-        }
+        [manager stopMirroring];
+        [manager balance];
     }
+    
     if([buttonTitle isEqualToString:@"Rainbow"]){
-        for (AGlow *glow in glowDevices) {
-            [glow sweep];
-        }
+        [manager fadeHSV];
     }
-    if([buttonTitle isEqualToString:@"Pulse"]){
-        for (AGlow *glow in glowDevices) {
-            [glow sweep];
-        }
+    if([buttonTitle isEqualToString:@"Black & White"]){
+        [manager fadeBlackAndWhite];
+        
     }
-    if([buttonTitle isEqualToString:@"Fractal"]){
-        for (AGlow *glow in glowDevices) {
-            [glow sweep];
-        }
+    if([buttonTitle isEqualToString:@"Neon"]){
+        [manager fadeNeon];
+       
     }
    
 }

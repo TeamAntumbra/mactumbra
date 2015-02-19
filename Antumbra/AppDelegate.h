@@ -10,13 +10,13 @@
 #import "libantumbra/libantumbra.h"
 #import "AXStatusItemPopup.h"
 #import "hsv.h"
+#import "AGlowManager.h"
 
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
 
-typedef struct {uint8_t r; uint8_t g; uint8_t b;} Color;
 
 -(void)resizePopover:(CGSize)newSize;
 -(BOOL)isHiden;

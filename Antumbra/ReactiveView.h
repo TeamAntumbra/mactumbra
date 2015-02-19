@@ -12,6 +12,7 @@
 
 @property (nonatomic) NSColor *color;
 @property (nonatomic) float growthFactor;
+@property (nonatomic) BOOL animating;
 
 -(void)antimateGlow;
 -(void)selectAnimate;

@@ -19,20 +19,15 @@
 
 @property (nonatomic) AnDevice * device;
 @property (nonatomic) AnCtx * context;
-@property (nonatomic) float sweepSpeed;
-@property (nonatomic) bool isMirroring;
-@property (nonatomic) bool isFading;
 @property (nonatomic) float smoothFactor; // 1.0 means no smoothinh 0.1 means VERY smooth hardly any change
-
+@property (nonatomic) NSColor *currentColor;
+@property (nonatomic) NSWindow *mirrorAreaWindow;
+@property (nonatomic) float maxBrightness;
 
 
 -(id)initWithAntumbraDevice:(AnDevice *)dev andContext:(AnCtx *)con;
-
--(void)augment;
--(void)mirror;
--(void)sweep;
--(void)setColor:(NSColor *)newColor;
+-(void)fadeToColor:(NSColor *)col inTime:(NSTimeInterval)time;
+-(void)updateSetColor:(NSColor *)color smooth:(BOOL)s;
 -(void)openWindow;
--(void)stopUpdates; // stop all updates from things like mirroring and fading basically set antumbra into static color mode
 
 @end

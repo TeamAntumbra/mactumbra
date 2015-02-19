@@ -27,6 +27,10 @@
 		01B28D29199C412400F2117D /* ScreenColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B28D28199C412400F2117D /* ScreenColor.m */; };
 		01BE6D9C19A143B2008F72F7 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 011351B419A142870056A412 /* GPUImage.framework */; };
 		01D3EBC61A95326C00F4B34C /* AGlowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D3EBC51A95326C00F4B34C /* AGlowManager.m */; };
+		01D3EBCC1A95E1A500F4B34C /* AGlowFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D3EBCB1A95E1A500F4B34C /* AGlowFade.m */; };
+		01D3EBCF1A95E24100F4B34C /* AGlowHSVFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D3EBCE1A95E24100F4B34C /* AGlowHSVFade.m */; };
+		01D3EBD21A95E28700F4B34C /* AGlowNeonFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D3EBD11A95E28700F4B34C /* AGlowNeonFade.m */; };
+		01D3EBD51A95E2B900F4B34C /* AGlowBlackAndWhiteFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D3EBD41A95E2B900F4B34C /* AGlowBlackAndWhiteFade.m */; };
 		01EECC3319CF19DB005B4DDC /* AXStatusItemPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EECC3219CF19DB005B4DDC /* AXStatusItemPopup.m */; };
 		01EECC3519CF1A73005B4DDC /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EECC3419CF1A73005B4DDC /* MenuView.xib */; };
 		01EECC3819CF1B04005B4DDC /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EECC3719CF1B04005B4DDC /* MenuViewController.m */; };
@@ -79,6 +83,14 @@
 		01B28D28199C412400F2117D /* ScreenColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenColor.m; sourceTree = "<group>"; };
 		01D3EBC41A95326C00F4B34C /* AGlowManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGlowManager.h; sourceTree = "<group>"; };
 		01D3EBC51A95326C00F4B34C /* AGlowManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGlowManager.m; sourceTree = "<group>"; };
+		01D3EBCA1A95E1A500F4B34C /* AGlowFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGlowFade.h; sourceTree = "<group>"; };
+		01D3EBCB1A95E1A500F4B34C /* AGlowFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGlowFade.m; sourceTree = "<group>"; };
+		01D3EBCD1A95E24100F4B34C /* AGlowHSVFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGlowHSVFade.h; sourceTree = "<group>"; };
+		01D3EBCE1A95E24100F4B34C /* AGlowHSVFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGlowHSVFade.m; sourceTree = "<group>"; };
+		01D3EBD01A95E28700F4B34C /* AGlowNeonFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGlowNeonFade.h; sourceTree = "<group>"; };
+		01D3EBD11A95E28700F4B34C /* AGlowNeonFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGlowNeonFade.m; sourceTree = "<group>"; };
+		01D3EBD31A95E2B900F4B34C /* AGlowBlackAndWhiteFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGlowBlackAndWhiteFade.h; sourceTree = "<group>"; };
+		01D3EBD41A95E2B900F4B34C /* AGlowBlackAndWhiteFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGlowBlackAndWhiteFade.m; sourceTree = "<group>"; };
 		01EECC3119CF19DB005B4DDC /* AXStatusItemPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXStatusItemPopup.h; sourceTree = "<group>"; };
 		01EECC3219CF19DB005B4DDC /* AXStatusItemPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXStatusItemPopup.m; sourceTree = "<group>"; };
 		01EECC3419CF1A73005B4DDC /* MenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
@@ -214,6 +226,14 @@
 				01FF7DB619D115FA00C3A42D /* AGlow.m */,
 				01D3EBC41A95326C00F4B34C /* AGlowManager.h */,
 				01D3EBC51A95326C00F4B34C /* AGlowManager.m */,
+				01D3EBCA1A95E1A500F4B34C /* AGlowFade.h */,
+				01D3EBCB1A95E1A500F4B34C /* AGlowFade.m */,
+				01D3EBCD1A95E24100F4B34C /* AGlowHSVFade.h */,
+				01D3EBCE1A95E24100F4B34C /* AGlowHSVFade.m */,
+				01D3EBD01A95E28700F4B34C /* AGlowNeonFade.h */,
+				01D3EBD11A95E28700F4B34C /* AGlowNeonFade.m */,
+				01D3EBD31A95E2B900F4B34C /* AGlowBlackAndWhiteFade.h */,
+				01D3EBD41A95E2B900F4B34C /* AGlowBlackAndWhiteFade.m */,
 			);
 			name = Glow;
 			sourceTree = "<group>";
@@ -293,12 +313,16 @@
 				01EECC3819CF1B04005B4DDC /* MenuViewController.m in Sources */,
 				01486F29195CDE2A00F38387 /* main.m in Sources */,
 				01FF7DB719D115FA00C3A42D /* AGlow.m in Sources */,
+				01D3EBCC1A95E1A500F4B34C /* AGlowFade.m in Sources */,
 				0187DACA1A54B21B0067AB50 /* FlatSegmentedView.m in Sources */,
 				01D3EBC61A95326C00F4B34C /* AGlowManager.m in Sources */,
+				01D3EBCF1A95E24100F4B34C /* AGlowHSVFade.m in Sources */,
 				01EECC3319CF19DB005B4DDC /* AXStatusItemPopup.m in Sources */,
 				01486F5A195CDE4700F38387 /* hsv.c in Sources */,
+				01D3EBD51A95E2B900F4B34C /* AGlowBlackAndWhiteFade.m in Sources */,
 				01B164FE19F1E73D0034E324 /* DescriptiveView.m in Sources */,
 				01B28D29199C412400F2117D /* ScreenColor.m in Sources */,
+				01D3EBD21A95E28700F4B34C /* AGlowNeonFade.m in Sources */,
 				018AB38519D9221B006CA84D /* ReactiveView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
