@@ -44,7 +44,7 @@
     
     [_statusItemPopup showPopover];
     [self appearanceValueChanged:self]; //This only works if I encapsulate this inside a show/hide setneedsdisplay? whatevs
-    [_statusItemPopup hidePopover];
+
     
     manager = [[AGlowManager alloc]init];
     contentViewController.manager = manager;
@@ -52,9 +52,7 @@
 
 
 - (void)appearanceValueChanged:(id)sender {
-    if ([_statusItemPopup isActive]) {
-        [_statusItemPopup hidePopover];
-    }
+
     NSPopoverAppearance newAppearance = NSPopoverAppearanceHUD;
 
     _statusItemPopup.popover.appearance = newAppearance;
