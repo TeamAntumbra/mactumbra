@@ -9,9 +9,7 @@
 #import "AGlowManager.h"
 
 @implementation AGlowManager {
-    AnDevice *dev;
     AnCtx *context;
-    AGlow *foundDevice;
     BOOL mirroring;
     BOOL canMirror;
     NSTimer *timer;
@@ -31,35 +29,46 @@
         currentFade = nil;
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(stopedMirroring) name:@"doneMirroring" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fadeTick) name:@"fadeTick" object:nil];
-        if (AnCtx_Init(&context)) {
-            fputs("ctx init failed\n", stderr);
-        }
         
-        AnDeviceInfo **devs;
-        size_t nDevices;
-        
-        AnDevice_GetList(context, &devs, &nDevices);
-        if (nDevices>=1) {
-            for (int i =0; i<nDevices; i++) {
-                AnDeviceInfo *inf = devs[i];
-                AnDevice *newDevice;
-                AnError er = AnDevice_Open(context, inf, &newDevice);
-                if (er) {
-                    //error deal with it
-                    NSLog(@"%s",AnError_String(er));
-                }else{
-                    [glows addObject:[[AGlow alloc]initWithAntumbraDevice:newDevice andContext:context]];
-                }
-            }
-            AnDevice_FreeList(devs);
-        }else{
-            NSLog(@"no antumbras found");
-        }
-        
-        
-        
+        [self scanForGlows];
     }
     return self;
+}
+
+- (void)scanForGlows
+{
+    for (AGlow *g in glows) {
+        AnDevice_Close(g.context, g.device);
+    }
+    
+    [glows removeAllObjects];
+    if (context) {
+        AnCtx_Deinit(context);
+        context = nil;
+    }
+    if (AnCtx_Init(&context)) {
+        fputs("ctx init failed\n", stderr);
+    }
+    AnDeviceInfo **devs;
+    size_t nDevices;
+    
+    AnDevice_GetList(context, &devs, &nDevices);
+    if (nDevices>=1) {
+        for (int i =0; i<nDevices; i++) {
+            AnDeviceInfo *inf = devs[i];
+            AnDevice *newDevice;
+            AnError er = AnDevice_Open(context, inf, &newDevice);
+            if (er) {
+                //error deal with it
+                NSLog(@"%s",AnError_String(er));
+            }else{
+                [glows addObject:[[AGlow alloc] initWithAntumbraDevice:newDevice andContext:context]];
+            }
+        }
+        AnDevice_FreeList(devs);
+    }else{
+        NSLog(@"no antumbras found");
+    }
 }
 
 -(void)colorFromGlow:(AGlow *)glow{

@@ -50,6 +50,11 @@
     contentViewController.manager = manager;
 }
 
+- (void)applicationDidChangeScreenParameters:(NSNotification *)notification
+{
+    [contentViewController.manager scanForGlows];
+}
+
 
 - (void)appearanceValueChanged:(id)sender {
 
