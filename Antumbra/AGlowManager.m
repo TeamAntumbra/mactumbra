@@ -29,8 +29,8 @@
         currentFade = nil;
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(stopedMirroring) name:@"doneMirroring" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fadeTick) name:@"fadeTick" object:nil];
-        
         [self scanForGlows];
+        
     }
     return self;
 }
