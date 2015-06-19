@@ -6,8 +6,9 @@ Quickstart
 Plug in your glows and then launch the app.
 Your glow should go from dim green to bright white when the app launches.  The app is accessible via the antumbra icon in the status menu bar.  
 
-Screen mirror guide
-1. Click on the mirror tab and click the settings button;<br>
+Screen mirror guide:
+
+1. Click on the mirror tab and click the settings button;
 
 2. Adjust the colored window(s) such that they fit over the content you want the glow to project.
 For example, if you are watching a small quicktime movie, move the blue settings window over the quicktime movie. Larger areas will utilize more processing power and memory.  
@@ -28,4 +29,4 @@ Fades are simple just select a fade and adjust the speed witht he slider on the 
 
 Manual
 
-Simply click to select a color, or click and drag to move between colors or select colors between the visible bubbles.  
+Simply click to select a color, or click and drag to move between colors or select colors between the visible     bubbles.  
