@@ -83,7 +83,7 @@
     GPUImageAverageColor *average = [[GPUImageAverageColor alloc]init];
     [pic addTarget:average];
     [average setColorAverageProcessingFinishedBlock:^(CGFloat r, CGFloat g, CGFloat b, CGFloat a, CMTime time) {
-        [glow updateSetColor:[NSColor colorWithRed:r green:g blue:b alpha:a] smooth:NO];
+        [glow updateSetColor:[NSColor colorWithCalibratedRed:r green:g blue:b alpha:a] smooth:NO];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0/targetFPS * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self colorFromGlow:glow];
         });
@@ -107,7 +107,7 @@
     [pic addTarget:sat];
     [sat addTarget:average];
     [average setColorAverageProcessingFinishedBlock:^(CGFloat r, CGFloat g, CGFloat b, CGFloat a, CMTime time) {
-        [glow updateSetColor:[NSColor colorWithRed:r green:g blue:b alpha:a] smooth:YES];
+        [glow updateSetColor:[NSColor colorWithCalibratedRed:r green:g blue:b alpha:a] smooth:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0/targetFPS * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self augmentFromGlow:glow];
         });
@@ -133,7 +133,7 @@
     [sat addTarget:average];
     [average setColorAverageProcessingFinishedBlock:^(CGFloat r, CGFloat g, CGFloat b, CGFloat a, CMTime time) {
         
-        [glow updateSetColor:[NSColor colorWithRed:r green:g blue:b alpha:a] smooth:YES];
+        [glow updateSetColor:[NSColor colorWithCalibratedRed:r green:g blue:b alpha:a] smooth:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0/targetFPS * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self balancedFromGlow:glow];
         });

@@ -19,7 +19,7 @@
     self = [super init];
     if (self) {
         ticksPerSecond = 30.0;
-        currentColor = [NSColor colorWithRed:1 green:1 blue:1 alpha:1];
+        currentColor = [NSColor colorWithCalibratedRed:1 green:1 blue:1 alpha:1];
         }
     return self;
 }
