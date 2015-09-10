@@ -95,7 +95,7 @@
         });
     }];
     [pic processImage];
-    CFRelease(first);
+    CGImageRelease(first);
 }
 
 -(void)augmentFromGlow:(AGlow *)glow{
@@ -125,7 +125,7 @@
         });
     }];
     [pic processImage];
-    CFRelease(first);
+    CGImageRelease(first);
 }
 
 
@@ -157,7 +157,7 @@
         });
     }];
     [pic processImage];
-    CFRelease(first);
+    CGImageRelease(first);
 }
 
 
