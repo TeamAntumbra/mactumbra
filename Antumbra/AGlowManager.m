@@ -14,6 +14,7 @@
     BOOL canMirror;
     NSTimer *timer;
     AGlowFade *currentFade;
+    BOOL reset;
 }
 
 @synthesize glows;
@@ -79,6 +80,23 @@
     NSLog(@"mirror");
     CGDirectDisplayID disp = (CGDirectDisplayID) [[[glow.mirrorAreaWindow.screen deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
     CGImageRef first = CGDisplayCreateImageForRect(disp, glow.mirrorAreaWindow.frame);
+    if (!first) {
+        reset = YES;
+        int64_t secondsToWaitBeforeRepeat = 1;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(secondsToWaitBeforeRepeat * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self colorFromGlow:glow];
+        });
+        return;
+    } else {
+        if (reset) {
+            reset = NO;
+            [self stopMirroring];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"doneMirroring" object:nil];
+            [self mirror];
+            CGImageRelease(first);
+            return;
+        }
+    }
     GPUImagePicture *pic = [[GPUImagePicture alloc]initWithCGImage:first];
     GPUImageAverageColor *average = [[GPUImageAverageColor alloc]init];
     [pic addTarget:average];
@@ -100,6 +118,23 @@
     NSLog(@"augmenting");
     CGDirectDisplayID disp = (CGDirectDisplayID) [[[glow.mirrorAreaWindow.screen deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
     CGImageRef first = CGDisplayCreateImageForRect(disp, glow.mirrorAreaWindow.frame);
+    if (!first) {
+        reset = YES;
+        int64_t secondsToWaitBeforeRepeat = 1;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(secondsToWaitBeforeRepeat * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self augmentFromGlow:glow];
+        });
+        return;
+    } else {
+        if (reset) {
+            reset = NO;
+            [self stopMirroring];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"doneMirroring" object:nil];
+            [self augment];
+            CGImageRelease(first);
+            return;
+        }
+    }
     GPUImagePicture *pic = [[GPUImagePicture alloc]initWithCGImage:first];
     GPUImageSaturationFilter *sat = [[GPUImageSaturationFilter alloc]init];
     sat.saturation = 2.0;
@@ -125,6 +160,23 @@
     NSLog(@"balanced");
     CGDirectDisplayID disp = (CGDirectDisplayID) [[[glow.mirrorAreaWindow.screen deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
     CGImageRef first = CGDisplayCreateImageForRect(disp, glow.mirrorAreaWindow.frame);
+    if (!first) {
+        reset = YES;
+        int64_t secondsToWaitBeforeRepeat = 1;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(secondsToWaitBeforeRepeat * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self balancedFromGlow:glow];
+        });
+        return;
+    } else {
+        if (reset) {
+            reset = NO;
+            [self stopMirroring];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"doneMirroring" object:nil];
+            [self balance];
+            CGImageRelease(first);
+            return;
+        }
+    }
     GPUImagePicture *pic = [[GPUImagePicture alloc]initWithCGImage:first];
     GPUImageSaturationFilter *sat = [[GPUImageSaturationFilter alloc]init];
     sat.saturation = 1.5;
