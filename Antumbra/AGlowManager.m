@@ -76,9 +76,15 @@
         [[NSNotificationCenter defaultCenter]postNotificationName:@"doneMirroring" object:nil];
         return;
     }
-    NSLog(@"mirror");
     CGDirectDisplayID disp = (CGDirectDisplayID) [[[glow.mirrorAreaWindow.screen deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
     CGImageRef first = CGDisplayCreateImageForRect(disp, glow.mirrorAreaWindow.frame);
+	if (!first) {
+		int64_t secondsToWaitBeforeRepeat = 3;
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(secondsToWaitBeforeRepeat * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			[self colorFromGlow:glow];
+		});
+		return;
+	}
     GPUImagePicture *pic = [[GPUImagePicture alloc]initWithCGImage:first];
     GPUImageAverageColor *average = [[GPUImageAverageColor alloc]init];
     [pic addTarget:average];
@@ -89,7 +95,7 @@
         });
     }];
     [pic processImage];
-    CFRelease(first);
+    CGImageRelease(first);
 }
 
 -(void)augmentFromGlow:(AGlow *)glow{
@@ -97,9 +103,15 @@
         [[NSNotificationCenter defaultCenter]postNotificationName:@"doneMirroring" object:nil];
         return;
     }
-    NSLog(@"augmenting");
     CGDirectDisplayID disp = (CGDirectDisplayID) [[[glow.mirrorAreaWindow.screen deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
     CGImageRef first = CGDisplayCreateImageForRect(disp, glow.mirrorAreaWindow.frame);
+	if (!first) {
+		int64_t secondsToWaitBeforeRepeat = 2;
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(secondsToWaitBeforeRepeat * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			[self augmentFromGlow:glow];
+		});
+		return;
+	}
     GPUImagePicture *pic = [[GPUImagePicture alloc]initWithCGImage:first];
     GPUImageSaturationFilter *sat = [[GPUImageSaturationFilter alloc]init];
     sat.saturation = 2.0;
@@ -113,7 +125,7 @@
         });
     }];
     [pic processImage];
-    CFRelease(first);
+    CGImageRelease(first);
 }
 
 
@@ -122,9 +134,15 @@
         [[NSNotificationCenter defaultCenter]postNotificationName:@"doneMirroring" object:nil];
         return;
     }
-    NSLog(@"balanced");
     CGDirectDisplayID disp = (CGDirectDisplayID) [[[glow.mirrorAreaWindow.screen deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
     CGImageRef first = CGDisplayCreateImageForRect(disp, glow.mirrorAreaWindow.frame);
+	if (!first) {
+		int64_t secondsToWaitBeforeRepeat = 3;
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(secondsToWaitBeforeRepeat * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			[self augmentFromGlow:glow];
+		});
+		return;
+	}
     GPUImagePicture *pic = [[GPUImagePicture alloc]initWithCGImage:first];
     GPUImageSaturationFilter *sat = [[GPUImageSaturationFilter alloc]init];
     sat.saturation = 1.5;
@@ -139,7 +157,7 @@
         });
     }];
     [pic processImage];
-    CFRelease(first);
+    CGImageRelease(first);
 }
 
 

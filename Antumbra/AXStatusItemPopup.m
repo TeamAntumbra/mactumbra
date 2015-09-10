@@ -204,8 +204,6 @@
 }
 
 -(void)mouseMoved:(NSEvent *)theEvent{
-    NSPoint locationInView = [self convertPoint:[theEvent locationInWindow]fromView:nil];
-    NSLog(@"%f %f",locationInView.x,locationInView.y);
 }
 
 @end
