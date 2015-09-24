@@ -22,12 +22,13 @@
 @property (nonatomic) float smoothFactor; // 1.0 means no smoothinh 0.1 means VERY smooth hardly any change
 @property (nonatomic) NSColor *currentColor;
 @property (nonatomic) NSWindow *mirrorAreaWindow;
+@property (atomic) NSInteger index;
 @property (nonatomic) float maxBrightness;
 
 
 -(id)initWithAntumbraDevice:(AnDevice *)dev andContext:(AnCtx *)con;
--(void)fadeToColor:(NSColor *)col inTime:(NSTimeInterval)time;
--(void)updateSetColor:(NSColor *)color smooth:(BOOL)s;
+-(BOOL)fadeToColor:(NSColor *)col inTime:(NSTimeInterval)time;
+-(BOOL)updateSetColor:(NSColor *)color smooth:(BOOL)s;
 -(void)openWindow;
 
 @end

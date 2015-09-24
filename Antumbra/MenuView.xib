@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MenuViewController">
@@ -11,9 +11,7 @@
                 <outlet property="HSVButton" destination="n27-no-ZcN" id="xwn-q1-U7r"/>
                 <outlet property="RGBButtpn" destination="CVo-9c-vyq" id="CqC-33-ZKH"/>
                 <outlet property="augmentButton" destination="DwY-CL-xbU" id="1kp-Z7-QII"/>
-                <outlet property="brightnessSlider" destination="Rca-fD-wJj" id="hTz-Rv-2G6"/>
-                <outlet property="controlBar" destination="q8M-3N-vdW" id="nNT-zY-IMV"/>
-                <outlet property="fastLabel" destination="0Rp-gG-eyw" id="aOH-xS-zvF"/>
+                <outlet property="brightnessSlider" destination="1qB-Tg-f94" id="06V-WX-ICF"/>
                 <outlet property="mirrorButton" destination="mpr-JB-OZs" id="LVU-hs-tc3"/>
                 <outlet property="settingsButton" destination="IEy-9r-Guj" id="0It-On-8EU"/>
                 <outlet property="slowLabel" destination="rxN-E3-1I0" id="joe-Tv-FiS"/>
@@ -25,48 +23,20 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="221" height="289"/>
+            <rect key="frame" x="0.0" y="0.0" width="217" height="291"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWl-PJ-7D2">
-                    <rect key="frame" x="17" y="5" width="170" height="28"/>
-                    <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WHt-3y-bfl">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="quiteAntumbra:" target="-2" id="MOb-Xs-3oN"/>
-                    </connections>
-                </button>
                 <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rxN-E3-1I0">
-                    <rect key="frame" x="9" y="40" width="33" height="17"/>
+                    <rect key="frame" x="-63" y="42" width="33" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="S" id="pHB-4r-Ty6">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mpr-JB-OZs" customClass="DescriptiveView">
-                    <rect key="frame" x="22" y="191" width="160" height="52"/>
-                </customView>
-                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DwY-CL-xbU" customClass="DescriptiveView">
-                    <rect key="frame" x="22" y="129" width="160" height="52"/>
-                </customView>
-                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8aW-Zu-Mve" customClass="DescriptiveView">
-                    <rect key="frame" x="22" y="67" width="160" height="52"/>
-                </customView>
-                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n27-no-ZcN" customClass="DescriptiveView">
-                    <rect key="frame" x="22" y="191" width="160" height="52"/>
-                </customView>
-                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CVo-9c-vyq" customClass="DescriptiveView">
-                    <rect key="frame" x="22" y="129" width="160" height="52"/>
-                </customView>
-                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="98p-om-W3I" customClass="DescriptiveView">
-                    <rect key="frame" x="22" y="67" width="160" height="52"/>
-                </customView>
                 <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IEy-9r-Guj">
-                    <rect key="frame" x="16" y="33" width="170" height="28"/>
-                    <buttonCell key="cell" type="push" title="Settings" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ht4-UX-14j">
+                    <rect key="frame" x="15" y="30" width="187" height="28"/>
+                    <buttonCell key="cell" type="push" title="Configure Windows" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ht4-UX-14j">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -75,43 +45,47 @@
                     </connections>
                 </button>
                 <slider hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fH3-o4-7J8">
-                    <rect key="frame" x="21" y="38" width="162" height="21"/>
+                    <rect key="frame" x="20" y="35" width="177" height="21"/>
                     <sliderCell key="cell" state="on" alignment="left" maxValue="120" doubleValue="60" tickMarkPosition="below" sliderType="linear" id="Y6Q-Te-sBG"/>
                     <connections>
                         <action selector="tickSliderChanged:" target="-2" id="kg0-a3-P76"/>
                     </connections>
                 </slider>
-                <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q8M-3N-vdW">
-                    <rect key="frame" x="16" y="253" width="173" height="25"/>
-                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="5Zt-xl-qPc">
-                        <font key="font" metaFont="system"/>
-                        <segments>
-                            <segment label="Color" imageScaling="none" selected="YES"/>
-                            <segment label="Mirror" imageScaling="none" tag="1"/>
-                            <segment label="Fades" imageScaling="none"/>
-                        </segments>
-                    </segmentedCell>
+                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1qB-Tg-f94">
+                    <rect key="frame" x="18" y="15" width="181" height="21"/>
+                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="92.327665441176464" tickMarkPosition="above" sliderType="linear" id="Kwz-Zw-0cI"/>
                     <connections>
-                        <action selector="controlBarChanged:" target="-2" id="P0T-1B-gAX"/>
-                    </connections>
-                </segmentedControl>
-                <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rca-fD-wJj">
-                    <rect key="frame" x="195" y="8" width="21" height="272"/>
-                    <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="100" tickMarkPosition="right" sliderType="linear" id="uW6-eu-4BK"/>
-                    <connections>
-                        <action selector="brightnessSlide:" target="-2" id="os7-S1-qPR"/>
+                        <action selector="brightnessSlide:" target="-2" id="dic-Yc-zwe"/>
                     </connections>
                 </slider>
-                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Rp-gG-eyw">
-                    <rect key="frame" x="184" y="40" width="33" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="F" id="I5L-qd-1XG">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2IY-yB-7Eo">
+                    <rect key="frame" x="73" y="1" width="70" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Brightness" id="RhV-zd-i0h">
                         <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.53335813492063489" green="0.53335813492063489" blue="0.53335813492063489" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mpr-JB-OZs" customClass="DescriptiveView">
+                    <rect key="frame" x="20" y="188" width="177" height="52"/>
+                </customView>
+                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DwY-CL-xbU" customClass="DescriptiveView">
+                    <rect key="frame" x="20" y="126" width="177" height="52"/>
+                </customView>
+                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8aW-Zu-Mve" customClass="DescriptiveView">
+                    <rect key="frame" x="20" y="64" width="177" height="52"/>
+                </customView>
+                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n27-no-ZcN" customClass="DescriptiveView">
+                    <rect key="frame" x="20" y="188" width="177" height="52"/>
+                </customView>
+                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CVo-9c-vyq" customClass="DescriptiveView">
+                    <rect key="frame" x="20" y="126" width="177" height="52"/>
+                </customView>
+                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="98p-om-W3I" customClass="DescriptiveView">
+                    <rect key="frame" x="20" y="64" width="177" height="52"/>
+                </customView>
             </subviews>
-            <point key="canvasLocation" x="177.5" y="161.5"/>
+            <point key="canvasLocation" x="402.5" y="179.5"/>
         </customView>
     </objects>
 </document>

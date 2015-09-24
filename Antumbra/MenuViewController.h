@@ -12,9 +12,9 @@
 #import "AGlowManager.h"
 #import "ReactiveView.h"
 #import "DescriptiveView.h"
+#import "FlatSegmentedView.h"
 
-
-@interface MenuViewController : NSViewController 
+@interface MenuViewController : NSViewController <FlatSegmentedViewDelegate>
 
 @property(weak, nonatomic) AXStatusItemPopup *statusItemPopup;
 @property(weak, nonatomic) AGlowManager *manager;

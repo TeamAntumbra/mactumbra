@@ -21,24 +21,20 @@
 @synthesize currentColor;
 @synthesize mirrorAreaWindow;
 @synthesize maxBrightness;
+@synthesize index;
 
 typedef void * CGSConnection;
 extern OSStatus CGSSetWindowBackgroundBlurRadius(CGSConnection connection, NSInteger   windowNumber, int radius);
 extern CGSConnection CGSDefaultConnectionForThread();
 
-- (void)enableBlurForWindow:(NSWindow *)window  withColor:(NSColor *)coler
-{
-    [window setOpaque:YES];
-    window.backgroundColor = coler;
-    CGSConnection connection = CGSDefaultConnectionForThread();
-    CGSSetWindowBackgroundBlurRadius(connection, [window windowNumber], 20);
-}
+
 
 -(id)initWithAntumbraDevice:(AnDevice *)dev andContext:(AnCtx *)con{
     self = [super init];
     if (self) {
         device = dev;
         maxBrightness = 1.0;
+        index = arc4random()%10;
         context = con;
         AnLight_Info_S(context, device, &inf);
         smoothFactor = 0.9;
@@ -48,7 +44,7 @@ extern CGSConnection CGSDefaultConnectionForThread();
         mirrorAreaWindow.minSize = NSMakeSize(200, 200);
         mirrorAreaWindow.title = @"Resize to the area you want this glow to grab colors from";
         [mirrorAreaWindow setOpaque:NO];
-        [mirrorAreaWindow setAlphaValue:0.75];
+        [mirrorAreaWindow setAlphaValue:1.00];
         [mirrorAreaWindow setShowsResizeIndicator:YES];
         [mirrorAreaWindow.contentView setAutoresizesSubviews:YES];
         NSButton *setButton = [[NSButton alloc]initWithFrame:NSMakeRect(mirrorAreaWindow.frame.size.width/2.0-50, mirrorAreaWindow.frame.size.height/2.0+32, 100, 64)];
@@ -59,14 +55,13 @@ extern CGSConnection CGSDefaultConnectionForThread();
         [setButton setAlphaValue:1.0];
         [setButton setAutoresizingMask:NSViewMinXMargin | NSViewMaxXMargin | NSViewMinYMargin | NSViewMaxYMargin];
         [mirrorAreaWindow.contentView addSubview:setButton];
-        [self enableBlurForWindow:mirrorAreaWindow withColor:[NSColor colorWithCalibratedRed:0.757 green:0.967 blue:1.000 alpha:0.490]];
         self.currentColor = [NSColor colorWithCalibratedRed:0.011 green:0.010 blue:0.011 alpha:1.000];
-        [self fadeToColor:[NSColor whiteColor] inTime:1.0];
+        [self fadeToColor:[NSColor whiteColor] inTime:0.1];
     }
     return self;
 }
 
--(void)fadeToColor:(NSColor *)col inTime:(NSTimeInterval)time{
+-(BOOL)fadeToColor:(NSColor *)col inTime:(NSTimeInterval)time{
     col =  [col colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
     float numSteps = 60.0;
     NSTimeInterval stepTime = time/numSteps;
@@ -93,29 +88,44 @@ extern CGSConnection CGSDefaultConnectionForThread();
         [NSThread sleepForTimeInterval:stepTime];
     }
     
+    return YES;
 }
--(void)updateSetColor:(NSColor *)color smooth:(BOOL)s{
+-(BOOL)updateSetColor:(NSColor *)color smooth:(BOOL)s{
     self.currentColor = color;
-    [self sendColor:color smooth:s];
+    return [self sendColor:color smooth:s];
 }
 
--(void)sendColor:(NSColor*)color smooth:(BOOL)sm{
+-(BOOL)sendColor:(NSColor*)color smooth:(BOOL)sm{
     float red = color.redComponent;
     float green = color.greenComponent;
     float blue = color.blueComponent;
+    AnError err;
     if (!sm) {
-        AnLight_Set_S(context, device, &inf, (uint16_t)((red*65535.0)*maxBrightness), (uint16_t)((green*65535.0)*maxBrightness), (uint16_t)((blue*65535.0)*maxBrightness));
+        err = AnLight_Set_S(context, device, &inf, (uint16_t)((red*65535.0)*maxBrightness), (uint16_t)((green*65535.0)*maxBrightness), (uint16_t)((blue*65535.0)*maxBrightness));
     }else{
         float currentRed = (currentColor.redComponent*smoothFactor)+(red*(1-smoothFactor));
         float currentGreen = (currentColor.greenComponent*smoothFactor)+(green*(1-smoothFactor));
         float currentBlue = (currentColor.blueComponent*smoothFactor)+(blue*(1-smoothFactor));
-        AnLight_Set_S(context, device, &inf, (uint16_t)((currentRed*65535.0)*maxBrightness), (uint16_t)((green*65535.0)*maxBrightness), (uint16_t)((blue*65535.0)*maxBrightness));
+        err = AnLight_Set_S(context, device, &inf, (uint16_t)((currentRed*65535.0)*maxBrightness), (uint16_t)((green*65535.0)*maxBrightness), (uint16_t)((blue*65535.0)*maxBrightness));
         currentColor = [NSColor colorWithRed:currentRed green:currentGreen blue:currentBlue alpha:1.0];
     }
+    if (err)
+    {
+        NSLog(@"%s",AnError_String(err));
+        return NO;
+    } else {
+        return YES;
+    }
+    
 }
 
 -(void)openWindow{
-    [self enableBlurForWindow:mirrorAreaWindow withColor:[NSColor colorWithCalibratedRed:0.185 green:0.210 blue:1.000 alpha:0.500]];
+    NSColor *glowColor = [NSColor colorWithCalibratedHue:(index*0.1) saturation:1.00 brightness:1.0 alpha:1.0];
+    [mirrorAreaWindow setOpaque:YES];
+    mirrorAreaWindow.backgroundColor = glowColor;
+    for (int i = 10; i<20; i++) {
+        [self sendColor:glowColor smooth:NO];
+    }
     [mirrorAreaWindow setIsVisible:YES];
 }
 

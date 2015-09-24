@@ -22,7 +22,7 @@
     id _popoverTransiencyMonitor;
 }
 
-@property(nonatomic, strong, readwrite) NSPopover* popover;
+@property(nonatomic, strong, readwrite) INPopoverController* popover;
 
 @end
 
@@ -105,7 +105,7 @@
 
 - (void)mouseDown:(NSEvent *)theEvent
 {
-    if (_popover.isShown) {
+    if (_popover.popoverIsVisible) {
         [self hidePopover];
     } else {
         [self showPopover];
@@ -173,16 +173,30 @@
     self.active = YES;
     [NSApp activateIgnoringOtherApps:YES];
     
-    if (!_popover) {
-        _popover = [[NSPopover alloc] init];
-        _popover.contentViewController = _viewController;
+    if (!_popover)
+    {
+        _popover = [[INPopoverController alloc] initWithContentViewController:_viewController];
+        [_popover setAnimationType:INPopoverAnimationTypeFadeInOut];
+        [_popover setBorderWidth:0.0];
+        [_popover setCornerRadius:5.0];
+        [_popover setColor:[NSColor colorWithCalibratedWhite:0.200 alpha:0.000]];
+        [_popover setBorderColor:[NSColor colorWithCalibratedWhite:1.000 alpha:0.000]];
+        
+        CALayer *viewLayer = [CALayer layer];
+        [viewLayer setBackgroundColor:[NSColor colorWithCalibratedWhite:0.200 alpha:1.000].CGColor];
+        [viewLayer setCornerRadius:5.0];//RGB plus Alpha Channel
+        [_viewController.view setWantsLayer:YES]; // view's backing store is using a Core Animation Layer
+        [_viewController.view setLayer:viewLayer];
         
     }
     
-    if (!_popover.isShown) {
+    if (!_popover.popoverIsVisible) {
         _popover.animates = animated;
         [self.statusItem popUpStatusItemMenu:_dummyMenu];
-        [_popover showRelativeToRect:self.frame ofView:self preferredEdge:NSMinYEdge];
+        [_popover setContentSize:NSMakeSize(_viewController.view.frame.size.width, _viewController.view.frame.size.height)];
+        [_popover.popoverWindow setFrame:NSMakeRect(_popover.popoverWindow.frame.origin.x, _popover.popoverWindow.frame.origin.y, _viewController.view.frame.size.width, _viewController.view.frame.size.height) display:YES];
+        [_popover presentPopoverFromRect:self.frame inView:self preferredArrowDirection:INPopoverArrowDirectionUp anchorsToPositionView:YES];
+        //[_popover showRelativeToRect:self.frame ofView:self preferredEdge:NSMinYEdge];
         _popoverTransiencyMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:NSLeftMouseDownMask|NSRightMouseDownMask handler:^(NSEvent* event) {
             [self hidePopover];
         }];
@@ -193,8 +207,8 @@
 {
     self.active = NO;
     
-    if (_popover && _popover.isShown) {
-        [_popover close];
+    if (_popover && _popover.popoverIsVisible) {
+        [_popover closePopover:self];
 
 		if (_popoverTransiencyMonitor) {
             [NSEvent removeMonitor:_popoverTransiencyMonitor];
@@ -205,7 +219,7 @@
 
 -(void)mouseMoved:(NSEvent *)theEvent{
     NSPoint locationInView = [self convertPoint:[theEvent locationInWindow]fromView:nil];
-    NSLog(@"%f %f",locationInView.x,locationInView.y);
+   
 }
 
 @end

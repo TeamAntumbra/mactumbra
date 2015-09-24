@@ -20,6 +20,10 @@
 		0169245119CF84EB003ADE00 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0169245019CF84EB003ADE00 /* MainMenu.xib */; };
 		016E81981A9830FA00002C27 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 016E81961A9830FA00002C27 /* icon.png */; };
 		016E81991A9830FA00002C27 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 016E81971A9830FA00002C27 /* icon@2x.png */; };
+		016FB78A1B9EA89900E79722 /* INPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 016FB7831B9EA89900E79722 /* INPopoverController.m */; };
+		016FB78B1B9EA89900E79722 /* INPopoverWindowFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 016FB7851B9EA89900E79722 /* INPopoverWindowFrame.m */; };
+		016FB78C1B9EA89900E79722 /* INPopoverWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 016FB7871B9EA89900E79722 /* INPopoverWindow.m */; };
+		016FB78D1B9EA89900E79722 /* INPopoverParentWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 016FB7891B9EA89900E79722 /* INPopoverParentWindow.m */; };
 		0187DACA1A54B21B0067AB50 /* FlatSegmentedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0187DAC91A54B21B0067AB50 /* FlatSegmentedView.m */; };
 		018AB38519D9221B006CA84D /* ReactiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB38419D9221B006CA84D /* ReactiveView.m */; };
 		01B164FE19F1E73D0034E324 /* DescriptiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B164FD19F1E73D0034E324 /* DescriptiveView.m */; };
@@ -72,6 +76,15 @@
 		0169245019CF84EB003ADE00 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		016E81961A9830FA00002C27 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		016E81971A9830FA00002C27 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		016FB7811B9EA89900E79722 /* INPopoverControllerDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INPopoverControllerDefines.h; sourceTree = "<group>"; };
+		016FB7821B9EA89900E79722 /* INPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INPopoverController.h; sourceTree = "<group>"; };
+		016FB7831B9EA89900E79722 /* INPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INPopoverController.m; sourceTree = "<group>"; };
+		016FB7841B9EA89900E79722 /* INPopoverWindowFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INPopoverWindowFrame.h; sourceTree = "<group>"; };
+		016FB7851B9EA89900E79722 /* INPopoverWindowFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INPopoverWindowFrame.m; sourceTree = "<group>"; };
+		016FB7861B9EA89900E79722 /* INPopoverWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INPopoverWindow.h; sourceTree = "<group>"; };
+		016FB7871B9EA89900E79722 /* INPopoverWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INPopoverWindow.m; sourceTree = "<group>"; };
+		016FB7881B9EA89900E79722 /* INPopoverParentWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INPopoverParentWindow.h; sourceTree = "<group>"; };
+		016FB7891B9EA89900E79722 /* INPopoverParentWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INPopoverParentWindow.m; sourceTree = "<group>"; };
 		0187DAC81A54B21B0067AB50 /* FlatSegmentedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatSegmentedView.h; sourceTree = "<group>"; };
 		0187DAC91A54B21B0067AB50 /* FlatSegmentedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatSegmentedView.m; sourceTree = "<group>"; };
 		018AB38319D9221B006CA84D /* ReactiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReactiveView.h; sourceTree = "<group>"; };
@@ -119,6 +132,15 @@
 			children = (
 				01EECC3119CF19DB005B4DDC /* AXStatusItemPopup.h */,
 				01EECC3219CF19DB005B4DDC /* AXStatusItemPopup.m */,
+				016FB7811B9EA89900E79722 /* INPopoverControllerDefines.h */,
+				016FB7821B9EA89900E79722 /* INPopoverController.h */,
+				016FB7831B9EA89900E79722 /* INPopoverController.m */,
+				016FB7841B9EA89900E79722 /* INPopoverWindowFrame.h */,
+				016FB7851B9EA89900E79722 /* INPopoverWindowFrame.m */,
+				016FB7861B9EA89900E79722 /* INPopoverWindow.h */,
+				016FB7871B9EA89900E79722 /* INPopoverWindow.m */,
+				016FB7881B9EA89900E79722 /* INPopoverParentWindow.h */,
+				016FB7891B9EA89900E79722 /* INPopoverParentWindow.m */,
 			);
 			name = StatusItem;
 			sourceTree = "<group>";
@@ -311,15 +333,19 @@
 			files = (
 				01486F30195CDE2A00F38387 /* AppDelegate.m in Sources */,
 				01EECC3819CF1B04005B4DDC /* MenuViewController.m in Sources */,
+				016FB78C1B9EA89900E79722 /* INPopoverWindow.m in Sources */,
 				01486F29195CDE2A00F38387 /* main.m in Sources */,
 				01FF7DB719D115FA00C3A42D /* AGlow.m in Sources */,
 				01D3EBCC1A95E1A500F4B34C /* AGlowFade.m in Sources */,
 				0187DACA1A54B21B0067AB50 /* FlatSegmentedView.m in Sources */,
+				016FB78A1B9EA89900E79722 /* INPopoverController.m in Sources */,
 				01D3EBC61A95326C00F4B34C /* AGlowManager.m in Sources */,
 				01D3EBCF1A95E24100F4B34C /* AGlowHSVFade.m in Sources */,
+				016FB78D1B9EA89900E79722 /* INPopoverParentWindow.m in Sources */,
 				01EECC3319CF19DB005B4DDC /* AXStatusItemPopup.m in Sources */,
 				01486F5A195CDE4700F38387 /* hsv.c in Sources */,
 				01D3EBD51A95E2B900F4B34C /* AGlowBlackAndWhiteFade.m in Sources */,
+				016FB78B1B9EA89900E79722 /* INPopoverWindowFrame.m in Sources */,
 				01B164FE19F1E73D0034E324 /* DescriptiveView.m in Sources */,
 				01B28D29199C412400F2117D /* ScreenColor.m in Sources */,
 				01D3EBD21A95E28700F4B34C /* AGlowNeonFade.m in Sources */,

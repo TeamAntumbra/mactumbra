@@ -7,6 +7,7 @@
 //
 
 #import "MenuViewController.h"
+#import "FlatSegmentedView.h"
 
 @interface MenuViewController (){
     NSUInteger currentSelectedIndex;
@@ -31,7 +32,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    centerOffset = NSMakePoint(-10, 0);
+    centerOffset = NSMakePoint(0, 0);
     NSTrackingAreaOptions options = NSTrackingActiveAlways|NSTrackingMouseMoved;
     
     NSTrackingArea *area = [[NSTrackingArea alloc]initWithRect:self.view.bounds options:options owner:self userInfo:nil];
@@ -54,7 +55,13 @@
     [DeepBlueButtpn setDescriptiveTitle:@"Neon colors!"];
     
     NSArray *buttons = @[mirrorButton,augmentButton,smoothMirrorButton,HSVButton,RGBButtpn,DeepBlueButtpn];
-
+    
+    FlatSegmentedView *fView = [[FlatSegmentedView alloc]initWithFrame:NSMakeRect(0, self.view.frame.size.height-40, self.view.frame.size.width, 40)];
+    [fView setTitles:@[@"glow",@"mirror",@"fade",@"quit"]];
+    [fView setDelegate:self];
+    [controlBar setHidden:YES];
+    [self.view addSubview:fView];
+    
     for (DescriptiveView *vie in buttons) {
         [vie setLargeFont:[NSFont systemFontOfSize:20]];
         [vie setSmallFont:[NSFont systemFontOfSize:14]];
@@ -77,7 +84,6 @@
     }
     return self;
 }
-
 
 
 -(void)addCircles:(int)numCircles atPoint:(NSPoint)center withDistance:(float)distance size:(NSSize)fram{
@@ -113,13 +119,20 @@
     [self handleButtonTap:obj.mainTitle];
     
 }
-- (IBAction)controlBarChanged:(id)sender {
-    NSUInteger newIndex = [(NSSegmentedControl *)sender selectedSegment];
+
+- (IBAction)quiteAntumbra:(id)sender
+{
+    [[NSApplication sharedApplication]terminate:self];
+}
+
+-(void)segmentedView:(FlatSegmentedView *)view didChangeSelectionToIndex:(NSInteger)index titled:(NSString *)title
+{
+    NSUInteger newIndex = index;
     if (currentSelectedIndex==0&&newIndex!=currentSelectedIndex) {
         for(ReactiveView *ve in circles){
             [ve setHidden:YES];
         }
-       // brightnessSlider.hidden = YES;
+        // brightnessSlider.hidden = YES;
     }
     if (currentSelectedIndex==1&&newIndex!=currentSelectedIndex) {
         [mirrorButton setHidden:YES];
@@ -142,7 +155,7 @@
         for(ReactiveView *ve in circles){
             [ve setHidden:NO];
         }
-       // brightnessSlider.hidden = NO;
+        // brightnessSlider.hidden = NO;
     }
     if (currentSelectedIndex==1) {
         [mirrorButton setHidden:NO];
@@ -158,11 +171,9 @@
         [fastLabel setHidden:NO];
         [slowLabel setHidden:NO];
     }
-    
-}
-
-- (IBAction)quiteAntumbra:(id)sender {
-    [[NSApplication sharedApplication]terminate:self];
+    if (currentSelectedIndex==3) {
+        [[NSApplication sharedApplication]terminate:self];
+    }
 }
 
 - (IBAction)brightnessSlide:(id)sender {
@@ -192,6 +203,11 @@
         [manager manualColor:color];
         [[self viewAtLocation:mouse] antimateGlow];
     }
+    
+}
+
+-(void)mouseDown:(NSEvent *)theEvent
+{
     
 }
 
@@ -265,5 +281,7 @@
     }
    
 }
+
+
 
 @end

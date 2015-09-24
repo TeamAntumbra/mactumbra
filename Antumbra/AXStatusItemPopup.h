@@ -7,6 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "INPopoverController.h"
+
 
 @interface AXStatusItemPopup : NSView
 
@@ -23,7 +25,7 @@
  
  @param appearance NSPopoverAppearance
  */
-@property(nonatomic, strong, readonly) NSPopover *popover;
+@property(nonatomic, strong, readonly) INPopoverController *popover;
 
 // init
 - (id)initWithViewController:(NSViewController *)controller;

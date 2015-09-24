@@ -14,6 +14,8 @@
     BOOL canMirror;
     NSTimer *timer;
     AGlowFade *currentFade;
+    dispatch_queue_t _glowQueue;
+    dispatch_source_t _timer;
 }
 
 @synthesize glows;
@@ -22,22 +24,63 @@
 -(instancetype)init{
     self = [super init];
     if (self) {
-        mirroring =NO;
-        canMirror =YES;
+        mirroring = NO;
+        canMirror = YES;
         glows = [[NSMutableArray alloc]init];
         targetFPS = 30.0;
         currentFade = nil;
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(stopedMirroring) name:@"doneMirroring" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fadeTick) name:@"fadeTick" object:nil];
+        typeof(self) weakSelf = self;
+        void (^glowLoop)() = ^void()
+        {
+            if([weakSelf glowsPlugedIn]!=glows.count)
+            {
+                [weakSelf scanForGlows];
+            }
+        };
         
-        [self scanForGlows];
+        _glowQueue = dispatch_queue_create("io.antumbra.glowQ", DISPATCH_QUEUE_SERIAL);
+         _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, _glowQueue);
+        dispatch_source_set_timer(_timer, dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), 0.5 * NSEC_PER_SEC, (1ull * NSEC_PER_SEC) / 10);
+        dispatch_source_set_event_handler(_timer, glowLoop);
+        dispatch_resume(_timer);
+        
     }
     return self;
 }
 
+dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, dispatch_block_t block)
+{
+    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    if (timer)
+    {
+        dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, interval * NSEC_PER_SEC), interval * NSEC_PER_SEC, (1ull * NSEC_PER_SEC) / 10);
+        dispatch_source_set_event_handler(timer, block);
+        dispatch_resume(timer);
+    }
+    return timer;
+}
+
+-(NSInteger)glowsPlugedIn
+{
+    AnDeviceInfo **devs;
+    size_t nDevices;
+    AnCtx *testcontext;
+    if (AnCtx_Init(&testcontext)) {
+        fputs("ctx init failed\n", stderr);
+        return glows.count;
+    } else {
+        AnDevice_GetList(testcontext, &devs, &nDevices);
+    }
+    return nDevices;
+}
+
 - (void)scanForGlows
 {
+    
     for (AGlow *g in glows) {
+        
         AnDevice_Close(g.context, g.device);
     }
     
@@ -62,14 +105,19 @@
                 //error deal with it
                 NSLog(@"%s",AnError_String(er));
             }else{
-                [glows addObject:[[AGlow alloc] initWithAntumbraDevice:newDevice andContext:context]];
+                AGlow *g = [[AGlow alloc]initWithAntumbraDevice:newDevice andContext:context];
+                g.index = glows.count;
+                [glows addObject:g];
             }
         }
         AnDevice_FreeList(devs);
     }else{
         NSLog(@"no antumbras found");
     }
+
 }
+
+
 
 -(void)colorFromGlow:(AGlow *)glow{
     if (!mirroring) {
@@ -97,9 +145,15 @@
         [[NSNotificationCenter defaultCenter]postNotificationName:@"doneMirroring" object:nil];
         return;
     }
-    NSLog(@"augmenting");
     CGDirectDisplayID disp = (CGDirectDisplayID) [[[glow.mirrorAreaWindow.screen deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
     CGImageRef first = CGDisplayCreateImageForRect(disp, glow.mirrorAreaWindow.frame);
+    if (!first) {
+        //CFRelease(first);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0/targetFPS * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self augmentFromGlow:glow];
+        });
+        return;
+    }
     GPUImagePicture *pic = [[GPUImagePicture alloc]initWithCGImage:first];
     GPUImageSaturationFilter *sat = [[GPUImageSaturationFilter alloc]init];
     sat.saturation = 2.0;

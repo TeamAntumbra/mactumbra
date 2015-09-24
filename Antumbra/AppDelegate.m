@@ -40,11 +40,7 @@
     
     _statusItemPopup = [[AXStatusItemPopup alloc] initWithViewController:contentViewController image:image alternateImage:image];
     
-    
-    
     [_statusItemPopup showPopover];
-    [self appearanceValueChanged:self]; //This only works if I encapsulate this inside a show/hide setneedsdisplay? whatevs
-
     
     manager = [[AGlowManager alloc]init];
     contentViewController.manager = manager;
@@ -56,12 +52,6 @@
 }
 
 
-- (void)appearanceValueChanged:(id)sender {
-
-    NSPopoverAppearance newAppearance = NSPopoverAppearanceHUD;
-
-    _statusItemPopup.popover.appearance = newAppearance;
-}
 -(void)resizePopover:(CGSize)newSize{
     [_statusItemPopup setContentSize:newSize];
 }
