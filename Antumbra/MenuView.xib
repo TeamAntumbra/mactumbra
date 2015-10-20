@@ -35,7 +35,7 @@
                     </textFieldCell>
                 </textField>
                 <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IEy-9r-Guj">
-                    <rect key="frame" x="15" y="30" width="187" height="28"/>
+                    <rect key="frame" x="15" y="33" width="187" height="28"/>
                     <buttonCell key="cell" type="push" title="Configure Windows" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ht4-UX-14j">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
@@ -45,14 +45,14 @@
                     </connections>
                 </button>
                 <slider hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fH3-o4-7J8">
-                    <rect key="frame" x="20" y="35" width="177" height="21"/>
+                    <rect key="frame" x="20" y="38" width="177" height="21"/>
                     <sliderCell key="cell" state="on" alignment="left" maxValue="120" doubleValue="60" tickMarkPosition="below" sliderType="linear" id="Y6Q-Te-sBG"/>
                     <connections>
                         <action selector="tickSliderChanged:" target="-2" id="kg0-a3-P76"/>
                     </connections>
                 </slider>
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1qB-Tg-f94">
-                    <rect key="frame" x="18" y="15" width="181" height="21"/>
+                    <rect key="frame" x="18" y="18" width="181" height="21"/>
                     <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="92.327665441176464" tickMarkPosition="above" sliderType="linear" id="Kwz-Zw-0cI"/>
                     <connections>
                         <action selector="brightnessSlide:" target="-2" id="dic-Yc-zwe"/>
@@ -67,22 +67,22 @@
                     </textFieldCell>
                 </textField>
                 <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mpr-JB-OZs" customClass="DescriptiveView">
-                    <rect key="frame" x="20" y="188" width="177" height="52"/>
+                    <rect key="frame" x="20" y="194" width="177" height="52"/>
                 </customView>
                 <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DwY-CL-xbU" customClass="DescriptiveView">
-                    <rect key="frame" x="20" y="126" width="177" height="52"/>
+                    <rect key="frame" x="20" y="132" width="177" height="52"/>
                 </customView>
                 <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8aW-Zu-Mve" customClass="DescriptiveView">
-                    <rect key="frame" x="20" y="64" width="177" height="52"/>
+                    <rect key="frame" x="20" y="70" width="177" height="52"/>
                 </customView>
                 <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n27-no-ZcN" customClass="DescriptiveView">
-                    <rect key="frame" x="20" y="188" width="177" height="52"/>
+                    <rect key="frame" x="20" y="194" width="177" height="52"/>
                 </customView>
                 <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CVo-9c-vyq" customClass="DescriptiveView">
-                    <rect key="frame" x="20" y="126" width="177" height="52"/>
+                    <rect key="frame" x="20" y="132" width="177" height="52"/>
                 </customView>
                 <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="98p-om-W3I" customClass="DescriptiveView">
-                    <rect key="frame" x="20" y="64" width="177" height="52"/>
+                    <rect key="frame" x="20" y="70" width="177" height="52"/>
                 </customView>
             </subviews>
             <point key="canvasLocation" x="402.5" y="179.5"/>

@@ -32,7 +32,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    centerOffset = NSMakePoint(0, 0);
+    centerOffset = NSMakePoint(0, -3);
     NSTrackingAreaOptions options = NSTrackingActiveAlways|NSTrackingMouseMoved;
     
     NSTrackingArea *area = [[NSTrackingArea alloc]initWithRect:self.view.bounds options:options owner:self userInfo:nil];
