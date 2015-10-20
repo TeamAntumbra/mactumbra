@@ -45,7 +45,7 @@ NSString * const kScreenDidFinishProcessingNotification = @"ScreenDidProcessNoti
     
     [average setColorAverageProcessingFinishedBlock:^(CGFloat r, CGFloat g, CGFloat b, CGFloat a, CMTime time) {
         
-        NSColor *color = [NSColor colorWithRed:r green:g blue:b alpha:1.0];
+        NSColor *color = [NSColor colorWithCalibratedRed:r green:g blue:b alpha:1.0];
         [[NSNotificationCenter defaultCenter]postNotificationName:kScreenDidFinishProcessingNotification object:color userInfo:nil];
         
     }];
@@ -76,7 +76,7 @@ NSString * const kScreenDidFinishProcessingNotification = @"ScreenDidProcessNoti
     
     [average setColorAverageProcessingFinishedBlock:^(CGFloat r, CGFloat g, CGFloat b, CGFloat a, CMTime time) {
         
-        NSColor *color = [NSColor colorWithRed:r green:g blue:b alpha:1.0];
+        NSColor *color = [NSColor colorWithCalibratedRed:r green:g blue:b alpha:1.0];
         [[NSNotificationCenter defaultCenter]postNotificationName:kScreenDidFinishProcessingNotification object:color userInfo:nil];
         
     }];

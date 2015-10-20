@@ -83,7 +83,7 @@ extern CGSConnection CGSDefaultConnectionForThread();
         currentRed = currentRed+redStep;
         currentGreen = currentGreen+greenStep;
         currentBlue = currentBlue+blueStep;
-        self.currentColor = [NSColor colorWithRed:currentRed green:currentGreen blue:currentBlue alpha:1.0];
+        self.currentColor = [NSColor colorWithCalibratedRed:currentRed green:currentGreen blue:currentBlue alpha:1.0];
         [self sendColor:self.currentColor smooth:NO];
         [NSThread sleepForTimeInterval:stepTime];
     }
@@ -108,6 +108,7 @@ extern CGSConnection CGSDefaultConnectionForThread();
         float currentBlue = (currentColor.blueComponent*smoothFactor)+(blue*(1-smoothFactor));
         err = AnLight_Set_S(context, device, &inf, (uint16_t)((currentRed*65535.0)*maxBrightness), (uint16_t)((green*65535.0)*maxBrightness), (uint16_t)((blue*65535.0)*maxBrightness));
         currentColor = [NSColor colorWithRed:currentRed green:currentGreen blue:currentBlue alpha:1.0];
+
     }
     if (err)
     {

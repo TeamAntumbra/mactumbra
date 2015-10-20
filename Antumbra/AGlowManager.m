@@ -31,6 +31,7 @@
         currentFade = nil;
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(stopedMirroring) name:@"doneMirroring" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fadeTick) name:@"fadeTick" object:nil];
+
         typeof(self) weakSelf = self;
         void (^glowLoop)() = ^void()
         {
@@ -45,6 +46,7 @@
         dispatch_source_set_timer(_timer, dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), 0.5 * NSEC_PER_SEC, (1ull * NSEC_PER_SEC) / 10);
         dispatch_source_set_event_handler(_timer, glowLoop);
         dispatch_resume(_timer);
+
         
     }
     return self;
@@ -131,7 +133,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     GPUImageAverageColor *average = [[GPUImageAverageColor alloc]init];
     [pic addTarget:average];
     [average setColorAverageProcessingFinishedBlock:^(CGFloat r, CGFloat g, CGFloat b, CGFloat a, CMTime time) {
-        [glow updateSetColor:[NSColor colorWithRed:r green:g blue:b alpha:a] smooth:NO];
+        [glow updateSetColor:[NSColor colorWithCalibratedRed:r green:g blue:b alpha:a] smooth:NO];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0/targetFPS * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self colorFromGlow:glow];
         });
@@ -161,7 +163,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     [pic addTarget:sat];
     [sat addTarget:average];
     [average setColorAverageProcessingFinishedBlock:^(CGFloat r, CGFloat g, CGFloat b, CGFloat a, CMTime time) {
-        [glow updateSetColor:[NSColor colorWithRed:r green:g blue:b alpha:a] smooth:YES];
+        [glow updateSetColor:[NSColor colorWithCalibratedRed:r green:g blue:b alpha:a] smooth:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0/targetFPS * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self augmentFromGlow:glow];
         });
@@ -187,7 +189,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     [sat addTarget:average];
     [average setColorAverageProcessingFinishedBlock:^(CGFloat r, CGFloat g, CGFloat b, CGFloat a, CMTime time) {
         
-        [glow updateSetColor:[NSColor colorWithRed:r green:g blue:b alpha:a] smooth:YES];
+        [glow updateSetColor:[NSColor colorWithCalibratedRed:r green:g blue:b alpha:a] smooth:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0/targetFPS * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self balancedFromGlow:glow];
         });
