@@ -126,7 +126,6 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
         [[NSNotificationCenter defaultCenter]postNotificationName:@"doneMirroring" object:nil];
         return;
     }
-    NSLog(@"mirror");
     CGDirectDisplayID disp = (CGDirectDisplayID) [[[glow.mirrorAreaWindow.screen deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
     CGImageRef first = CGDisplayCreateImageForRect(disp, glow.mirrorAreaWindow.frame);
     GPUImagePicture *pic = [[GPUImagePicture alloc]initWithCGImage:first];
@@ -178,7 +177,6 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
         [[NSNotificationCenter defaultCenter]postNotificationName:@"doneMirroring" object:nil];
         return;
     }
-    NSLog(@"balanced");
     CGDirectDisplayID disp = (CGDirectDisplayID) [[[glow.mirrorAreaWindow.screen deviceDescription]objectForKey:@"NSScreenNumber"] intValue];
     CGImageRef first = CGDisplayCreateImageForRect(disp, glow.mirrorAreaWindow.frame);
     GPUImagePicture *pic = [[GPUImagePicture alloc]initWithCGImage:first];
